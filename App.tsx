@@ -1,15 +1,20 @@
 import {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
+import {ThemeProvider} from 'styled-components/native';
 
-import {Typography} from '@/styled/Typography';
-import {TypographyVariant} from '@/styled/Typography/types';
+import {WelcomeScreen} from '@/screens/Welcome';
+import {darkTheme} from '@/theme/darkTheme';
 
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
 
-  return <Typography variant={TypographyVariant.LABEL_SMALL}>1223</Typography>;
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <WelcomeScreen />
+    </ThemeProvider>
+  );
 };
 
 export default App;
