@@ -17,6 +17,8 @@ jobs:
         with:
           node-version: ${{matrix.node-version}}
       - name: Install modules
-        run: yarn add
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
       - name: Run Eslint
         run: npm run lint
