@@ -1,7 +1,7 @@
 import {PressableProps} from 'react-native';
 
-import {Typography} from '@/styled/Typography';
-import {TypographyVariant} from '@/styled/Typography/types';
+import {Typography} from '@/components/UI/Typography';
+import {TypographyVariant} from '@/components/UI/Typography/types';
 
 import {ButtonContainer, ButtonIcon} from './styles';
 
@@ -12,14 +12,9 @@ export interface ButtonProps extends PressableProps {
   color?: string;
 }
 
-export const Button = ({
-  icon,
-  children,
-  backgroundColor,
-  color,
-}: ButtonProps) => {
+export const Button = ({icon, children, color, ...props}: ButtonProps) => {
   return (
-    <ButtonContainer style={{backgroundColor}}>
+    <ButtonContainer {...props}>
       {icon && <ButtonIcon source={icon} />}
       <Typography color={color} variant={TypographyVariant.LABEL_LARGE}>
         {children}

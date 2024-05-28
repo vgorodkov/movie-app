@@ -1,9 +1,9 @@
 import React from 'react';
 
+import {Typography} from '@/components/UI/Typography';
+import {TypographyVariant} from '@/components/UI/Typography/types';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {Typography} from '@/styled/Typography';
-import {TypographyVariant} from '@/styled/Typography/types';
 
 import {AppLogo} from './styles';
 
