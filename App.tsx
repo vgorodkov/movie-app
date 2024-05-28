@@ -1,8 +1,10 @@
+import {NavigationContainer} from '@react-navigation/native';
 import {useEffect} from 'react';
+import {StatusBar} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import {ThemeProvider} from 'styled-components/native';
 
-import {WelcomeScreen} from '@/screens/Welcome';
+import {RootNavigation} from '@/navigation/Root';
 import {darkTheme} from '@/theme/darkTheme';
 
 const App = () => {
@@ -11,9 +13,12 @@ const App = () => {
   }, []);
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <WelcomeScreen />
-    </ThemeProvider>
+    <NavigationContainer>
+      <ThemeProvider theme={darkTheme}>
+        <StatusBar backgroundColor={darkTheme.colors.background} />
+        <RootNavigation />
+      </ThemeProvider>
+    </NavigationContainer>
   );
 };
 
