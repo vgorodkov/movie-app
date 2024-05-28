@@ -4,6 +4,7 @@ import {Button} from '@/components/UI/Button';
 import {AuthRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
+import {googleSignIn} from '@/utils/googleSignIn';
 
 import {AUTH_VARIANTS} from './constants';
 import {LogInLink} from './LogInLink';
@@ -14,7 +15,9 @@ export const AuthVariants = () => {
   const onAccountCreateBtnPress = () => {
     navigation.navigate(AuthRoutes.SIGN_UP);
   };
-  const onGoogleAuthBtnPress = () => {};
+  const onGoogleAuthBtnPress = async () => {
+    googleSignIn();
+  };
   const onFacebookAuthBtnPress = () => {};
   const onGithubAuthBtnPress = () => {};
 
