@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {Controller, useFormContext} from 'react-hook-form';
 
 import {Input} from '@/components/UI/Input';
@@ -29,13 +29,12 @@ export const AuthInputs = ({authForm, isSignUp}: AuthInputsProps) => {
         return (
           <Controller
             control={control}
+            key={name}
             name={name}
             render={({field: {value, onChange, onBlur}}) => {
               return (
                 <>
                   <Input
-                    name={name}
-                    key={name}
                     value={value}
                     onChangeText={onChange}
                     onBlur={onBlur}
