@@ -1,15 +1,25 @@
+import {NavigationContainer} from '@react-navigation/native';
 import {useEffect} from 'react';
+import {StatusBar} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import {ThemeProvider} from 'styled-components/native';
 
-import {Typography} from '@/styled/Typography';
-import {TypographyVariant} from '@/styled/Typography/types';
+import {RootNavigation} from '@/navigation/Root';
+import {darkTheme} from '@/theme/darkTheme';
 
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
 
-  return <Typography variant={TypographyVariant.LABEL_SMALL}>1223</Typography>;
+  return (
+    <NavigationContainer>
+      <ThemeProvider theme={darkTheme}>
+        <StatusBar backgroundColor={darkTheme.colors.background} />
+        <RootNavigation />
+      </ThemeProvider>
+    </NavigationContainer>
+  );
 };
 
 export default App;
