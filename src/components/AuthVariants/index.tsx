@@ -1,19 +1,37 @@
+import {useNavigation} from '@react-navigation/native';
+
 import {Button} from '@/components/UI/Button';
+import {AuthRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {Typography} from '@/styled/Typography';
-import {TypographyVariant} from '@/styled/Typography/types';
 
 import {AUTH_VARIANTS} from './constants';
-import {UnderlinedTypography} from './styles';
+import {LogInLink} from './LogInLink';
 
 export const AuthVariants = () => {
+  const navigation = useNavigation();
+
+  const onAccountCreateBtnPress = () => {
+    navigation.navigate(AuthRoutes.SIGN_UP);
+  };
+  const onGoogleAuthBtnPress = () => {};
+  const onFacebookAuthBtnPress = () => {};
+  const onGithubAuthBtnPress = () => {};
+
+  const authFunctions = {
+    account: onAccountCreateBtnPress,
+    google: onGoogleAuthBtnPress,
+    facebook: onFacebookAuthBtnPress,
+    github: onGithubAuthBtnPress,
+  };
+
   return (
     <FlexContainer gap={spacing.m}>
       {AUTH_VARIANTS.map(button => {
-        const {icon, backgroundColor, color, label} = button;
+        const {icon, backgroundColor, color, label, name} = button;
         return (
           <Button
+            onPress={authFunctions[name]}
             key={label}
             icon={icon}
             backgroundColor={backgroundColor}
@@ -22,14 +40,7 @@ export const AuthVariants = () => {
           </Button>
         );
       })}
-      <FlexContainer flexFlow="row wrap" gap={spacing.xs}>
-        <Typography variant={TypographyVariant.LABEL_SMALL}>
-          Already has an account?
-        </Typography>
-        <UnderlinedTypography variant={TypographyVariant.LABEL_SMALL}>
-          Login please.
-        </UnderlinedTypography>
-      </FlexContainer>
+      <LogInLink />
     </FlexContainer>
   );
 };
