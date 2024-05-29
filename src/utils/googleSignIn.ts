@@ -10,7 +10,6 @@ export const googleSignIn = async () => {
   try {
     await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
     const {idToken} = await GoogleSignin.signIn();
-    console.log(idToken);
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
     return auth().signInWithCredential(googleCredential);
