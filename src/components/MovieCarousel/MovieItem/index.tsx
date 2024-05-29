@@ -1,0 +1,88 @@
+import {
+  Extrapolation,
+  interpolate,
+  useAnimatedStyle,
+  useDerivedValue,
+} from 'react-native-reanimated';
+
+import {Typography} from '@/components/UI/Typography';
+import {TypographyVariant} from '@/components/UI/Typography/types';
+import {spacing} from '@/constants/spacing';
+import {FlexContainer} from '@/styled/FlexContainer';
+
+import {MOVIE_ITEM_WIDTH, SIDECARD_WIDTH} from '../constants';
+import {
+  AnimatedFlexBox,
+  MovieImage,
+  MovieItemContainer,
+  MovieTag,
+} from './styles';
+import {MovieItemProps} from './types';
+
+export const MovieItem = ({
+  scrollOffset,
+  index,
+  title,
+  tags,
+  img,
+  isLast,
+  isFirst,
+}: MovieItemProps) => {
+  const inputOffsetRange = [
+    (index - 1) * MOVIE_ITEM_WIDTH,
+    index * MOVIE_ITEM_WIDTH,
+    (index + 1) * MOVIE_ITEM_WIDTH,
+  ];
+
+  const animatedImageStyle = useAnimatedStyle(() => {
+    const outputScaleRange = [0.8, 1, 0.8];
+    return {
+      transform: [
+        {
+          scale: interpolate(
+            scrollOffset.value,
+            inputOffsetRange,
+            outputScaleRange,
+            Extrapolation.CLAMP,
+          ),
+        },
+      ],
+    };
+  });
+
+  const movieInformationOpacity = useDerivedValue(() => {
+    const opacityOutputRange = [0, 1, 0];
+
+    return interpolate(
+      scrollOffset.value,
+      inputOffsetRange,
+      opacityOutputRange,
+      Extrapolation.CLAMP,
+    );
+  }, [scrollOffset]);
+
+  return (
+    <MovieItemContainer
+      marginLeft={isFirst ? SIDECARD_WIDTH : 0}
+      marginRight={isLast ? SIDECARD_WIDTH : 0}
+      width={MOVIE_ITEM_WIDTH}
+      style={animatedImageStyle}>
+      <MovieImage source={img} />
+      <AnimatedFlexBox gap={8} style={{opacity: movieInformationOpacity}}>
+        <Typography variant={TypographyVariant.LABEL_LARGE}>{title}</Typography>
+        <FlexContainer
+          flexFlow="row nowrap"
+          justifyContent="center"
+          gap={spacing.s}>
+          {tags.map(item => (
+            <MovieTag key={item}>
+              <Typography variant={TypographyVariant.LABEL_MEDIUM}>
+                {item}
+              </Typography>
+            </MovieTag>
+          ))}
+        </FlexContainer>
+      </AnimatedFlexBox>
+    </MovieItemContainer>
+  );
+};
