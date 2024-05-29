@@ -22,7 +22,7 @@ export const MovieItemContainer = styled(AnimatedFlexBox)<{
 
 export const MovieImage = styled.Image`
   width: 100%;
-  height: 80%;
+  height: 70%;
   border-radius: 10px;
 `;
 
