@@ -33,17 +33,16 @@ export const AuthSubmitButton = ({isSignUp}: {isSignUp: boolean}) => {
       });
   };
 
-  const onSumbit = (data: FieldValues) => {
+  const onSubmit = (data: FieldValues) => {
     if (isSignUp) {
       handleSignUp(data);
     } else {
       handleSignIn(data);
     }
-    console.log(data);
   };
 
   return (
-    <AuthButton onPress={handleSubmit(onSumbit)} backgroundColor="#D98639">
+    <AuthButton onPress={handleSubmit(onSubmit)} backgroundColor="#D98639">
       {isSignUp ? 'Sign Up' : 'Sign In'}
     </AuthButton>
   );
