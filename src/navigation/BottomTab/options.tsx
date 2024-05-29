@@ -2,6 +2,7 @@ import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs';
 import {Image} from 'react-native';
 
 import {getRouteIcon} from './getIcon';
+import {styles} from './styles';
 import {BottomTabBarOptionsProps} from './types';
 
 export const bottomTabBarOptions = ({
@@ -9,11 +10,11 @@ export const bottomTabBarOptions = ({
 }: BottomTabBarOptionsProps): BottomTabNavigationOptions => {
   return {
     headerShown: false,
-    tabBarStyle: {backgroundColor: '#16171F'},
+    tabBarStyle: styles.tabBarStyle,
     tabBarShowLabel: false,
     tabBarIcon: ({focused}) => (
       <Image
-        style={{width: 24, height: 24}}
+        style={styles.tabBarIcon}
         source={getRouteIcon(route.name, focused)}
       />
     ),
