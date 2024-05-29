@@ -14,6 +14,7 @@ export const AnimatedFlexBox = styled(Animated.View)<{
 export const MovieItemContainer = styled(AnimatedFlexBox)<{
   width: number;
 }>`
+  align-items: center;
   margin-left: ${props => `${props.marginLeft}px`};
   margin-right: ${props => `${props.marginRight}px`};
   width: ${props => `${props.width}px`};
@@ -21,8 +22,8 @@ export const MovieItemContainer = styled(AnimatedFlexBox)<{
 `;
 
 export const MovieImage = styled.Image`
-  width: 100%;
-  height: 70%;
+  width: 182px;
+  height: 268px;
   border-radius: 10px;
 `;
 
