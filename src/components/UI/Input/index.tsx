@@ -18,7 +18,7 @@ export const Input = ({icon, errorMessage, ...props}: InputProps) => {
   const theme = useTheme();
 
   return (
-    <>
+    <FlexContainer gap={spacing.s}>
       <FlexContainer alignItems="center" flexFlow="row nowrap" gap={spacing.s}>
         {icon && <InputIcon source={icon} />}
         <InputField
@@ -34,6 +34,6 @@ export const Input = ({icon, errorMessage, ...props}: InputProps) => {
           {errorMessage}
         </Typography>
       )}
-    </>
+    </FlexContainer>
   );
 };

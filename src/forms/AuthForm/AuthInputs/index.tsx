@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Controller, useFormContext} from 'react-hook-form';
 
 import {Input} from '@/components/UI/Input';
@@ -16,7 +16,7 @@ export const AuthInputs = ({authForm, isSignUp}: AuthInputsProps) => {
   } = useFormContext();
 
   return (
-    <FlexContainer gap={spacing.sm}>
+    <FlexContainer gap={spacing.l}>
       {authForm.map(input => {
         const {placeholder, icon, name} = input;
 
@@ -33,7 +33,7 @@ export const AuthInputs = ({authForm, isSignUp}: AuthInputsProps) => {
             name={name}
             render={({field: {value, onChange, onBlur}}) => {
               return (
-                <>
+                <FlexContainer gap={spacing.s}>
                   <Input
                     value={value}
                     onChangeText={onChange}
@@ -47,7 +47,7 @@ export const AuthInputs = ({authForm, isSignUp}: AuthInputsProps) => {
                     <PasswordDifficultyIndicator password={value} />
                   )}
                   {shouldShowForgotPassword && <ForgotPasswordBtn />}
-                </>
+                </FlexContainer>
               );
             }}
           />

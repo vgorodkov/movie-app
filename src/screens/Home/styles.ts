@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import {spacing} from '@/constants/spacing';
 
 export const ComingSoonContainer = styled.View`
-  height: 300px;
+  margin-bottom: ${spacing.l};
   padding: 0 ${spacing.l};
   gap: ${spacing.s};
 `;

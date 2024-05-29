@@ -21,7 +21,7 @@ export const MovieGenre = ({
 
   return (
     <PressableMovieGenre isSelected={isSelected} onPress={onMovieGenrePress}>
-      <Typography variant={TypographyVariant.LABEL_LARGE}>{genre}</Typography>
+      <Typography variant={TypographyVariant.LABEL_MEDIUM}>{genre}</Typography>
     </PressableMovieGenre>
   );
 };

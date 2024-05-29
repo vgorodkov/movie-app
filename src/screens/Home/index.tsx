@@ -3,13 +3,14 @@ import {MovieGenreList} from '@/components/MovieGenreList';
 import {Typography} from '@/components/UI/Typography';
 import {TypographyVariant} from '@/components/UI/Typography/types';
 import {VideoPlayer} from '@/components/VideoPlayer';
+import {spacing} from '@/constants/spacing';
 import {FullscreenContainer} from '@/styled/FlexContainer';
 
 import {ComingSoonContainer, MovieCarouselContainer} from './styles';
 
 export const HomeScreen = () => {
   return (
-    <FullscreenContainer>
+    <FullscreenContainer paddingVertical={spacing.m}>
       <ComingSoonContainer>
         <Typography
           alightSelf="flex-start"
