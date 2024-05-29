@@ -21,7 +21,7 @@ export const variantStyles = {
   `,
   [TypographyVariant.SUBTITLE_LARGE]: css`
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 28px;
   `,
   [TypographyVariant.SUBTITLE_MEDIUM]: css`

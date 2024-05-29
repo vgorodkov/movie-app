@@ -8,10 +8,12 @@ export const Typography = styled.Text<{
   color?: string;
   alightSelf?: string;
   textDecoration?: 'underline' | 'dashed';
+  padding?: string;
 }>`
   ${({variant}) => variantStyles[variant]}
   color: ${props =>
     props.color ? props.color : props.theme.colors.primaryText};
   align-self: ${props => props.alightSelf || 'center'};
   text-decoration: ${props => props.textDecoration};
+  padding: ${props => props.padding || 0};
 `;
