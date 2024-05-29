@@ -19,12 +19,15 @@ import {
 } from './styles';
 import {MovieItemProps} from './types';
 
+const DUMMY_URI =
+  'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/9556d16312333.5691dd2255721.jpg';
+
 export const MovieItem = ({
   scrollOffset,
   index,
   title,
-  tags,
-  img,
+  genre,
+  imageurl,
   isLast,
   isFirst,
 }: MovieItemProps) => {
@@ -67,14 +70,18 @@ export const MovieItem = ({
       marginRight={isLast ? SIDECARD_WIDTH : 0}
       width={MOVIE_ITEM_WIDTH}
       style={animatedImageStyle}>
-      <MovieImage source={img} />
+      <MovieImage
+        source={{
+          uri: imageurl[0] || DUMMY_URI,
+        }}
+      />
       <AnimatedFlexBox gap={8} style={{opacity: movieInformationOpacity}}>
         <Typography variant={TypographyVariant.LABEL_LARGE}>{title}</Typography>
         <FlexContainer
           flexFlow="row nowrap"
           justifyContent="center"
           gap={spacing.s}>
-          {tags.map(item => (
+          {genre.map(item => (
             <MovieTag key={item}>
               <Typography variant={TypographyVariant.LABEL_MEDIUM}>
                 {item}

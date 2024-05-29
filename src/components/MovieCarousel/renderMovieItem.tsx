@@ -8,14 +8,14 @@ import {MovieItem} from './MovieItem';
 export const renderMovieItem =
   (scrollOffset: SharedValue<number>, dataLength: number) =>
   ({item, index}: {item: Movie; index: number}) => {
-    const {tags, title, img} = item;
+    const {genre, imageurl, title} = item;
     return (
       <MovieItem
         isLast={index === dataLength - 1}
         isFirst={index === 0}
-        tags={tags}
+        genre={genre}
         title={title}
-        img={img}
+        imageurl={imageurl}
         index={index}
         scrollOffset={scrollOffset}
       />

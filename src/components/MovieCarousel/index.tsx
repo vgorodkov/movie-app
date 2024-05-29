@@ -2,18 +2,33 @@ import React from 'react';
 import {NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
 import Animated, {useSharedValue} from 'react-native-reanimated';
 
+import {Typography} from '@/components/UI/Typography';
+import {TypographyVariant} from '@/components/UI/Typography/types';
 import {spacing} from '@/constants/spacing';
+import {useGetMoviesQuery} from '@/store/apiSlices/movieApi';
+import {useAppSelector} from '@/store/hooks';
+import {selectSelectedMovieGenre} from '@/store/slices/movieGenre/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 import {Movie} from '@/types/movies';
 
-import {Typography} from '../UI/Typography';
-import {TypographyVariant} from '../UI/Typography/types';
 import {MOVIE_ITEM_WIDTH} from './constants';
 import {renderMovieItem} from './renderMovieItem';
 import {MovieCarouselProps} from './types';
 
-export const MovieCarousel = ({data, title}: MovieCarouselProps) => {
+const DATA_LIMIT = 10;
+
+export const MovieCarousel = ({title}: MovieCarouselProps) => {
+  const selectedGenre = useAppSelector(selectSelectedMovieGenre);
+  const {data, isError, error, isLoading} = useGetMoviesQuery(selectedGenre);
+
   const scrollOffset = useSharedValue(0);
+
+  if (isLoading) {
+    return null;
+  }
+  if (isError) {
+    console.error(error);
+  }
 
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     scrollOffset.value = e.nativeEvent.contentOffset.x;
@@ -45,9 +60,9 @@ export const MovieCarousel = ({data, title}: MovieCarouselProps) => {
         snapToInterval={MOVIE_ITEM_WIDTH}
         showsHorizontalScrollIndicator={false}
         horizontal
-        data={data}
-        renderItem={renderMovieItem(scrollOffset, data.length)}
-        initialScrollIndex={Math.floor(data.length / 2)}
+        data={data?.results.slice(0, DATA_LIMIT)}
+        renderItem={renderMovieItem(scrollOffset, DATA_LIMIT)}
+        initialScrollIndex={DATA_LIMIT / 2}
         getItemLayout={getItemLayout}
         onScroll={onScroll}
       />
