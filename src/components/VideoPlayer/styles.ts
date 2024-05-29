@@ -1,3 +1,14 @@
 import {StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({videoContainer: {flex: 1}});
+import {VIDEO_PLAYER_HEIGHT} from './constants';
+
+export const styles = StyleSheet.create({
+  videoPlayer: {
+    flex: 1,
+  },
+});
+
+export const VideoContainer = styled.View`
+  height: ${VIDEO_PLAYER_HEIGHT}px;
+`;

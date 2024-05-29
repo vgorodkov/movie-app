@@ -5,70 +5,69 @@ import {TypographyVariant} from './types';
 export const variantStyles = {
   [TypographyVariant.TITLE_LARGE]: css`
     font-size: 32px;
-    font-weight: 300;
     line-height: 40px;
     text-align: center;
+    font-family: 'Poppins-Light';
   `,
   [TypographyVariant.TITLE_MEDIUM]: css`
     font-size: 28px;
-    font-weight: 600;
     line-height: 36px;
+    font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.TITLE_SMALL]: css`
     font-size: 24px;
-    font-weight: 600;
     line-height: 32px;
+    font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.SUBTITLE_LARGE]: css`
     font-size: 22px;
-    font-weight: 500;
     line-height: 28px;
+    font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.SUBTITLE_MEDIUM]: css`
     font-size: 16px;
-    font-weight: 500;
     line-height: 24px;
     letter-spacing: 0.15px;
+    font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.SUBTITLE_SMALL]: css`
     font-size: 14px;
-    font-weight: 500;
     line-height: 20px;
     letter-spacing: 0.1px;
+    font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.BODY_LARGE]: css`
     font-size: 16px;
-    font-weight: 400;
+    font-family: 'Poppins-Regular';
     letter-spacing: 0.5px;
     line-height: 24px;
   `,
   [TypographyVariant.BODY_MEDIUM]: css`
     font-size: 14px;
-    font-weight: 400;
+    font-family: 'Poppins-Regular';
     letter-spacing: 0.25px;
     line-height: 20px;
   `,
   [TypographyVariant.BODY_SMALL]: css`
     font-size: 12px;
-    font-weight: 400;
+    font-family: 'Poppins-Regular';
     letter-spacing: 0.4px;
     line-height: 16px;
   `,
   [TypographyVariant.LABEL_LARGE]: css`
     font-size: 14px;
     line-height: 20px;
-    letter-spacing: 0.1px;
-    font-weight: 500;
+    font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.LABEL_MEDIUM]: css`
     font-size: 12px;
-    font-weight: 500;
     line-height: 16px;
     letter-spacing: 0.5px;
+    font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.LABEL_SMALL]: css`
     font-size: 11px;
-    font-weight: 500;
+    font-family: 'Poppins-SemiBold';
     line-height: 16px;
     letter-spacing: 0.5px;
   `,
