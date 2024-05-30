@@ -19,18 +19,7 @@ export const FlexContainer = styled.View<FlexContainerProps>`
   padding: ${({padding = 0}) => padding};
 `;
 
-interface FullscreenContainerProps extends FlexContainerProps {
-  paddingHorizontal?: string;
-  paddingVertical?: string;
-}
-
-export const FullscreenContainer = styled(
-  FlexContainer,
-)<FullscreenContainerProps>`
+export const FullscreenContainer = styled(FlexContainer)`
   flex: 1;
-  padding-top: ${({paddingVertical = '0'}) => paddingVertical};
-  padding-bottom: ${({paddingVertical = '0'}) => paddingVertical};
-  padding-left: ${({paddingHorizontal = '0'}) => paddingHorizontal};
-  padding-right: ${({paddingHorizontal = '0'}) => paddingHorizontal};
   background-color: ${({theme}) => theme.colors.background};
 `;

@@ -10,7 +10,7 @@ import {ComingSoonContainer, MovieCarouselContainer} from './styles';
 
 export const HomeScreen = () => {
   return (
-    <FullscreenContainer paddingVertical={spacing.m}>
+    <FullscreenContainer padding={`${spacing.m} 0`}>
       <ComingSoonContainer>
         <Typography
           alightSelf="flex-start"
