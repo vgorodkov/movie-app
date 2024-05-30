@@ -1,7 +1,6 @@
+import {AvaibleGenreList} from '@/components/AvaibleGenreList';
 import {MovieCarousel} from '@/components/MovieCarousel';
-import {MovieGenreList} from '@/components/MovieGenreList';
-import {Typography} from '@/components/UI/Typography';
-import {TypographyVariant} from '@/components/UI/Typography/types';
+import {Typography, TypographyVariant} from '@/components/UI';
 import {VideoPlayer} from '@/components/VideoPlayer';
 import {spacing} from '@/constants/spacing';
 import {FullscreenContainer} from '@/styled/FlexContainer';
@@ -19,7 +18,7 @@ export const HomeScreen = () => {
         </Typography>
         <VideoPlayer />
       </ComingSoonContainer>
-      <MovieGenreList />
+      <AvaibleGenreList />
       <MovieCarouselContainer>
         <MovieCarousel title="Now Showing" />
       </MovieCarouselContainer>
