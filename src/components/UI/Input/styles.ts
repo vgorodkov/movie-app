@@ -4,7 +4,7 @@ export const InputField = styled.TextInput`
   flex: 1;
   color: white;
   padding: 0;
-  border-bottom-width: 1px;
+  border-bottom-width: 0.5px;
   border-color: white;
 `;
 
