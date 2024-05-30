@@ -1,7 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 
-import {Typography} from '@/components/UI/Typography';
-import {TypographyVariant} from '@/components/UI/Typography/types';
+import {Typography, TypographyVariant} from '@/components/UI';
 import {AuthRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';

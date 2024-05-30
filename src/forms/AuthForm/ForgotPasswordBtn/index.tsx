@@ -1,5 +1,4 @@
-import {Typography} from '@/components/UI/Typography';
-import {TypographyVariant} from '@/components/UI/Typography/types';
+import {Typography, TypographyVariant} from '@/components/UI';
 
 export const ForgotPasswordBtn = () => {
   const onForgotPasswordBtnPress = () => {};

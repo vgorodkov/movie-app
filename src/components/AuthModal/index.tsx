@@ -1,9 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
 
-import {Modal} from '@/components/UI/Modal';
-import {PressableIcon} from '@/components/UI/PressableIcon';
-import {Typography} from '@/components/UI/Typography';
-import {TypographyVariant} from '@/components/UI/Typography/types';
+import {
+  Modal,
+  PressableIcon,
+  Typography,
+  TypographyVariant,
+} from '@/components/UI';
 import {AuthForm} from '@/forms/AuthForm';
 import {FlexContainer} from '@/styled/FlexContainer';
 
