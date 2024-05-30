@@ -1,65 +1,71 @@
-import React from 'react';
-import {FlatList} from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+import React, {useEffect, useState} from 'react';
+import {FlatList, KeyboardAvoidingView} from 'react-native';
 
 import {Input, Typography, TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
+import {EmptyCommentsList} from './EmptyCommentsList';
 import {renderMovieComment} from './renderMovieComment';
 import {styles} from './styles';
 
-const MOCK_COMMENTS = [
-  {
-    author: 'Andrew Garfield',
-    comment: 'This trailer looks sick! So excited to see this!',
-  },
-  {
-    author: 'Ivan Garfield',
-    comment: 'Cool!',
-  },
-  {
-    author: 'Evgenij Garfield',
-    comment: 'Cool!',
-  },
-  {
-    author: 'Gleb Garfield',
-    comment: 'Cool!',
-  },
-  {
-    author: 'Misha Garfield',
-    comment: 'Cool!',
-  },
-  {
-    author: 'Stas Garfield',
-    comment: 'Cool!',
-  },
-  {
-    author: 'Roman Garfield',
-    comment: 'Cool!',
-  },
-  {
-    author: 'Sergey Garfield',
-    comment: 'Cool!',
-  },
-];
+interface Comment {
+  author: string;
+  comment: string;
+  createdAt: number;
+  movieId: string;
+}
 
-export const MovieComments = () => {
+export const MovieComments = ({imdbid}: {imdbid: string}) => {
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [commentText, setCommentText] = useState('');
+  useEffect(() => {
+    const subscriber = firestore()
+      .collection('comments')
+      .onSnapshot(snapshot => {
+        const snapshotComments = snapshot.docs
+          .map(doc => doc.data())
+          .filter(doc => doc.movieId === imdbid);
+        setComments(snapshotComments as Comment[]);
+      });
+
+    return () => subscriber();
+  }, [imdbid]);
+
+  const onInputSubmit = () => {
+    const newComment: Comment = {
+      author: 'Stan Garfield',
+      comment: commentText,
+      createdAt: Date.now(),
+      movieId: imdbid,
+    };
+    firestore().collection('comments').add(newComment);
+    setCommentText('');
+  };
+
   return (
-    <FlexContainer
-      flex={1}
-      gap={spacing.m}
-      padding={`${spacing.sm} ${spacing.sm} 0`}>
+    <FlexContainer flex={1} gap={spacing.m} padding={`0 ${spacing.m} 0`}>
       <Typography
         alightSelf="flex-start"
         variant={TypographyVariant.LABEL_LARGE}>
-        10.4K Comments
+        {comments.length} Comments
       </Typography>
-      <Input author="Ivan" placeholder="Add a comment.." />
-      <FlatList
-        contentContainerStyle={styles.commentsListContentContainer}
-        data={MOCK_COMMENTS}
-        renderItem={renderMovieComment}
-      />
+      <KeyboardAvoidingView style={{gap: 16, flex: 1}}>
+        <Input
+          value={commentText}
+          onChangeText={setCommentText}
+          onSubmitEditing={onInputSubmit}
+          author="Ivan"
+          placeholder="Add a comment.."
+        />
+        <FlatList
+          contentContainerStyle={styles.commentsListContentContainer}
+          data={comments}
+          renderItem={renderMovieComment}
+          ListEmptyComponent={EmptyCommentsList}
+        />
+      </KeyboardAvoidingView>
     </FlexContainer>
   );
 };

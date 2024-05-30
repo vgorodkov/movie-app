@@ -10,7 +10,9 @@ export type RootStackParamList = {
     imageurl: string;
     synopsis: string;
     genre: string[];
+    imdbid: string;
   };
+  [ProtectedRoutes.BOOK_TICKET]: undefined;
 };
 
 export type BottomTabParamList = {
