@@ -1,11 +1,18 @@
 import auth from '@react-native-firebase/auth';
-import React from 'react';
+import React, {useState} from 'react';
 import {FieldValues, useFormContext} from 'react-hook-form';
+import {useTheme} from 'styled-components';
+
+import {Typography, TypographyVariant} from '@/components/UI';
+import {spacing} from '@/constants/spacing';
+import {FlexContainer} from '@/styled/FlexContainer';
 
 import {AuthButton} from './styles';
 
 export const AuthSubmitButton = ({isSignUp}: {isSignUp: boolean}) => {
+  const theme = useTheme();
   const {handleSubmit} = useFormContext<FieldValues>();
+  const [authError, setAuthError] = useState<string | null>(null);
 
   const handleSignUp = (data: FieldValues) => {
     const {email, password} = data;
@@ -13,11 +20,11 @@ export const AuthSubmitButton = ({isSignUp}: {isSignUp: boolean}) => {
       .createUserWithEmailAndPassword(email, password)
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
+          setAuthError('That email address is already in use!');
         }
 
         if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
+          setAuthError('That email address is invalid!');
         }
 
         console.error(error);
@@ -29,6 +36,9 @@ export const AuthSubmitButton = ({isSignUp}: {isSignUp: boolean}) => {
     auth()
       .signInWithEmailAndPassword(email, password)
       .catch(error => {
+        if (error.code === 'auth/invalid-credential') {
+          setAuthError('Auth credential is invalid!');
+        }
         console.error(error);
       });
   };
@@ -42,8 +52,18 @@ export const AuthSubmitButton = ({isSignUp}: {isSignUp: boolean}) => {
   };
 
   return (
-    <AuthButton onPress={handleSubmit(onSubmit)} backgroundColor="#D98639">
-      {isSignUp ? 'Sign Up' : 'Sign In'}
-    </AuthButton>
+    <FlexContainer gap={spacing.s}>
+      {authError && (
+        <Typography
+          color={theme.colors.error}
+          variant={TypographyVariant.LABEL_LARGE}
+          alightSelf="flex-start">
+          {authError}
+        </Typography>
+      )}
+      <AuthButton onPress={handleSubmit(onSubmit)} backgroundColor="#D98639">
+        {isSignUp ? 'Sign Up' : 'Sign In'}
+      </AuthButton>
+    </FlexContainer>
   );
 };
