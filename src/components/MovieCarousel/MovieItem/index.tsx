@@ -7,23 +7,14 @@ import {
   useDerivedValue,
 } from 'react-native-reanimated';
 
-import {Typography} from '@/components/UI/Typography';
-import {TypographyVariant} from '@/components/UI/Typography/types';
+import {MovieGenreRow} from '@/components/MovieGenreRow';
+import {Typography, TypographyVariant} from '@/components/UI';
 import {ProtectedRoutes} from '@/constants/routes';
-import {spacing} from '@/constants/spacing';
-import {FlexContainer} from '@/styled/FlexContainer';
 
 import {MOVIE_ITEM_WIDTH, SIDECARD_WIDTH} from '../constants';
-import {
-  AnimatedFlexBox,
-  MovieImage,
-  MovieItemContainer,
-  MovieTag,
-} from './styles';
+import {DUMMY_URI} from './constants';
+import {AnimatedFlexBox, MovieImage, MovieItemContainer} from './styles';
 import {MovieItemProps} from './types';
-
-const DUMMY_URI =
-  'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/9556d16312333.5691dd2255721.jpg';
 
 export const MovieItem = ({
   scrollOffset,
@@ -36,6 +27,8 @@ export const MovieItem = ({
   synopsis,
   imdbid,
 }: MovieItemProps) => {
+  const navigation = useNavigation();
+
   const inputOffsetRange = [
     (index - 1) * MOVIE_ITEM_WIDTH,
     index * MOVIE_ITEM_WIDTH,
@@ -69,8 +62,6 @@ export const MovieItem = ({
     );
   }, [scrollOffset]);
 
-  const navigation = useNavigation();
-
   const onMovieItemPress = () => {
     navigation.navigate(ProtectedRoutes.MOVIE_DETAILS, {
       imageurl: imageurl[0] || DUMMY_URI,
@@ -97,18 +88,7 @@ export const MovieItem = ({
           <Typography variant={TypographyVariant.LABEL_LARGE}>
             {title}
           </Typography>
-          <FlexContainer
-            flexFlow="row nowrap"
-            justifyContent="center"
-            gap={spacing.s}>
-            {genre.map(item => (
-              <MovieTag key={item}>
-                <Typography variant={TypographyVariant.LABEL_MEDIUM}>
-                  {item}
-                </Typography>
-              </MovieTag>
-            ))}
-          </FlexContainer>
+          <MovieGenreRow genre={genre} />
         </AnimatedFlexBox>
       </MovieItemContainer>
     </Pressable>
