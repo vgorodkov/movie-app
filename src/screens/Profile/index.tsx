@@ -1,10 +1,16 @@
+import auth from '@react-native-firebase/auth';
 import React from 'react';
-import {Text, View} from 'react-native';
+
+import {Button} from '@/components/UI';
+import {FullscreenContainer} from '@/styled/FlexContainer';
 
 export const ProfileScreen = () => {
+  const onLogOutBtnPress = () => {
+    auth().signOut();
+  };
   return (
-    <View>
-      <Text>ProfileScreen</Text>
-    </View>
+    <FullscreenContainer>
+      <Button onPress={onLogOutBtnPress}>Log Out</Button>
+    </FullscreenContainer>
   );
 };
