@@ -2,8 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View} from 'react-native';
 
-import {Button} from '@/components/UI/Button';
-import {PressableIcon} from '@/components/UI/PressableIcon';
+import {Button, PressableIcon} from '@/components/UI';
 import {ProtectedRoutes} from '@/constants/routes';
 
 import {BackdropGradient} from './BackdropGradient';
