@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {AuthRoutes, ProtectedRoutes} from '@/constants/routes';
 import {useAuth} from '@/hooks/useAuth';
 import {BottomTabNavigation} from '@/navigation/BottomTab';
+import {BookTicketScreen} from '@/screens/BookTicket';
 import {MovieDetailsScreen} from '@/screens/MovieDetails';
 import {SignIn} from '@/screens/SignIn';
 import {SignUpScreen} from '@/screens/SignUp';
@@ -35,6 +36,10 @@ export const RootNavigation = () => {
             }}
             name={ProtectedRoutes.MOVIE_DETAILS}
             component={MovieDetailsScreen}
+          />
+          <StackNavigator.Screen
+            name={ProtectedRoutes.BOOK_TICKET}
+            component={BookTicketScreen}
           />
         </>
       ) : (
