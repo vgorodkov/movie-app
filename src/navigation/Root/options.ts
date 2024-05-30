@@ -15,3 +15,10 @@ export const movieDetailsScreenOptions: NativeStackNavigationOptions = {
   headerTitle: '',
   headerTintColor: 'white',
 };
+
+export const bookTicketScreenOptions: NativeStackNavigationOptions = {
+  headerShown: true,
+  headerTintColor: 'white',
+  headerTransparent: true,
+  headerTitle: 'Choose Cinema & Seats',
+};

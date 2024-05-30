@@ -13,6 +13,7 @@ import {
 import {RootStackParamList} from '@/types/navigation';
 
 import {
+  bookTicketScreenOptions,
   movieDetailsScreenOptions,
   stackNavigatorOptions,
   transparentModalOptions,
@@ -42,6 +43,7 @@ export const RootNavigation = () => {
           />
           <StackNavigator.Screen
             name={ProtectedRoutes.BOOK_TICKET}
+            options={bookTicketScreenOptions}
             component={BookTicketScreen}
           />
         </>
