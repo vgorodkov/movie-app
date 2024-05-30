@@ -1,5 +1,3 @@
-import {PressableProps} from 'react-native';
-
 import {Typography} from '@/components/UI/Typography';
 import {TypographyVariant} from '@/components/UI/Typography/types';
 
@@ -8,14 +6,7 @@ import {
   ButtonContainer,
   RelativeButtonIcon,
 } from './styles';
-
-export interface ButtonProps extends PressableProps {
-  icon?: number;
-  children: string;
-  backgroundColor?: string;
-  color?: string;
-  iconVariant?: 'absolute' | 'relative';
-}
+import {ButtonProps} from './types';
 
 export const Button = ({
   icon,
