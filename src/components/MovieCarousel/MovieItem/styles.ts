@@ -26,9 +26,3 @@ export const MovieImage = styled.Image`
   height: 268px;
   border-radius: 10px;
 `;
-
-export const MovieTag = styled.View`
-  padding: 2px 4px;
-  border-radius: 5px;
-  background-color: #484747;
-`;
