@@ -34,6 +34,7 @@ export const MovieItem = ({
   isLast,
   isFirst,
   synopsis,
+  imdbid,
 }: MovieItemProps) => {
   const inputOffsetRange = [
     (index - 1) * MOVIE_ITEM_WIDTH,
@@ -76,6 +77,7 @@ export const MovieItem = ({
       title,
       genre,
       synopsis,
+      imdbid,
     });
   };
 

@@ -8,12 +8,12 @@ import {FullscreenContainer} from '@/styled/FlexContainer';
 import {MovieDetailsScreenProps} from './types';
 
 export const MovieDetailsScreen = ({route}: MovieDetailsScreenProps) => {
-  const {title, synopsis, genre} = route.params;
+  const {title, synopsis, genre, imdbid} = route.params;
   return (
     <FullscreenContainer>
       <MovieDetailsPoster />
       <MovieDetails genre={genre} title={title} synopsis={synopsis} />
-      <MovieComments />
+      <MovieComments imdbid={imdbid} />
     </FullscreenContainer>
   );
 };
