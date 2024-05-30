@@ -1,3 +1,5 @@
+import {useNavigation} from '@react-navigation/native';
+import {Pressable} from 'react-native';
 import {
   Extrapolation,
   interpolate,
@@ -7,6 +9,7 @@ import {
 
 import {Typography} from '@/components/UI/Typography';
 import {TypographyVariant} from '@/components/UI/Typography/types';
+import {ProtectedRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
@@ -30,6 +33,7 @@ export const MovieItem = ({
   imageurl,
   isLast,
   isFirst,
+  synopsis,
 }: MovieItemProps) => {
   const inputOffsetRange = [
     (index - 1) * MOVIE_ITEM_WIDTH,
@@ -64,32 +68,47 @@ export const MovieItem = ({
     );
   }, [scrollOffset]);
 
+  const navigation = useNavigation();
+
+  const onMovieItemPress = () => {
+    navigation.navigate(ProtectedRoutes.MOVIE_DETAILS, {
+      imageurl: imageurl[0] || DUMMY_URI,
+      title,
+      genre,
+      synopsis,
+    });
+  };
+
   return (
-    <MovieItemContainer
-      marginLeft={isFirst ? SIDECARD_WIDTH : 0}
-      marginRight={isLast ? SIDECARD_WIDTH : 0}
-      width={MOVIE_ITEM_WIDTH}
-      style={animatedImageStyle}>
-      <MovieImage
-        source={{
-          uri: imageurl[0] || DUMMY_URI,
-        }}
-      />
-      <AnimatedFlexBox gap={8} style={{opacity: movieInformationOpacity}}>
-        <Typography variant={TypographyVariant.LABEL_LARGE}>{title}</Typography>
-        <FlexContainer
-          flexFlow="row nowrap"
-          justifyContent="center"
-          gap={spacing.s}>
-          {genre.map(item => (
-            <MovieTag key={item}>
-              <Typography variant={TypographyVariant.LABEL_MEDIUM}>
-                {item}
-              </Typography>
-            </MovieTag>
-          ))}
-        </FlexContainer>
-      </AnimatedFlexBox>
-    </MovieItemContainer>
+    <Pressable onPress={onMovieItemPress}>
+      <MovieItemContainer
+        marginLeft={isFirst ? SIDECARD_WIDTH : 0}
+        marginRight={isLast ? SIDECARD_WIDTH : 0}
+        width={MOVIE_ITEM_WIDTH}
+        style={animatedImageStyle}>
+        <MovieImage
+          source={{
+            uri: imageurl[0] || DUMMY_URI,
+          }}
+        />
+        <AnimatedFlexBox gap={8} style={{opacity: movieInformationOpacity}}>
+          <Typography variant={TypographyVariant.LABEL_LARGE}>
+            {title}
+          </Typography>
+          <FlexContainer
+            flexFlow="row nowrap"
+            justifyContent="center"
+            gap={spacing.s}>
+            {genre.map(item => (
+              <MovieTag key={item}>
+                <Typography variant={TypographyVariant.LABEL_MEDIUM}>
+                  {item}
+                </Typography>
+              </MovieTag>
+            ))}
+          </FlexContainer>
+        </AnimatedFlexBox>
+      </MovieItemContainer>
+    </Pressable>
   );
 };
