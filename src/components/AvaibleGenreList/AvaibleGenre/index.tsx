@@ -5,23 +5,18 @@ import {TypographyVariant} from '@/components/UI/Typography/types';
 import {useAppDispatch} from '@/store/hooks';
 import {selectGenre} from '@/store/slices/movieGenre';
 
-import {PressableMovieGenre} from './styles';
+import {PressableAvaibleGenre} from './styles';
+import {AvaibleGenreProps} from './types';
 
-export const MovieGenre = ({
-  genre,
-  isSelected,
-}: {
-  genre: string;
-  isSelected: boolean;
-}) => {
+export const AvaibleGenre = ({genre, isSelected}: AvaibleGenreProps) => {
   const dispatch = useAppDispatch();
   const onMovieGenrePress = () => {
     dispatch(selectGenre(genre));
   };
 
   return (
-    <PressableMovieGenre isSelected={isSelected} onPress={onMovieGenrePress}>
+    <PressableAvaibleGenre isSelected={isSelected} onPress={onMovieGenrePress}>
       <Typography variant={TypographyVariant.LABEL_MEDIUM}>{genre}</Typography>
-    </PressableMovieGenre>
+    </PressableAvaibleGenre>
   );
 };

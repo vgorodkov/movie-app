@@ -6,19 +6,19 @@ import {useAppSelector} from '@/store/hooks';
 import {selectSelectedMovieGenre} from '@/store/slices/movieGenre/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 
-import {renderMovieGenre} from './renderMovieGenre';
+import {renderAvaibleGenre} from './renderMovieGenre';
 import {styles} from './styles';
 
-export const MovieGenreList = () => {
-  const selectedMovieGenre = useAppSelector(selectSelectedMovieGenre);
+export const AvaibleGenreList = () => {
+  const selectedAvaibleGenre = useAppSelector(selectSelectedMovieGenre);
 
   return (
     <FlexContainer justifyContent="center" alignItems="center">
       <FlatList
-        contentContainerStyle={styles.movieGenreListContentContainer}
+        contentContainerStyle={styles.avaibleGenreListContentContainer}
         horizontal
         data={movieGenres}
-        renderItem={renderMovieGenre(selectedMovieGenre)}
+        renderItem={renderAvaibleGenre(selectedAvaibleGenre)}
       />
     </FlexContainer>
   );
