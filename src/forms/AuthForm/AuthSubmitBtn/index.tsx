@@ -56,12 +56,12 @@ export const AuthSubmitButton = ({isSignUp}: {isSignUp: boolean}) => {
       {authError && (
         <Typography
           color={theme.colors.error}
-          variant={TypographyVariant.LABEL_LARGE}
+          variant={TypographyVariant.LABEL_MEDIUM}
           alightSelf="flex-start">
           {authError}
         </Typography>
       )}
-      <AuthButton onPress={handleSubmit(onSubmit)} backgroundColor="#D98639">
+      <AuthButton onPress={handleSubmit(onSubmit)}>
         {isSignUp ? 'Sign Up' : 'Sign In'}
       </AuthButton>
     </FlexContainer>
