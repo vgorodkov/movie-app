@@ -27,31 +27,26 @@ export const variantStyles = {
   [TypographyVariant.SUBTITLE_MEDIUM]: css`
     font-size: 16px;
     line-height: 24px;
-    letter-spacing: 0.15px;
     font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.SUBTITLE_SMALL]: css`
     font-size: 14px;
     line-height: 20px;
-    letter-spacing: 0.1px;
     font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.BODY_LARGE]: css`
     font-size: 16px;
     font-family: 'Poppins-Regular';
-    letter-spacing: 0.5px;
     line-height: 24px;
   `,
   [TypographyVariant.BODY_MEDIUM]: css`
     font-size: 14px;
     font-family: 'Poppins-Regular';
-    letter-spacing: 0.25px;
     line-height: 20px;
   `,
   [TypographyVariant.BODY_SMALL]: css`
     font-size: 12px;
     font-family: 'Poppins-Regular';
-    letter-spacing: 0.4px;
     line-height: 16px;
   `,
   [TypographyVariant.LABEL_LARGE]: css`
@@ -62,13 +57,11 @@ export const variantStyles = {
   [TypographyVariant.LABEL_MEDIUM]: css`
     font-size: 12px;
     line-height: 16px;
-    letter-spacing: 0.5px;
     font-family: 'Poppins-SemiBold';
   `,
   [TypographyVariant.LABEL_SMALL]: css`
     font-size: 11px;
     font-family: 'Poppins-SemiBold';
     line-height: 16px;
-    letter-spacing: 0.5px;
   `,
 };
