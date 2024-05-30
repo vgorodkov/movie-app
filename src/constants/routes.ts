@@ -6,6 +6,7 @@ export enum AuthRoutes {
 
 export enum ProtectedRoutes {
   BOTTOM_TAB = 'BottomTab',
+  MOVIE_DETAILS = 'MovieDetails',
 }
 
 export enum BottomTabRoutes {

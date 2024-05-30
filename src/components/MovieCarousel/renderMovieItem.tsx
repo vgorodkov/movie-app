@@ -18,6 +18,7 @@ export const renderMovieItem =
         imageurl={imageurl}
         index={index}
         scrollOffset={scrollOffset}
+        synopsis={item.synopsis}
       />
     );
   };
