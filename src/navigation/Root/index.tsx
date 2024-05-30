@@ -3,12 +3,20 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {AuthRoutes, ProtectedRoutes} from '@/constants/routes';
 import {useAuth} from '@/hooks/useAuth';
 import {BottomTabNavigation} from '@/navigation/BottomTab';
-import {BookTicketScreen} from '@/screens/BookTicket';
-import {MovieDetailsScreen} from '@/screens/MovieDetails';
-import {SignIn} from '@/screens/SignIn';
-import {SignUpScreen} from '@/screens/SignUp';
-import {WelcomeScreen} from '@/screens/Welcome';
+import {
+  BookTicketScreen,
+  MovieDetailsScreen,
+  SignIn,
+  SignUpScreen,
+  WelcomeScreen,
+} from '@/screens';
 import {RootStackParamList} from '@/types/navigation';
+
+import {
+  movieDetailsScreenOptions,
+  stackNavigatorOptions,
+  transparentModalOptions,
+} from './options';
 
 const StackNavigator = createNativeStackNavigator<RootStackParamList>();
 
@@ -20,7 +28,7 @@ export const RootNavigation = () => {
   }
 
   return (
-    <StackNavigator.Navigator screenOptions={{headerShown: false}}>
+    <StackNavigator.Navigator screenOptions={stackNavigatorOptions}>
       {user ? (
         <>
           <StackNavigator.Screen
@@ -28,12 +36,7 @@ export const RootNavigation = () => {
             component={BottomTabNavigation}
           />
           <StackNavigator.Screen
-            options={{
-              headerShown: true,
-              headerTransparent: true,
-              headerTitle: '',
-              headerTintColor: 'white',
-            }}
+            options={movieDetailsScreenOptions}
             name={ProtectedRoutes.MOVIE_DETAILS}
             component={MovieDetailsScreen}
           />
@@ -51,12 +54,12 @@ export const RootNavigation = () => {
           <StackNavigator.Screen
             name={AuthRoutes.SIGN_UP}
             component={SignUpScreen}
-            options={{presentation: 'transparentModal'}}
+            options={transparentModalOptions}
           />
           <StackNavigator.Screen
             name={AuthRoutes.SIGN_IN}
             component={SignIn}
-            options={{presentation: 'transparentModal'}}
+            options={transparentModalOptions}
           />
         </>
       )}

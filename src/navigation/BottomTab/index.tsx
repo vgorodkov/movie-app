@@ -1,10 +1,12 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {BottomTabRoutes} from '@/constants/routes';
-import {HomeScreen} from '@/screens/Home';
-import {ProfileScreen} from '@/screens/Profile';
-import {TicketsScreen} from '@/screens/Tickets';
-import {TopFilmsScreen} from '@/screens/TopFilms';
+import {
+  HomeScreen,
+  ProfileScreen,
+  TicketsScreen,
+  TopFilmsScreen,
+} from '@/screens';
 import {BottomTabParamList} from '@/types/navigation';
 
 import {bottomTabBarOptions} from './options';
