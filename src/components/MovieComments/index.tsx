@@ -49,7 +49,7 @@ export const MovieComments = ({imdbid}: {imdbid: string}) => {
       <Typography
         alightSelf="flex-start"
         variant={TypographyVariant.LABEL_LARGE}>
-        10.4K Comments
+        {comments.length} Comments
       </Typography>
       <KeyboardAvoidingView style={{gap: 16, flex: 1}}>
         <Input
