@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 
-import {Button} from '@/components/UI/Button';
+import {Button} from '@/components/UI';
 import {AuthRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
@@ -16,18 +16,13 @@ export const AuthVariants = () => {
   const onAccountCreateBtnPress = () => {
     navigation.navigate(AuthRoutes.SIGN_UP);
   };
-  const onGoogleAuthBtnPress = async () => {
-    await googleSignIn();
-  };
-  const onFacebookAuthBtnPress = async () => {
-    await facebookSignIn();
-  };
+
   const onGithubAuthBtnPress = () => {};
 
   const authFunctions = {
     account: onAccountCreateBtnPress,
-    google: onGoogleAuthBtnPress,
-    facebook: onFacebookAuthBtnPress,
+    google: googleSignIn,
+    facebook: facebookSignIn,
     github: onGithubAuthBtnPress,
   };
 
