@@ -3,7 +3,7 @@ import {SharedValue} from 'react-native-reanimated';
 import {Movie} from '@/types/movies';
 
 export interface MovieItemProps
-  extends Pick<Movie, 'genre' | 'title' | 'imageurl'> {
+  extends Pick<Movie, 'genre' | 'title' | 'imageurl' | 'synopsis'> {
   scrollOffset: SharedValue<number>;
   index: number;
   isLast: boolean;
