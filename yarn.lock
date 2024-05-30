@@ -1724,6 +1724,11 @@
   dependencies:
     plist "^3.1.0"
 
+"@react-native-firebase/firestore@^20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-20.0.0.tgz#2c5f3949af2110d9a53434182542fdb49b3e50fa"
+  integrity sha512-fn/0nYQPrq+Las8r4SkxKZ1fLcoAIpFqRA/ARIPW0F8C7IMpI0LugW6kpd+P6aVyT4I1mzLS+wr8n+02bifzVw==
+
 "@react-native-google-signin/google-signin@^12.1.0":
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/@react-native-google-signin/google-signin/-/google-signin-12.1.0.tgz#9111dc068d1ec40b1b24d73ca5c0b171ba08e543"
