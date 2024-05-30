@@ -9,13 +9,7 @@ import {FlexContainer} from '@/styled/FlexContainer';
 import {EmptyCommentsList} from './EmptyCommentsList';
 import {renderMovieComment} from './renderMovieComment';
 import {styles} from './styles';
-
-interface Comment {
-  author: string;
-  comment: string;
-  createdAt: number;
-  movieId: string;
-}
+import {Comment} from './types';
 
 export const MovieComments = ({imdbid}: {imdbid: string}) => {
   const [comments, setComments] = useState<Comment[]>([]);
@@ -26,7 +20,8 @@ export const MovieComments = ({imdbid}: {imdbid: string}) => {
       .onSnapshot(snapshot => {
         const snapshotComments = snapshot.docs
           .map(doc => doc.data())
-          .filter(doc => doc.movieId === imdbid);
+          .filter(doc => doc.movieId === imdbid)
+          .sort((a, b) => a.createdAt - b.createdAt);
         setComments(snapshotComments as Comment[]);
       });
 
