@@ -7,19 +7,22 @@ import {TypographyVariant} from '@/components/UI/Typography/types';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
+import {Avatar} from '../Avatar';
 import {InputField, InputIcon} from './styles';
 
 export interface InputProps extends TextInputProps {
-  icon: number;
+  author?: string;
+  icon?: number;
   errorMessage?: string;
 }
 
-export const Input = ({icon, errorMessage, ...props}: InputProps) => {
+export const Input = ({icon, author, errorMessage, ...props}: InputProps) => {
   const theme = useTheme();
 
   return (
     <FlexContainer gap={spacing.s}>
       <FlexContainer alignItems="center" flexFlow="row nowrap" gap={spacing.s}>
+        {author && <Avatar user={author} />}
         {icon && <InputIcon source={icon} />}
         <InputField
           {...props}
