@@ -26,7 +26,11 @@ export const signUpValidationSchema = yup.object().shape({
 });
 
 export const signInValidationSchema = yup.object().shape({
-  email: yup.string().email('Invalid email').required('Email is required'),
+  email: yup
+    .string()
+    .email('Invalid email')
+    .required('Email is required')
+    .matches(emailRegexp, 'Invalid email'),
   password: yup
     .string()
     .min(6, 'Password must be at least 6 characters')
