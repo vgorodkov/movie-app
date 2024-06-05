@@ -9,6 +9,7 @@ export enum ProtectedRoutes {
   MOVIE_DETAILS = 'MovieDetails',
   BOOKING_TICKET = 'BookingTicket',
   BOOKING_DATEPICKER = 'BookingDatepicker',
+  TOP_TAB = 'TopTab',
 }
 
 export enum BottomTabRoutes {
@@ -16,4 +17,10 @@ export enum BottomTabRoutes {
   TOP_FILMS = 'TopFilms',
   TICKETS = 'Tickets',
   PROFILE = 'Profile',
+}
+
+export enum TopTabRoutes {
+  UPCOMING = 'Upcoming',
+  PAST = 'Past',
+  MISSED = 'Misssed',
 }

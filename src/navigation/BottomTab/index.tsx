@@ -1,14 +1,10 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {BottomTabRoutes} from '@/constants/routes';
-import {
-  HomeScreen,
-  ProfileScreen,
-  TicketsScreen,
-  TopFilmsScreen,
-} from '@/screens';
+import {HomeScreen, ProfileScreen, TopFilmsScreen} from '@/screens';
 import {BottomTabParamList} from '@/types/navigation';
 
+import {TopTabNavigation} from '../TopTab';
 import {bottomTabBarOptions} from './options';
 
 const TabNavigator = createBottomTabNavigator<BottomTabParamList>();
@@ -23,7 +19,7 @@ export const BottomTabNavigation = () => {
       />
       <TabNavigator.Screen
         name={BottomTabRoutes.TICKETS}
-        component={TicketsScreen}
+        component={TopTabNavigation}
       />
       <TabNavigator.Screen
         name={BottomTabRoutes.PROFILE}
