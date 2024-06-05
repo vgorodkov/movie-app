@@ -1,9 +1,10 @@
 import firestore from '@react-native-firebase/firestore';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {FlatList, KeyboardAvoidingView} from 'react-native';
 
 import {Input, Typography, TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
+import {useMovieComments} from '@/hooks/useMovieComments';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {EmptyCommentsList} from './EmptyCommentsList';
@@ -12,21 +13,8 @@ import {styles} from './styles';
 import {Comment} from './types';
 
 export const MovieComments = ({imdbid}: {imdbid: string}) => {
-  const [comments, setComments] = useState<Comment[]>([]);
   const [commentText, setCommentText] = useState('');
-  useEffect(() => {
-    const subscriber = firestore()
-      .collection('comments')
-      .onSnapshot(snapshot => {
-        const snapshotComments = snapshot.docs
-          .map(doc => doc.data())
-          .filter(doc => doc.movieId === imdbid)
-          .sort((a, b) => a.createdAt - b.createdAt);
-        setComments(snapshotComments as Comment[]);
-      });
-
-    return () => subscriber();
-  }, [imdbid]);
+  const {comments} = useMovieComments(imdbid);
 
   const onInputSubmit = () => {
     const newComment: Comment = {
