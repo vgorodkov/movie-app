@@ -1,12 +1,12 @@
 export const SIGN_IN_FORM = [
   {
     name: 'email',
-    placeholder: 'Enter your email',
+    placeholder: 'example@gmail.com',
     icon: require('@/assets/icons/email.png'),
   },
   {
     name: 'password',
-    placeholder: 'Enter strong password',
+    placeholder: '************************* ',
     icon: require('@/assets/icons/password.png'),
   },
 ];
