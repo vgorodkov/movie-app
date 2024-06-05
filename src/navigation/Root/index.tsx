@@ -4,12 +4,13 @@ import {AuthRoutes, ProtectedRoutes} from '@/constants/routes';
 import {useAuth} from '@/hooks/useAuth';
 import {BottomTabNavigation} from '@/navigation/BottomTab';
 import {
-  BookTicketScreen,
+  BookingTicketScreen,
   MovieDetailsScreen,
   SignIn,
   SignUpScreen,
   WelcomeScreen,
 } from '@/screens';
+import {BookingDatepickerModal} from '@/screens/BookingDatepicker';
 import {RootStackParamList} from '@/types/navigation';
 
 import {
@@ -42,9 +43,14 @@ export const RootNavigation = () => {
             component={MovieDetailsScreen}
           />
           <StackNavigator.Screen
-            name={ProtectedRoutes.BOOK_TICKET}
+            name={ProtectedRoutes.BOOKING_TICKET}
             options={bookTicketScreenOptions}
-            component={BookTicketScreen}
+            component={BookingTicketScreen}
+          />
+          <StackNavigator.Screen
+            name={ProtectedRoutes.BOOKING_DATEPICKER}
+            options={transparentModalOptions}
+            component={BookingDatepickerModal}
           />
         </>
       ) : (
