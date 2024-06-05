@@ -7,7 +7,8 @@ export enum AuthRoutes {
 export enum ProtectedRoutes {
   BOTTOM_TAB = 'BottomTab',
   MOVIE_DETAILS = 'MovieDetails',
-  BOOK_TICKET = 'BookTicket',
+  BOOKING_TICKET = 'BookingTicket',
+  BOOKING_DATEPICKER = 'BookingDatepicker',
 }
 
 export enum BottomTabRoutes {
