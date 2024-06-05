@@ -30,7 +30,7 @@ export const useBookedTickets = () => {
     if (data) {
       const updatedData = data?.filter(ticket => ticket.ticketId !== ticketId);
       setData(updatedData);
-      await saveEncryptedData('booking', data);
+      await saveEncryptedData('booking', updatedData);
     }
   };
 
