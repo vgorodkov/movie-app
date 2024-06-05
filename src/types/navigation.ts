@@ -12,7 +12,11 @@ export type RootStackParamList = {
     genre: string[];
     imdbid: string;
   };
-  [ProtectedRoutes.BOOK_TICKET]: undefined;
+  [ProtectedRoutes.BOOKING_TICKET]: {
+    title: string;
+    imageurl: string;
+  };
+  [ProtectedRoutes.BOOKING_DATEPICKER]: undefined;
 };
 
 export type BottomTabParamList = {

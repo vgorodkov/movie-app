@@ -13,11 +13,12 @@ export const Button = ({
   children,
   iconVariant = 'absolute',
   color,
+  backgroundColor,
   ...props
 }: ButtonProps) => {
   const isIconAbsolute = iconVariant === 'absolute';
   return (
-    <ButtonContainer {...props}>
+    <ButtonContainer backgroundColor={backgroundColor} {...props}>
       {icon && isIconAbsolute && <AbsoluteButtonIcon source={icon} />}
       {icon && !isIconAbsolute && <RelativeButtonIcon source={icon} />}
       <Typography color={color} variant={TypographyVariant.LABEL_LARGE}>

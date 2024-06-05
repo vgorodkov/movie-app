@@ -9,9 +9,12 @@ export const getPasswordDifficulty = (password: string) => {
 
   if (length >= 4 && length <= 8) {
     passwordDifficulty = 'Low';
-  } else if (length > 8 && length <= 12 && hasUpperCase) {
+  } else if (
+    (length > 8 && hasUpperCase && !hasSpecialChar) ||
+    (!hasUpperCase && hasSpecialChar)
+  ) {
     passwordDifficulty = 'Medium';
-  } else if (length > 12 && length <= 16 && hasUpperCase && hasSpecialChar) {
+  } else if (length > 12 && hasUpperCase && hasSpecialChar) {
     passwordDifficulty = 'High';
   }
   return passwordDifficulty;

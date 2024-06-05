@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 import {spacing} from '@/constants/spacing';
 
-export const ButtonContainer = styled.Pressable`
+export const ButtonContainer = styled.Pressable<{backgroundColor?: string}>`
   flex-direction: row;
   gap: ${spacing.s};
   justify-content: center;
@@ -10,6 +10,10 @@ export const ButtonContainer = styled.Pressable`
   height: 48px;
   padding: 0 ${spacing.m};
   border-radius: 12px;
+  background-color: ${props =>
+    props.disabled
+      ? 'gray'
+      : props.backgroundColor || props.theme.colors.primary};
 `;
 
 export const AbsoluteButtonIcon = styled.Image`

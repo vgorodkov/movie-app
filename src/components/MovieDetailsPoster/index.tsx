@@ -8,11 +8,22 @@ import {ProtectedRoutes} from '@/constants/routes';
 import {BackdropGradient} from './BackdropGradient';
 import {MovieImageBackground} from './styles';
 
-export const MovieDetailsPoster = () => {
+interface MovieDetailsPosterProps {
+  imageurl: string;
+  title: string;
+}
+
+export const MovieDetailsPoster = ({
+  imageurl,
+  title,
+}: MovieDetailsPosterProps) => {
   const navigation = useNavigation();
 
   const onBookTicketIconPress = () => {
-    navigation.navigate(ProtectedRoutes.BOOK_TICKET);
+    navigation.navigate(ProtectedRoutes.BOOKING_TICKET, {
+      title,
+      imageurl,
+    });
   };
 
   return (

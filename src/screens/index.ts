@@ -1,4 +1,4 @@
-export {BookTicketScreen} from './BookTicket';
+export {BookingTicketScreen} from './BookingTicket';
 export {HomeScreen} from './Home';
 export {MovieDetailsScreen} from './MovieDetails';
 export {ProfileScreen} from './Profile';
