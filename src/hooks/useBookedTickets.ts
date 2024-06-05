@@ -5,7 +5,26 @@ import EncryptedStorage from 'react-native-encrypted-storage';
 import {BookingTicket} from '@/types/movies';
 import {saveEncryptedData} from '@/utils/encryptedStorage';
 
-export const useBookedTickets = () => {
+const filterBookedTickets = (
+  ticketDate: string,
+  mode: 'upcoming' | 'past' | 'missed',
+) => {
+  const timestamp = new Date(ticketDate).getTime();
+  const nowTimestamp = Date.now();
+  if (mode === 'upcoming') {
+    return timestamp > nowTimestamp;
+  }
+  if (mode === 'past') {
+    return timestamp < nowTimestamp;
+  }
+  if (mode === 'missed') {
+    return timestamp < nowTimestamp;
+  }
+};
+
+export const useBookedTickets = (
+  filterMode: 'past' | 'upcoming' | 'missed',
+) => {
   const [data, setData] = useState<BookingTicket[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,8 +33,11 @@ export const useBookedTickets = () => {
     try {
       const encryptedData = await EncryptedStorage.getItem('booking');
       if (encryptedData) {
-        const parsed = JSON.parse(encryptedData);
-        setData(parsed);
+        const parsed: BookingTicket[] = JSON.parse(encryptedData);
+        const filtered = parsed.filter(ticket =>
+          filterBookedTickets(ticket.date, filterMode),
+        );
+        setData(filtered);
       }
     } catch (err) {
       if (err instanceof Error) {
@@ -24,7 +46,7 @@ export const useBookedTickets = () => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [filterMode]);
 
   const cancelTicket = async (ticketId: string) => {
     if (data) {
