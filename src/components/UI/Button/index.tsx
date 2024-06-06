@@ -21,7 +21,10 @@ export const Button = ({
     <ButtonContainer backgroundColor={backgroundColor} {...props}>
       {icon && isIconAbsolute && <AbsoluteButtonIcon source={icon} />}
       {icon && !isIconAbsolute && <RelativeButtonIcon source={icon} />}
-      <Typography color={color} variant={TypographyVariant.LABEL_LARGE}>
+      <Typography
+        alightSelf="center"
+        color={color}
+        variant={TypographyVariant.LABEL_LARGE}>
         {children}
       </Typography>
     </ButtonContainer>
