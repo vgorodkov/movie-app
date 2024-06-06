@@ -21,7 +21,7 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
   [BottomTabRoutes.HOME]: undefined;
-  [BottomTabRoutes.TOP_FILMS]: undefined;
+  [BottomTabRoutes.TOP_MOVIES]: undefined;
   [BottomTabRoutes.TICKETS]: undefined;
   [BottomTabRoutes.PROFILE]: undefined;
 };

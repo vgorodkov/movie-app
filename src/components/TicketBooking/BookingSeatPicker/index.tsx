@@ -26,10 +26,7 @@ export const BookingSeatPicker = () => {
   return (
     <FlexContainer flex={1} gap={spacing.sm}>
       <Typography variant={TypographyVariant.SUBTITLE_SMALL}>Screen</Typography>
-      <FlexContainer
-        gap={spacing.l}
-        flexFlow="row nowrap"
-        justifyContent="space-between">
+      <FlexContainer flexFlow="row nowrap" justifyContent="space-between">
         <LeftSeats>
           {leftSideSeats.map((seat, index) => {
             const {id, isReserved} = seat;

@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {BottomTabRoutes} from '@/constants/routes';
-import {HomeScreen, ProfileScreen, TopFilmsScreen} from '@/screens';
+import {HomeScreen, ProfileScreen, TopMoviesScreen} from '@/screens';
 import {BottomTabParamList} from '@/types/navigation';
 
 import {TopTabNavigation} from '../TopTab';
@@ -14,8 +14,8 @@ export const BottomTabNavigation = () => {
     <TabNavigator.Navigator screenOptions={bottomTabBarOptions}>
       <TabNavigator.Screen name={BottomTabRoutes.HOME} component={HomeScreen} />
       <TabNavigator.Screen
-        name={BottomTabRoutes.TOP_FILMS}
-        component={TopFilmsScreen}
+        name={BottomTabRoutes.TOP_MOVIES}
+        component={TopMoviesScreen}
       />
       <TabNavigator.Screen
         name={BottomTabRoutes.TICKETS}
