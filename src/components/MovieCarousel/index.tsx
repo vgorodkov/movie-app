@@ -7,11 +7,10 @@ import {TypographyVariant} from '@/components/UI/Typography/types';
 import {spacing} from '@/constants/spacing';
 import {MOCK_DATA} from '@/data/mockMovies';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {Movie} from '@/types/movies';
 
 import {DATA_LIMIT, MOVIE_ITEM_WIDTH} from './constants';
-import {renderMovieItem} from './renderMovieItem';
 import {MovieCarouselProps} from './types';
+import {getItemLayout, renderMovieItem} from './utils';
 
 export const MovieCarousel = ({title}: MovieCarouselProps) => {
   //const selectedGenre = useAppSelector(selectSelectedMovieGenre);
@@ -27,17 +26,6 @@ export const MovieCarousel = ({title}: MovieCarouselProps) => {
 
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     scrollOffset.value = e.nativeEvent.contentOffset.x;
-  };
-
-  const getItemLayout = (
-    _: ArrayLike<Movie> | null | undefined,
-    index: number,
-  ) => {
-    return {
-      length: MOVIE_ITEM_WIDTH,
-      offset: MOVIE_ITEM_WIDTH * index,
-      index,
-    };
   };
 
   return (

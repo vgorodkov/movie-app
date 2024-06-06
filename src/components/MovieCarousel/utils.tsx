@@ -3,6 +3,7 @@ import {SharedValue} from 'react-native-reanimated';
 
 import {Movie} from '@/types/movies';
 
+import {MOVIE_ITEM_WIDTH} from './constants';
 import {MovieItem} from './MovieItem';
 
 export const renderMovieItem =
@@ -23,3 +24,14 @@ export const renderMovieItem =
       />
     );
   };
+
+export const getItemLayout = (
+  _: ArrayLike<Movie> | null | undefined,
+  index: number,
+) => {
+  return {
+    length: MOVIE_ITEM_WIDTH,
+    offset: MOVIE_ITEM_WIDTH * index,
+    index,
+  };
+};
