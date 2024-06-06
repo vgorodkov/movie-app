@@ -13,7 +13,7 @@ export const Typography = styled.Text<{
   ${({variant}) => variantStyles[variant]}
   color: ${props =>
     props.color ? props.color : props.theme.colors.primaryText};
-  align-self: ${props => props.alightSelf || 'center'};
+  align-self: ${props => props.alightSelf || 'flex-start'};
   text-decoration: ${props => props.textDecoration};
   padding: ${props => props.padding || 0};
 `;

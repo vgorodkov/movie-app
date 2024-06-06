@@ -17,9 +17,7 @@ export const AuthInputs = ({authForm, isSignUp}: AuthInputsProps) => {
 
   return (
     <FlexContainer gap={spacing.l}>
-      {authForm.map(input => {
-        const {placeholder, icon, name} = input;
-
+      {authForm.map(({placeholder, icon, name}) => {
         const isPassword = name === 'password';
         const errorMessage = errors[name]?.message?.toString();
         const shouldShowPasswordDifficulty =
