@@ -2,7 +2,9 @@ import styled from 'styled-components/native';
 
 import {spacing} from '@/constants/spacing';
 
-export const ButtonContainer = styled.Pressable<{backgroundColor?: string}>`
+export const ButtonContainer = styled.TouchableOpacity<{
+  backgroundColor?: string;
+}>`
   flex-direction: row;
   gap: ${spacing.s};
   justify-content: center;
