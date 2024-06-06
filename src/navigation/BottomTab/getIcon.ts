@@ -6,7 +6,7 @@ export const getRouteIcon = (route: string, focused: boolean) => {
       return focused
         ? require('@/assets/icons/home-active.png')
         : require('@/assets/icons/home.png');
-    case BottomTabRoutes.TOP_FILMS:
+    case BottomTabRoutes.TOP_MOVIES:
       return focused
         ? require('@/assets/icons/top-active.png')
         : require('@/assets/icons/top.png');

@@ -14,7 +14,7 @@ export enum ProtectedRoutes {
 
 export enum BottomTabRoutes {
   HOME = 'Home',
-  TOP_FILMS = 'TopFilms',
+  TOP_MOVIES = 'TopMovies',
   TICKETS = 'Tickets',
   PROFILE = 'Profile',
 }
