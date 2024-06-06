@@ -1,5 +1,7 @@
+export type AuthVariantName = 'account' | 'google' | 'facebook' | 'github';
+
 export interface AuthVariant {
-  name: 'account' | 'google' | 'facebook' | 'github';
+  name: AuthVariantName;
   label: string;
   icon: number;
   backgroundColor: string;
