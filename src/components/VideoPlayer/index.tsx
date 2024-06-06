@@ -43,7 +43,7 @@ export const VideoPlayer = () => {
           <ShareBtn source={require('@/assets/icons/share.png')} />
           <TicketVoucher />
           <PlayBtn handlePlayBtn={handlePlayBtn} />
-          <VideoThumbnail source={require('@/assets/imgs/movie_3.png')} />
+          <VideoThumbnail source={require('@/assets/imgs/movie_4.png')} />
         </>
       )}
     </VideoContainer>
