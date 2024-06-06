@@ -7,4 +7,5 @@ export const VideoTitle = styled(Typography)`
   position: absolute;
   top: ${spacing.sm};
   left: ${spacing.sm};
+  z-index: 10;
 `;

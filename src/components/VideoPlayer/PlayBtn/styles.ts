@@ -7,6 +7,7 @@ export const PlayBtnContainer = styled.Pressable`
   position: absolute;
   top: ${VIDEO_PLAYER_HEIGHT / 2 - PLAYER_BTN_SIZE / 2}px;
   align-self: center;
+  z-index: 10;
 `;
 
 export const PlayBtnIcon = styled.Image`

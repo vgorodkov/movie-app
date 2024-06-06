@@ -9,6 +9,7 @@ export const TicketVoucherContainer = styled.View`
   flex-direction: row;
   align-items: center;
   gap: ${spacing.xs};
+  z-index: 10;
 `;
 
 export const TicketVoucherIcon = styled.Image`

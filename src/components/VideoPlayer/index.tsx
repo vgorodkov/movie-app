@@ -7,6 +7,7 @@ import {PlayBtn} from './PlayBtn';
 import {ShareBtn} from './ShareBtn';
 import {styles, VideoContainer} from './styles';
 import {TicketVoucher} from './TicketVoucher';
+import {VideoThumbnail} from './VideoThumbnail';
 import {VideoTitle} from './VideoTitle';
 
 export const VideoPlayer = () => {
@@ -42,6 +43,7 @@ export const VideoPlayer = () => {
           <ShareBtn source={require('@/assets/icons/share.png')} />
           <TicketVoucher />
           <PlayBtn handlePlayBtn={handlePlayBtn} />
+          <VideoThumbnail source={require('@/assets/imgs/movie_3.png')} />
         </>
       )}
     </VideoContainer>

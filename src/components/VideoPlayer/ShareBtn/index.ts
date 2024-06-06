@@ -6,4 +6,5 @@ export const ShareBtn = styled.Image`
   top: 16px;
   width: 24px;
   height: 24px;
+  z-index: 10;
 `;
