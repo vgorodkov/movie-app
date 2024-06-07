@@ -5,4 +5,8 @@ export const styles = StyleSheet.create({
     gap: 24,
     paddingTop: 16,
   },
+  keyboardAvoidingContainer: {
+    gap: 16,
+    flex: 1,
+  },
 });

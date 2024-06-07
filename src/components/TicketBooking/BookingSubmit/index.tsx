@@ -23,6 +23,7 @@ export const BookingSubmit = ({
   const navigation = useNavigation();
   const ticketBookingInfo = useAppSelector(ticketBookingSelector);
   const [error, setError] = useState<string | null>(null);
+
   const {selectedSeats, selectedDate} = ticketBookingInfo;
   const selectedSeatsAmount = selectedSeats.length;
   const isButtonActive = selectedDate && selectedSeatsAmount > 0;
