@@ -7,6 +7,10 @@ export const useMovieComments = (movieId: string) => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [error, setError] = useState<null | string>(null);
 
+  const addComment = (newComment: Comment) => {
+    firestore().collection('comments').add(newComment);
+  };
+
   useEffect(() => {
     const subscriber = firestore()
       .collection('comments')
@@ -31,5 +35,5 @@ export const useMovieComments = (movieId: string) => {
     return () => subscriber();
   }, [movieId]);
 
-  return {comments, error};
+  return {comments, addComment, error};
 };
