@@ -1,6 +1,8 @@
 import Animated from 'react-native-reanimated';
 import styled from 'styled-components/native';
 
+import {spacing} from '@/constants/spacing';
+
 export const AnimatedFlexBox = styled(Animated.View)<{
   marginLeft?: number;
   marginRight?: number;
@@ -18,7 +20,7 @@ export const MovieItemContainer = styled(AnimatedFlexBox)<{
   margin-left: ${props => `${props.marginLeft}px`};
   margin-right: ${props => `${props.marginRight}px`};
   width: ${props => `${props.width}px`};
-  gap: 8px;
+  gap: ${spacing.s};
 `;
 
 export const MovieImage = styled.Image`
