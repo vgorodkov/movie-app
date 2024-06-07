@@ -30,5 +30,5 @@ export const useGetUser = (uid: string) => {
     getFirestoreUser();
   }, [uid]);
 
-  return {user};
+  return user;
 };
