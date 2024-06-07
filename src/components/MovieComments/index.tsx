@@ -1,9 +1,10 @@
-import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 import React, {useState} from 'react';
 import {FlatList, KeyboardAvoidingView} from 'react-native';
 
 import {Input, Typography, TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
+import {useGetUser} from '@/hooks/useGetUser';
 import {useMovieComments} from '@/hooks/useMovieComments';
 import {FlexContainer} from '@/styled/FlexContainer';
 
@@ -13,17 +14,20 @@ import {styles} from './styles';
 import {Comment} from './types';
 
 export const MovieComments = ({imdbid}: {imdbid: string}) => {
+  const user = useGetUser(auth().currentUser?.uid!);
   const [commentText, setCommentText] = useState('');
-  const {comments} = useMovieComments(imdbid);
+  const {comments, addComment} = useMovieComments(imdbid);
+
+  const author = `${user?.name} ${user?.surname}`;
 
   const onInputSubmit = () => {
     const newComment: Comment = {
-      author: 'Stan Garfield',
+      author: author,
       comment: commentText,
       createdAt: Date.now(),
       movieId: imdbid,
     };
-    firestore().collection('comments').add(newComment);
+    addComment(newComment);
     setCommentText('');
   };
 
@@ -34,12 +38,12 @@ export const MovieComments = ({imdbid}: {imdbid: string}) => {
         variant={TypographyVariant.LABEL_LARGE}>
         {comments.length} Comments
       </Typography>
-      <KeyboardAvoidingView style={{gap: 16, flex: 1}}>
+      <KeyboardAvoidingView style={styles.keyboardAvoidingContainer}>
         <Input
           value={commentText}
           onChangeText={setCommentText}
           onSubmitEditing={onInputSubmit}
-          author="Ivan"
+          author={author}
           placeholder="Add a comment.."
         />
         <FlatList
