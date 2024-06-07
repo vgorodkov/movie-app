@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {FieldValues, useFormContext} from 'react-hook-form';
 
 import {LoadingBackdrop} from '@/components/UI/LoadingBackdrop';
+import {addUserToFirestore} from '@/utils/addUserToFirestore';
 import {handleAuthError} from '@/utils/handleAuthError';
 
 import {AuthButton} from './styles';
@@ -18,7 +19,14 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
 
     try {
       if (isSignUp) {
-        await auth().createUserWithEmailAndPassword(email, password);
+        await auth()
+          .createUserWithEmailAndPassword(email, password)
+          .then(({user}) => {
+            addUserToFirestore(user.uid, {
+              name: data.name,
+              surname: data.surname,
+            });
+          });
       } else {
         await auth().signInWithEmailAndPassword(email, password);
       }
