@@ -11,7 +11,7 @@ export const WelcomeScreen = () => {
       <AppInfo />
       <AuthVariants />
       <Studios />
-      <Typography variant={TypographyVariant.BODY_SMALL}>
+      <Typography alightSelf="center" variant={TypographyVariant.BODY_SMALL}>
         2023 Version 0.0.1
       </Typography>
     </WelcomeScreenContainer>

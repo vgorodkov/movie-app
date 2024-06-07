@@ -85,7 +85,9 @@ export const MovieItem = ({
           }}
         />
         <AnimatedFlexBox gap={8} style={{opacity: movieInformationOpacity}}>
-          <Typography variant={TypographyVariant.LABEL_LARGE}>
+          <Typography
+            alightSelf="center"
+            variant={TypographyVariant.LABEL_LARGE}>
             {title}
           </Typography>
           <MovieGenreRow genre={genre} />
