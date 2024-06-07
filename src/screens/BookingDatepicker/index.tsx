@@ -34,6 +34,7 @@ export const BookingDatepickerModal = ({
   const onDayPress = (date: DateData) => {
     const {dateString} = date;
     dispatch(selectDate(dateString));
+    closeModal();
   };
 
   return (
