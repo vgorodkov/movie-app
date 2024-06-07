@@ -11,7 +11,7 @@ import {spacing} from '@/constants/spacing';
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {resetBookingInfo} from '@/store/slices/ticketBooking';
 import {isDateSelectedSelector} from '@/store/slices/ticketBooking/selectors';
-import {FlexContainer, FullscreenContainer} from '@/styled/FlexContainer';
+import {FullscreenContainer} from '@/styled/FlexContainer';
 
 import {BookingTicketScreenProps} from './types';
 
@@ -37,11 +37,11 @@ export const BookingTicketScreen = ({route}: BookingTicketScreenProps) => {
           <BookingSeatPicker />
         </>
       ) : (
-        <FlexContainer>
-          <Typography variant={TypographyVariant.SUBTITLE_LARGE}>
-            Select date first
-          </Typography>
-        </FlexContainer>
+        <Typography
+          alightSelf="center"
+          variant={TypographyVariant.SUBTITLE_LARGE}>
+          Select date first
+        </Typography>
       )}
       <BookingSubmit imageUrl={imageurl} title={title} />
     </FullscreenContainer>
