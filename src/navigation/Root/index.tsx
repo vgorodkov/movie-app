@@ -1,6 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {AuthRoutes, ProtectedRoutes} from '@/constants/routes';
+import {AuthRoutes, RootRoutes} from '@/constants/routes';
 import {useAuth} from '@/hooks/useAuth';
 import {BottomTabNavigation} from '@/navigation/BottomTab';
 import {
@@ -8,6 +8,7 @@ import {
   MovieDetailsScreen,
   SignIn,
   SignUpScreen,
+  TopMovieRatingScreen,
   WelcomeScreen,
 } from '@/screens';
 import {BookingDatepickerModal} from '@/screens/BookingDatepicker';
@@ -34,23 +35,27 @@ export const RootNavigation = () => {
       {user ? (
         <>
           <StackNavigator.Screen
-            name={ProtectedRoutes.BOTTOM_TAB}
+            name={RootRoutes.BOTTOM_TAB}
             component={BottomTabNavigation}
           />
           <StackNavigator.Screen
             options={movieDetailsScreenOptions}
-            name={ProtectedRoutes.MOVIE_DETAILS}
+            name={RootRoutes.MOVIE_DETAILS}
             component={MovieDetailsScreen}
           />
           <StackNavigator.Screen
-            name={ProtectedRoutes.BOOKING_TICKET}
+            name={RootRoutes.BOOKING_TICKET}
             options={bookTicketScreenOptions}
             component={BookingTicketScreen}
           />
           <StackNavigator.Screen
-            name={ProtectedRoutes.BOOKING_DATEPICKER}
+            name={RootRoutes.BOOKING_DATEPICKER}
             options={transparentModalOptions}
             component={BookingDatepickerModal}
+          />
+          <StackNavigator.Screen
+            name={RootRoutes.TOP_MOVIE_RATING}
+            component={TopMovieRatingScreen}
           />
         </>
       ) : (

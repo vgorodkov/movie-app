@@ -3,7 +3,7 @@ import React from 'react';
 import {useTheme} from 'styled-components';
 
 import {PressableIcon, Typography, TypographyVariant} from '@/components/UI';
-import {ProtectedRoutes} from '@/constants/routes';
+import {RootRoutes} from '@/constants/routes';
 import {useAppSelector} from '@/store/hooks';
 import {bookingDateSelector} from '@/store/slices/ticketBooking/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
@@ -14,7 +14,7 @@ export const BookingDatepicker = () => {
   const selectedDate = useAppSelector(bookingDateSelector);
 
   const onDatepickerIconPress = () => {
-    navigation.navigate(ProtectedRoutes.BOOKING_DATEPICKER);
+    navigation.navigate(RootRoutes.BOOKING_DATEPICKER);
   };
 
   return (

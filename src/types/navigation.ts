@@ -1,22 +1,23 @@
-import {AuthRoutes, BottomTabRoutes, ProtectedRoutes} from '@/constants/routes';
+import {AuthRoutes, BottomTabRoutes, RootRoutes} from '@/constants/routes';
 
 export type RootStackParamList = {
   [AuthRoutes.WELCOME]: undefined;
   [AuthRoutes.SIGN_UP]: undefined;
   [AuthRoutes.SIGN_IN]: undefined;
-  [ProtectedRoutes.BOTTOM_TAB]: undefined;
-  [ProtectedRoutes.MOVIE_DETAILS]: {
+  [RootRoutes.BOTTOM_TAB]: undefined;
+  [RootRoutes.MOVIE_DETAILS]: {
     title: string;
     imageurl: string;
     synopsis: string;
     genre: string[];
     imdbid: string;
   };
-  [ProtectedRoutes.BOOKING_TICKET]: {
+  [RootRoutes.BOOKING_TICKET]: {
     title: string;
     imageurl: string;
   };
-  [ProtectedRoutes.BOOKING_DATEPICKER]: undefined;
+  [RootRoutes.BOOKING_DATEPICKER]: undefined;
+  [RootRoutes.TOP_MOVIE_RATING]: undefined;
 };
 
 export type BottomTabParamList = {

@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 
 import {Typography, TypographyVariant} from '@/components/UI';
 import {SEAT_PRICE} from '@/constants/cinema';
-import {ProtectedRoutes} from '@/constants/routes';
+import {RootRoutes} from '@/constants/routes';
 import {useAppSelector} from '@/store/hooks';
 import {ticketBookingSelector} from '@/store/slices/ticketBooking/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
@@ -46,7 +46,7 @@ export const BookingSubmit = ({
       } else {
         await saveEncryptedData('booking', [newBooking]);
       }
-      navigation.navigate(ProtectedRoutes.BOTTOM_TAB);
+      navigation.navigate(RootRoutes.BOTTOM_TAB);
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);

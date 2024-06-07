@@ -4,12 +4,13 @@ export enum AuthRoutes {
   SIGN_IN = 'SignIn',
 }
 
-export enum ProtectedRoutes {
+export enum RootRoutes {
   BOTTOM_TAB = 'BottomTab',
   MOVIE_DETAILS = 'MovieDetails',
   BOOKING_TICKET = 'BookingTicket',
   BOOKING_DATEPICKER = 'BookingDatepicker',
   TOP_TAB = 'TopTab',
+  TOP_MOVIE_RATING = 'TopMovieRating',
 }
 
 export enum BottomTabRoutes {

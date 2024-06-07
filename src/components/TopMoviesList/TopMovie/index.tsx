@@ -1,7 +1,9 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {memo} from 'react';
 import {Image} from 'react-native';
 
 import {Typography, TypographyVariant} from '@/components/UI';
+import {RootRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
@@ -11,6 +13,12 @@ import {TopMovieProps} from './types';
 
 export const TopMovie = memo(
   ({title, rank, rating, image, year, genre}: TopMovieProps) => {
+    const navigation = useNavigation();
+
+    const onMoreBtnPress = () => {
+      navigation.navigate(RootRoutes.TOP_MOVIE_RATING);
+    };
+
     return (
       <FlexContainer flexFlow="row nowrap" gap={spacing.sm}>
         <Image
@@ -40,7 +48,7 @@ export const TopMovie = memo(
               {rating} <StarIcon>&#9733;</StarIcon>
             </Typography>
           </FlexContainer>
-          <TopFilmMoreButton>
+          <TopFilmMoreButton onPress={onMoreBtnPress}>
             <Typography variant={TypographyVariant.LABEL_MEDIUM}>
               More
             </Typography>

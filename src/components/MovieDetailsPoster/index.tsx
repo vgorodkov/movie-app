@@ -3,7 +3,7 @@ import React from 'react';
 import {View} from 'react-native';
 
 import {Button, PressableIcon} from '@/components/UI';
-import {ProtectedRoutes} from '@/constants/routes';
+import {RootRoutes} from '@/constants/routes';
 
 import {BackdropGradient} from './BackdropGradient';
 import {MovieImageBackground} from './styles';
@@ -20,7 +20,7 @@ export const MovieDetailsPoster = ({
   const navigation = useNavigation();
 
   const onBookTicketIconPress = () => {
-    navigation.navigate(ProtectedRoutes.BOOKING_TICKET, {
+    navigation.navigate(RootRoutes.BOOKING_TICKET, {
       title,
       imageurl,
     });

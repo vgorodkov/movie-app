@@ -9,7 +9,7 @@ import {
 
 import {MovieGenreRow} from '@/components/MovieGenreRow';
 import {Typography, TypographyVariant} from '@/components/UI';
-import {ProtectedRoutes} from '@/constants/routes';
+import {RootRoutes} from '@/constants/routes';
 
 import {MOVIE_ITEM_WIDTH, SIDECARD_WIDTH} from '../constants';
 import {DUMMY_URI} from './constants';
@@ -63,7 +63,7 @@ export const MovieItem = ({
   }, [scrollOffset]);
 
   const onMovieItemPress = () => {
-    navigation.navigate(ProtectedRoutes.MOVIE_DETAILS, {
+    navigation.navigate(RootRoutes.MOVIE_DETAILS, {
       imageurl: imageurl[0] || DUMMY_URI,
       title,
       genre,
