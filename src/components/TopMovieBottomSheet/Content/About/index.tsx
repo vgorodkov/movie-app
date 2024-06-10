@@ -18,10 +18,10 @@ export const About = ({plotSummary}: {plotSummary: string}) => {
   const [isDescriptionShown, setIsDescriptionShown] = useState(false);
 
   const desicrptionMaxHeight = useDerivedValue(() => {
-    if (isDescriptionShown) {
-      return undefined;
+    if (!isDescriptionShown) {
+      return DESCIPTION_HEIGHT_LIMIT;
     }
-    return DESCIPTION_HEIGHT_LIMIT;
+    return 100000000;
   }, [isDescriptionShown]);
 
   const toggleDescription = () => {
