@@ -4,7 +4,7 @@ import {FlatList} from 'react-native';
 import {mockTop100Movies} from '@/data/top100Mock';
 
 import {styles} from './styles';
-import {getItemLayout, keyExtractor, renderTopMovie} from './utils';
+import {keyExtractor, renderTopMovie} from './utils';
 
 export const TopMoviesList = () => {
   return (
@@ -12,7 +12,6 @@ export const TopMoviesList = () => {
       data={mockTop100Movies}
       renderItem={renderTopMovie}
       keyExtractor={keyExtractor}
-      getItemLayout={getItemLayout}
       contentContainerStyle={styles.topMoviesListContentContainer}
     />
   );
