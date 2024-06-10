@@ -1,15 +1,15 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 
-import {mockTop100Movies} from '@/data/top100Mock';
+import {Top100Movie} from '@/types/movies';
 
 import {styles} from './styles';
 import {keyExtractor, renderTopMovie} from './utils';
 
-export const TopMoviesList = () => {
+export const TopMoviesList = ({data}: {data: Top100Movie[]}) => {
   return (
     <FlatList
-      data={mockTop100Movies}
+      data={data}
       renderItem={renderTopMovie}
       keyExtractor={keyExtractor}
       contentContainerStyle={styles.topMoviesListContentContainer}

@@ -11,6 +11,7 @@ export enum RootRoutes {
   BOOKING_DATEPICKER = 'BookingDatepicker',
   TOP_TAB = 'TopTab',
   TOP_MOVIE_RATING = 'TopMovieRating',
+  TOP_MOVIES_FILTERS = 'TopMoviesFilters',
 }
 
 export enum BottomTabRoutes {
