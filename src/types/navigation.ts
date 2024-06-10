@@ -21,6 +21,7 @@ export type RootStackParamList = {
     movieId: string;
     imdbid: string;
   };
+  [RootRoutes.TOP_MOVIES_FILTERS]: undefined;
 };
 
 export type BottomTabParamList = {

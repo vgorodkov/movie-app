@@ -12,6 +12,7 @@ import {
   WelcomeScreen,
 } from '@/screens';
 import {BookingDatepickerModal} from '@/screens/BookingDatepicker';
+import {TopMoviesFiltersModal} from '@/screens/TopMoviesFilters';
 import {RootStackParamList} from '@/types/navigation';
 
 import {
@@ -56,6 +57,11 @@ export const RootNavigation = () => {
           <StackNavigator.Screen
             name={RootRoutes.TOP_MOVIE_RATING}
             component={TopMovieRatingScreen}
+          />
+          <StackNavigator.Screen
+            name={RootRoutes.TOP_MOVIES_FILTERS}
+            component={TopMoviesFiltersModal}
+            options={transparentModalOptions}
           />
         </>
       ) : (
