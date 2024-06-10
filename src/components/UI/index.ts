@@ -4,5 +4,7 @@ export {Input} from './Input';
 export {LoadingBackdrop} from './LoadingBackdrop';
 export {Modal} from './Modal';
 export {PressableIcon} from './PressableIcon';
+export {Separator} from './Separator';
+export {StarIcon} from './StarIcon';
 export {Typography} from './Typography';
 export {TypographyVariant} from './Typography/types';
