@@ -17,7 +17,10 @@ export type RootStackParamList = {
     imageurl: string;
   };
   [RootRoutes.BOOKING_DATEPICKER]: undefined;
-  [RootRoutes.TOP_MOVIE_RATING]: undefined;
+  [RootRoutes.TOP_MOVIE_RATING]: {
+    movieId: string;
+    imdbid: string;
+  };
 };
 
 export type BottomTabParamList = {
