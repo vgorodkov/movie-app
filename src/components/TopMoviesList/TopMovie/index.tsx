@@ -3,29 +3,29 @@ import React, {memo} from 'react';
 import {Image} from 'react-native';
 
 import {Typography, TypographyVariant} from '@/components/UI';
+import {StarIcon} from '@/components/UI/StarIcon';
 import {RootRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
-import {MOVIE_HEIGHT, MOVIE_WIDTH} from '../constants';
-import {StarIcon, TopFilmMoreButton} from './styles';
+import {TopFilmMoreButton} from './styles';
 import {TopMovieProps} from './types';
 
 export const TopMovie = memo(
-  ({title, rank, rating, image, year, genre}: TopMovieProps) => {
+  ({title, rank, rating, image, year, genre, id, imdbid}: TopMovieProps) => {
     const navigation = useNavigation();
 
     const onMoreBtnPress = () => {
-      navigation.navigate(RootRoutes.TOP_MOVIE_RATING);
+      navigation.navigate(RootRoutes.TOP_MOVIE_RATING, {
+        movieId: id,
+        imdbid,
+      });
     };
 
     return (
       <FlexContainer flexFlow="row nowrap" gap={spacing.sm}>
-        <Image
-          style={{height: MOVIE_HEIGHT, width: MOVIE_WIDTH}}
-          source={{uri: image}}
-        />
-        <FlexContainer justifyContent="space-between">
+        <Image style={{flex: 0.25}} source={{uri: image}} />
+        <FlexContainer flex={0.75} justifyContent="space-between">
           <FlexContainer gap={spacing.xs}>
             <Typography
               variant={TypographyVariant.LABEL_LARGE}
@@ -45,7 +45,7 @@ export const TopMovie = memo(
             <Typography
               alightSelf="flex-start"
               variant={TypographyVariant.LABEL_LARGE}>
-              {rating} <StarIcon>&#9733;</StarIcon>
+              {rating} <StarIcon />
             </Typography>
           </FlexContainer>
           <TopFilmMoreButton onPress={onMoreBtnPress}>

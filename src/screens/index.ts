@@ -6,6 +6,7 @@ export {PastTicketsScreen} from './PastTickets';
 export {ProfileScreen} from './Profile';
 export {SignIn} from './SignIn';
 export {SignUpScreen} from './SignUp';
+export {TopMovieRatingScreen} from './TopMovieRating';
 export {TopMoviesScreen} from './TopMovies';
 export {UpcomingTicketsScreen} from './UpcomingTickets';
 export {WelcomeScreen} from './Welcome';

@@ -1,0 +1,1 @@
+export const DESCIPTION_HEIGHT_LIMIT = 150;

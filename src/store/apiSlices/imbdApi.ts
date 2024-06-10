@@ -20,7 +20,13 @@ export const imbdApi = createApi({
         method: 'GET',
       }),
     }),
+    getTop100MovieById: builder.query<Top100Movie, string>({
+      query: (id: string) => ({
+        url: `/${id}`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const {useGetTop100MoviesQuery} = imbdApi;
+export const {useGetTop100MoviesQuery, useGetTop100MovieByIdQuery} = imbdApi;

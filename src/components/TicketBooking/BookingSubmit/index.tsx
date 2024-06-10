@@ -8,7 +8,7 @@ import {RootRoutes} from '@/constants/routes';
 import {useAppSelector} from '@/store/hooks';
 import {ticketBookingSelector} from '@/store/slices/ticketBooking/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {BookingTicket} from '@/types/movies';
+import {BookingTicket} from '@/types/booking';
 import {getEncryptedData, saveEncryptedData} from '@/utils/encryptedStorage';
 
 import {BookingSubmitButton} from './styles';

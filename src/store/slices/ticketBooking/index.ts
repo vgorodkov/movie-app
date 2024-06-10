@@ -2,7 +2,7 @@ import type {PayloadAction} from '@reduxjs/toolkit';
 import {createSlice} from '@reduxjs/toolkit';
 
 import {movieSessions} from '@/data/mockMovieSessions';
-import {MovieSession} from '@/types/movies';
+import {MovieSession} from '@/types/booking';
 
 export interface TicketBookingState {
   selectedDate?: string;
