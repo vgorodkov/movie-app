@@ -5,4 +5,5 @@ export interface PressableIconProps extends PressableProps {
   width?: number;
   height?: number;
   alignSelf?: string;
+  disabled?: boolean;
 }
