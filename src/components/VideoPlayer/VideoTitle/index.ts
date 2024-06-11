@@ -8,4 +8,5 @@ export const VideoTitle = styled(Typography)`
   top: ${spacing.sm};
   left: ${spacing.sm};
   z-index: 10;
+  color: white;
 `;

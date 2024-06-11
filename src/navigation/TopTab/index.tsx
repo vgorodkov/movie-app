@@ -6,17 +6,12 @@ import {
   PastTicketsScreen,
   UpcomingTicketsScreen,
 } from '@/screens';
-import {darkTheme} from '@/theme/darkTheme';
 
 const TabNavigator = createMaterialTopTabNavigator();
 
 export const TopTabNavigation = () => {
   return (
-    <TabNavigator.Navigator
-      screenOptions={{
-        tabBarStyle: {backgroundColor: darkTheme.colors.background},
-        tabBarActiveTintColor: 'white',
-      }}>
+    <TabNavigator.Navigator>
       <TabNavigator.Screen
         name={TopTabRoutes.UPCOMING}
         component={UpcomingTicketsScreen}

@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTheme} from 'styled-components';
 
 import {Typography, TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
@@ -7,6 +8,7 @@ import {FlexContainer} from '@/styled/FlexContainer';
 import {MovieGenre} from './styles';
 
 export const MovieGenreRow = ({genre}: {genre: string[]}) => {
+  const theme = useTheme();
   return (
     <FlexContainer
       flexFlow="row nowrap"
@@ -14,7 +16,9 @@ export const MovieGenreRow = ({genre}: {genre: string[]}) => {
       gap={spacing.s}>
       {genre.map(item => (
         <MovieGenre key={item}>
-          <Typography variant={TypographyVariant.LABEL_MEDIUM}>
+          <Typography
+            color={theme.colors.onPrimary}
+            variant={TypographyVariant.LABEL_MEDIUM}>
             {item}
           </Typography>
         </MovieGenre>

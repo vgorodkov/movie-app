@@ -2,10 +2,10 @@ import styled from 'styled-components/native';
 
 export const InputField = styled.TextInput`
   flex: 1;
-  color: white;
+  color: ${props => props.theme.colors.primaryText};
   padding: 0;
   border-bottom-width: 0.5px;
-  border-color: white;
+  border-color: ${props => props.theme.colors.border};
 `;
 
 export const InputIcon = styled.Image`

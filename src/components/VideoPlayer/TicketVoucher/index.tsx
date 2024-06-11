@@ -11,7 +11,7 @@ export const TicketVoucher = () => {
       <TicketVoucherIcon
         source={require('@/assets/icons/ticket-voucher.png')}
       />
-      <Typography variant={TypographyVariant.LABEL_LARGE}>
+      <Typography color="white" variant={TypographyVariant.LABEL_LARGE}>
         Tickets Avaible
       </Typography>
     </TicketVoucherContainer>

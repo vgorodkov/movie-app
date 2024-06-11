@@ -1,4 +1,5 @@
 import React from 'react';
+import {StatusBar} from 'react-native';
 
 import {MovieComments} from '@/components/MovieComments';
 import {MovieDetails} from '@/components/MovieDetails';
@@ -11,6 +12,7 @@ export const MovieDetailsScreen = ({route}: MovieDetailsScreenProps) => {
   const {title, synopsis, genre, imdbid, imageurl} = route.params;
   return (
     <FullscreenContainer>
+      <StatusBar hidden />
       <MovieDetailsPoster title={title} imageurl={imageurl} />
       <MovieDetails genre={genre} title={title} synopsis={synopsis} />
       <MovieComments imdbid={imdbid} />

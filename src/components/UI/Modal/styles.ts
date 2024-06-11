@@ -13,7 +13,7 @@ export const ModalBackdrop = styled.Pressable`
 `;
 
 export const ModalContent = styled.View`
-  background-color: #2e2e2e;
+  background-color: ${props => props.theme.colors.modalBackground};
   padding: ${spacing.m};
   width: 80%;
   gap: ${spacing.l};

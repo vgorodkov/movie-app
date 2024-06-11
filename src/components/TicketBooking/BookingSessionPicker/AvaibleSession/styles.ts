@@ -7,7 +7,7 @@ export const MovieSessionContainer = styled.Pressable<{isActive: boolean}>`
   gap: 2px;
   padding: ${spacing.s} ${spacing.sm};
   border-radius: 6px;
-  background-color: #5a5a5c;
+  background-color: ${props => props.theme.colors.border};
   border: ${({isActive, theme}) =>
     isActive ? `2px solid ${theme.colors.primary}` : '2px solid transparent'};
 `;

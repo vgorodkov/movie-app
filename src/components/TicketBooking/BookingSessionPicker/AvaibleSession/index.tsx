@@ -1,4 +1,7 @@
-import {Icon, Typography, TypographyVariant} from '@/components/UI';
+import {useTheme} from 'styled-components';
+
+import SeatIcon from '@/assets/icons/seat.svg';
+import {Typography, TypographyVariant} from '@/components/UI';
 import {TOTAL_SEATS} from '@/constants/cinema';
 import {spacing} from '@/constants/spacing';
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
@@ -17,9 +20,9 @@ export const AvaibleSession = ({
   reservedSeats,
   cinemaType,
 }: AvaibleSessionProps) => {
+  const theme = useTheme();
   const dispatch = useAppDispatch();
   const isSessionSelected = useAppSelector(isBookingSessionSelected(time));
-
   const AVAIBLE_SEATS_AMOUNT = TOTAL_SEATS - reservedSeats.length;
 
   const onAvaibleSessionPress = () => {
@@ -42,10 +45,10 @@ export const AvaibleSession = ({
         Cinema: {cinemaType}
       </Typography>
       <FlexContainer flexFlow="row nowrap" gap={spacing.xs}>
-        <Icon
+        <SeatIcon
+          style={{color: theme.colors.primaryText}}
           width={16}
           height={16}
-          source={require('@/assets/icons/seat.png')}
         />
         <Typography variant={TypographyVariant.BODY_SMALL}>
           {AVAIBLE_SEATS_AMOUNT} seats available

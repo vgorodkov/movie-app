@@ -2,7 +2,8 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {useTheme} from 'styled-components';
 
-import {PressableIcon, Typography, TypographyVariant} from '@/components/UI';
+import CalendarIcon from '@/assets/icons/calendar.svg';
+import {Typography, TypographyVariant} from '@/components/UI';
 import {RootRoutes} from '@/constants/routes';
 import {useAppSelector} from '@/store/hooks';
 import {bookingDateSelector} from '@/store/slices/ticketBooking/selectors';
@@ -35,9 +36,9 @@ export const BookingDatepicker = () => {
           Date: {selectedDate ?? 'No date selected'}
         </Typography>
       </FlexContainer>
-      <PressableIcon
+      <CalendarIcon
+        style={{color: theme.colors.primaryText}}
         onPress={onDatepickerIconPress}
-        icon={require('@/assets/icons/calendar.png')}
         width={24}
         height={24}
       />

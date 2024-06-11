@@ -1,8 +1,11 @@
 import React, {useRef, useState} from 'react';
 import {FlatList, NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
 import {FadeIn, FadeOut, LinearTransition} from 'react-native-reanimated';
+import {useTheme} from 'styled-components';
 
-import {PressableIcon, TypographyVariant} from '@/components/UI';
+import ArrowBackward from '@/assets/icons/arrow-back.svg';
+import ArrowForward from '@/assets/icons/arrow-next.svg';
+import {TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
@@ -13,6 +16,7 @@ import {ReviewsContainer} from './styles';
 import {renderReviews} from './utils';
 
 export const Reviews = ({reviews}: {reviews: string[]}) => {
+  const theme = useTheme();
   const reviewListRef = useRef<FlatList | null>(null);
 
   const [currentListIndex, setCurrentListIndex] = useState(0);
@@ -53,12 +57,15 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
       exiting={FadeOut}
       layout={LinearTransition}>
       <Headline variant={TypographyVariant.SUBTITLE_LARGE}>Reviews</Headline>
-      <FlexContainer flexFlow="row nowrap" gap={spacing.s}>
-        <PressableIcon
-          disabled={isFirst}
+      <FlexContainer flexFlow="row nowrap" gap={spacing.s} alignItems="center">
+        <ArrowBackward
+          style={{
+            color: isFirst
+              ? theme.colors.disabledText
+              : theme.colors.primaryText,
+          }}
           width={20}
           height={15}
-          icon={require('@/assets/icons/arrow-prev.png')}
           onPress={scrollBackward}
         />
         <FlexContainer flex={1}>
@@ -72,11 +79,15 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
             ref={reviewListRef}
           />
         </FlexContainer>
-        <PressableIcon
-          disabled={isLast}
+
+        <ArrowForward
+          style={{
+            color: isLast
+              ? theme.colors.disabledText
+              : theme.colors.primaryText,
+          }}
           width={20}
           height={15}
-          icon={require('@/assets/icons/arrow-next.png')}
           onPress={scrollForward}
         />
       </FlexContainer>

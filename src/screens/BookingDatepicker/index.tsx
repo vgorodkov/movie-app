@@ -2,12 +2,8 @@ import React from 'react';
 import {Calendar, DateData} from 'react-native-calendars';
 import {useTheme} from 'styled-components';
 
-import {
-  Modal,
-  PressableIcon,
-  Typography,
-  TypographyVariant,
-} from '@/components/UI';
+import CancelIcon from '@/assets/icons/cancel';
+import {Modal, Typography, TypographyVariant} from '@/components/UI';
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {selectDate} from '@/store/slices/ticketBooking';
 import {bookingDateSelector} from '@/store/slices/ticketBooking/selectors';
@@ -43,9 +39,9 @@ export const BookingDatepickerModal = ({
         <Typography variant={TypographyVariant.LABEL_LARGE}>
           Choose visiting day
         </Typography>
-        <PressableIcon
+        <CancelIcon
+          style={{color: theme.colors.primaryText}}
           onPress={closeModal}
-          icon={require('@/assets/icons/cancel.png')}
           width={24}
           height={24}
         />
