@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTheme} from 'styled-components';
 
 import {Typography} from '@/components/UI/Typography';
 import {TypographyVariant} from '@/components/UI/Typography/types';
@@ -9,6 +10,7 @@ import {PressableAvaibleGenre} from './styles';
 import {AvaibleGenreProps} from './types';
 
 export const AvaibleGenre = ({genre, isSelected}: AvaibleGenreProps) => {
+  const theme = useTheme();
   const dispatch = useAppDispatch();
   const onMovieGenrePress = () => {
     dispatch(selectGenre(genre));
@@ -16,7 +18,11 @@ export const AvaibleGenre = ({genre, isSelected}: AvaibleGenreProps) => {
 
   return (
     <PressableAvaibleGenre isSelected={isSelected} onPress={onMovieGenrePress}>
-      <Typography variant={TypographyVariant.LABEL_MEDIUM}>{genre}</Typography>
+      <Typography
+        color={isSelected ? theme.colors.onPrimary : theme.colors.primaryText}
+        variant={TypographyVariant.LABEL_MEDIUM}>
+        {genre}
+      </Typography>
     </PressableAvaibleGenre>
   );
 };

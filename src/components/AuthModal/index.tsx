@@ -1,17 +1,15 @@
 import {useNavigation} from '@react-navigation/native';
+import {useTheme} from 'styled-components';
 
-import {
-  Modal,
-  PressableIcon,
-  Typography,
-  TypographyVariant,
-} from '@/components/UI';
+import Cancel from '@/assets/icons/cancel.svg';
+import {Modal, Typography, TypographyVariant} from '@/components/UI';
 import {AuthForm} from '@/forms/AuthForm';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {AuthModalProps} from './types';
 
 export const AuthModal = ({title, isSignUp = false}: AuthModalProps) => {
+  const theme = useTheme();
   const navigation = useNavigation();
 
   const closeModal = () => {
@@ -27,11 +25,11 @@ export const AuthModal = ({title, isSignUp = false}: AuthModalProps) => {
         <Typography variant={TypographyVariant.SUBTITLE_LARGE}>
           {title}
         </Typography>
-        <PressableIcon
+        <Cancel
+          style={{color: theme.colors.primaryText}}
           onPress={closeModal}
-          width={16}
-          height={16}
-          icon={require('@/assets/icons/cancel.png')}
+          width={24}
+          height={24}
         />
       </FlexContainer>
       <AuthForm isSignUp={isSignUp} />

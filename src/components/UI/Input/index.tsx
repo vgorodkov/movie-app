@@ -13,16 +13,24 @@ import {InputField, InputIcon} from './styles';
 export interface InputProps extends TextInputProps {
   author?: string;
   icon?: number;
+  Svgr?: any;
   errorMessage?: string;
 }
 
-export const Input = ({icon, author, errorMessage, ...props}: InputProps) => {
+export const Input = ({
+  icon,
+  author,
+  errorMessage,
+  Svgr,
+  ...props
+}: InputProps) => {
   const theme = useTheme();
 
   return (
     <FlexContainer gap={spacing.s}>
       <FlexContainer alignItems="center" flexFlow="row nowrap" gap={spacing.s}>
         {author && <Avatar user={author} />}
+        {Svgr && <Svgr color={theme.colors.primaryText} />}
         {icon && <InputIcon source={icon} />}
         <InputField
           {...props}

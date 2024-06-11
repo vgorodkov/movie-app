@@ -1,7 +1,5 @@
 import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 
-import {darkTheme} from '@/theme/darkTheme';
-
 export const stackNavigatorOptions = {
   headerShown: false,
 };
@@ -20,7 +18,5 @@ export const movieDetailsScreenOptions: NativeStackNavigationOptions = {
 
 export const bookTicketScreenOptions: NativeStackNavigationOptions = {
   headerShown: true,
-  headerTintColor: 'white',
-  headerStyle: {backgroundColor: darkTheme.colors.background},
   headerTitle: 'Choose Cinema & Seats',
 };

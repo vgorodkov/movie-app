@@ -12,7 +12,7 @@ export const AUTH_VARIANTS: AuthVariant[] = [
     name: 'google',
     label: 'Continue with Google',
     icon: require('@/assets/icons/google.png'),
-    backgroundColor: 'white',
+    backgroundColor: '#D4D4D4',
     color: '#00000085',
   },
   {

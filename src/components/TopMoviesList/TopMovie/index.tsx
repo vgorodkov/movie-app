@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {memo} from 'react';
 import {Image} from 'react-native';
+import {useTheme} from 'styled-components';
 
 import {Typography, TypographyVariant} from '@/components/UI';
 import {StarIcon} from '@/components/UI/StarIcon';
@@ -14,7 +15,7 @@ import {TopMovieProps} from './types';
 export const TopMovie = memo(
   ({title, rank, rating, image, year, genre, id, imdbid}: TopMovieProps) => {
     const navigation = useNavigation();
-
+    const theme = useTheme();
     const onMoreBtnPress = () => {
       navigation.navigate(RootRoutes.TOP_MOVIE_RATING, {
         movieId: id,
@@ -49,7 +50,9 @@ export const TopMovie = memo(
             </Typography>
           </FlexContainer>
           <TopFilmMoreButton onPress={onMoreBtnPress}>
-            <Typography variant={TypographyVariant.LABEL_MEDIUM}>
+            <Typography
+              color={theme.colors.onPrimary}
+              variant={TypographyVariant.LABEL_MEDIUM}>
               More
             </Typography>
           </TopFilmMoreButton>

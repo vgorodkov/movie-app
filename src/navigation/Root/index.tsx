@@ -1,4 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useTheme} from 'styled-components';
 
 import {AuthRoutes, RootRoutes} from '@/constants/routes';
 import {useAuth} from '@/hooks/useAuth';
@@ -26,7 +27,7 @@ const StackNavigator = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigation = () => {
   const {initializing, user} = useAuth();
-
+  const theme = useTheme();
   if (initializing) {
     return null;
   }
@@ -46,7 +47,10 @@ export const RootNavigation = () => {
           />
           <StackNavigator.Screen
             name={RootRoutes.BOOKING_TICKET}
-            options={bookTicketScreenOptions}
+            options={{
+              headerStyle: {backgroundColor: theme.colors.background},
+              ...bookTicketScreenOptions,
+            }}
             component={BookingTicketScreen}
           />
           <StackNavigator.Screen

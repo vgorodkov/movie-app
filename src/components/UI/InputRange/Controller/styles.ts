@@ -6,9 +6,9 @@ import {AnimatedText} from '@/components/UI';
 export const AnimatedControllerContainer = styled(Animated.View)`
   height: 12px;
   width: 12px;
-  background-color: black;
+  background-color: ${props => props.theme.colors.onPrimary};
   position: absolute;
-  border: 2px solid white;
+  border: 2px solid ${props => props.theme.colors.primaryText};
   border-radius: 100px;
   top: -4px;
 `;
@@ -20,6 +20,6 @@ export const AnimatedControllerText = styled(AnimatedText)`
   width: 40px;
   top: 10px;
   left: -15px;
-  color: white;
+  color: ${props => props.theme.colors.primaryText};
   text-align: center;
 `;

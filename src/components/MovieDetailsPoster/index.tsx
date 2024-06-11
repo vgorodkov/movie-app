@@ -1,8 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View} from 'react-native';
+import {useTheme} from 'styled-components';
 
-import {Button, PressableIcon} from '@/components/UI';
+import PlayIcon from '@/assets/icons/play.svg';
+import {Button} from '@/components/UI';
 import {RootRoutes} from '@/constants/routes';
 
 import {BackdropGradient} from './BackdropGradient';
@@ -17,6 +19,7 @@ export const MovieDetailsPoster = ({
   imageurl,
   title,
 }: MovieDetailsPosterProps) => {
+  const theme = useTheme();
   const navigation = useNavigation();
 
   const onBookTicketIconPress = () => {
@@ -30,16 +33,12 @@ export const MovieDetailsPoster = ({
     <MovieImageBackground source={require('@/assets/imgs/movie_1.png')}>
       <BackdropGradient>
         <View />
-        <PressableIcon
-          width={40}
-          height={40}
-          icon={require('@/assets/icons/play.png')}
-        />
+        <PlayIcon width={40} height={40} color={theme.colors.primary} />
         <Button
+          color={'white'}
           onPress={onBookTicketIconPress}
           iconVariant="relative"
-          icon={require('@/assets/icons/ticket-voucher.png')}
-          backgroundColor="#D98639">
+          icon={require('@/assets/icons/ticket-voucher.png')}>
           Get tickets
         </Button>
       </BackdropGradient>
