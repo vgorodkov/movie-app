@@ -7,6 +7,7 @@ import {FlexContainer} from '@/styled/FlexContainer';
 
 import {ForgotPasswordBtn} from '../ForgotPasswordBtn';
 import {PasswordDifficultyIndicator} from '../PasswordDifficultyIndicator';
+import {inputIcons} from './icons';
 import {AuthInputsProps} from './types';
 
 export const AuthInputs = ({authForm, isSignUp}: AuthInputsProps) => {
@@ -17,7 +18,7 @@ export const AuthInputs = ({authForm, isSignUp}: AuthInputsProps) => {
 
   return (
     <FlexContainer gap={spacing.l}>
-      {authForm.map(({placeholder, icon, name}) => {
+      {authForm.map(({placeholder, name}) => {
         const isPassword = name === 'password';
         const errorMessage = errors[name]?.message?.toString();
         const shouldShowPasswordDifficulty =
@@ -37,7 +38,7 @@ export const AuthInputs = ({authForm, isSignUp}: AuthInputsProps) => {
                     onChangeText={onChange}
                     onBlur={onBlur}
                     placeholder={placeholder}
-                    icon={icon}
+                    Svgr={inputIcons[name]}
                     secureTextEntry={isPassword}
                     errorMessage={errorMessage}
                   />
