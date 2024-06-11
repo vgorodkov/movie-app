@@ -1,6 +1,5 @@
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {selectSeat, unselectSeat} from '@/store/slices/ticketBooking';
-import {getSeatColor} from '@/utils/getSeatColor';
 
 import {Empty, PressableSeat} from './styles';
 import {SeatProps} from './types';
@@ -15,8 +14,10 @@ export const Seat = ({
   const isSeatSelected = useAppSelector(state =>
     state.ticketBooking.selectedSeats.includes(id),
   );
-
   const onSeatPress = () => {
+    if (isReserved) {
+      return;
+    }
     if (isSeatSelected) {
       dispatch(unselectSeat(id));
     } else {
@@ -29,7 +30,8 @@ export const Seat = ({
       {(isFirst || isFirstInLastRow) && <Empty />}
       <PressableSeat
         onPress={onSeatPress}
-        bgColor={getSeatColor(isReserved, isSeatSelected)}
+        isReserved={isReserved}
+        isSelected={isSeatSelected}
       />
     </>
   );
