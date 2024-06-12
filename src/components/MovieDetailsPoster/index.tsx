@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {View} from 'react-native';
 import {useTheme} from 'styled-components';
 
@@ -19,6 +20,7 @@ export const MovieDetailsPoster = ({
   imageurl,
   title,
 }: MovieDetailsPosterProps) => {
+  const {t} = useTranslation('home');
   const theme = useTheme();
   const navigation = useNavigation();
 
@@ -39,7 +41,7 @@ export const MovieDetailsPoster = ({
           onPress={onBookTicketIconPress}
           iconVariant="relative"
           icon={require('@/assets/icons/ticket-voucher.png')}>
-          Get tickets
+          {t('Get tickets')}
         </Button>
       </BackdropGradient>
     </MovieImageBackground>

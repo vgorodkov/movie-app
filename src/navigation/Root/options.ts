@@ -18,5 +18,4 @@ export const movieDetailsScreenOptions: NativeStackNavigationOptions = {
 
 export const bookTicketScreenOptions: NativeStackNavigationOptions = {
   headerShown: true,
-  headerTitle: 'Choose Cinema & Seats',
 };

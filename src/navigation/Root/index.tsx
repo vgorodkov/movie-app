@@ -1,4 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useTranslation} from 'react-i18next';
 import {useTheme} from 'styled-components';
 
 import {AuthRoutes, RootRoutes} from '@/constants/routes';
@@ -28,6 +29,8 @@ const StackNavigator = createNativeStackNavigator<RootStackParamList>();
 export const RootNavigation = () => {
   const {initializing, user} = useAuth();
   const theme = useTheme();
+  const {t} = useTranslation('home');
+
   if (initializing) {
     return null;
   }
@@ -49,6 +52,7 @@ export const RootNavigation = () => {
             name={RootRoutes.BOOKING_TICKET}
             options={{
               headerStyle: {backgroundColor: theme.colors.background},
+              headerTitle: t('Choose Cinema & Seats'),
               ...bookTicketScreenOptions,
             }}
             component={BookingTicketScreen}

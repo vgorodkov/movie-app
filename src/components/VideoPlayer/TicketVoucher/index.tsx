@@ -1,18 +1,19 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 
-import {Typography} from '@/components/UI/Typography';
-import {TypographyVariant} from '@/components/UI/Typography/types';
+import {Typography, TypographyVariant} from '@/components/UI';
 
 import {TicketVoucherContainer, TicketVoucherIcon} from './styles';
 
 export const TicketVoucher = () => {
+  const {t} = useTranslation('home');
   return (
     <TicketVoucherContainer>
       <TicketVoucherIcon
         source={require('@/assets/icons/ticket-voucher.png')}
       />
       <Typography color="white" variant={TypographyVariant.LABEL_LARGE}>
-        Tickets Avaible
+        {t('Tickets avaible')}
       </Typography>
     </TicketVoucherContainer>
   );

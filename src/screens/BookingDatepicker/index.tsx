@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {Calendar, DateData} from 'react-native-calendars';
 import {useTheme} from 'styled-components';
 
@@ -15,6 +16,7 @@ import {BookDatepickerModalProps} from './types';
 export const BookingDatepickerModal = ({
   navigation,
 }: BookDatepickerModalProps) => {
+  const {t} = useTranslation('home');
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const selectedDate = useAppSelector(bookingDateSelector);
@@ -37,7 +39,7 @@ export const BookingDatepickerModal = ({
     <Modal onBackdropPress={closeModal}>
       <FlexContainer flexFlow="row nowrap" justifyContent="space-between">
         <Typography variant={TypographyVariant.LABEL_LARGE}>
-          Choose visiting day
+          {t('Choose visiting day')}
         </Typography>
         <CancelIcon
           style={{color: theme.colors.primaryText}}

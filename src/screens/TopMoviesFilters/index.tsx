@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {InputRange, Modal} from '@/components/UI';
 import {useAppDispatch} from '@/store/hooks';
@@ -15,7 +16,7 @@ export const TopMoviesFiltersModal = ({
   navigation,
 }: TopMoviesFiltersModalProps) => {
   const dispatch = useAppDispatch();
-
+  const {t} = useTranslation('top');
   const onBackdropPress = () => {
     navigation.goBack();
   };
@@ -35,14 +36,14 @@ export const TopMoviesFiltersModal = ({
       <InputRange
         min={1900}
         max={2024}
-        title="Year"
+        title={t('Year')}
         onValueChange={onYearRangeInputValueChange}
       />
       <InputRange
         onValueChange={onRatingRangeInputValueChange}
         min={0}
         max={10}
-        title="Rating"
+        title={t('Rating')}
       />
     </Modal>
   );

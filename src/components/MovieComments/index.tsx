@@ -1,5 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {FlatList, KeyboardAvoidingView} from 'react-native';
 
 import {Input, Typography, TypographyVariant} from '@/components/UI';
@@ -14,6 +15,7 @@ import {styles} from './styles';
 import {Comment} from './types';
 
 export const MovieComments = ({imdbid}: {imdbid: string}) => {
+  const {t} = useTranslation('home');
   const user = useGetUser(auth().currentUser?.uid!);
   const [commentText, setCommentText] = useState('');
   const {comments, addComment} = useMovieComments(imdbid);
@@ -36,7 +38,7 @@ export const MovieComments = ({imdbid}: {imdbid: string}) => {
       <Typography
         alightSelf="flex-start"
         variant={TypographyVariant.LABEL_LARGE}>
-        {comments.length} Comments
+        {comments.length} {t('Comments')}
       </Typography>
       <KeyboardAvoidingView style={styles.keyboardAvoidingContainer}>
         <Input

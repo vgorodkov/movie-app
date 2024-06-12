@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {TextInput} from 'react-native';
 
 import {Icon} from '../Icon';
@@ -16,6 +17,7 @@ export const SearchBar = ({
   onValueChange,
   onFiltersPress,
 }: SearchBarProps) => {
+  const {t} = useTranslation('top');
   return (
     <SearchBarContainer>
       <Icon
@@ -27,7 +29,7 @@ export const SearchBar = ({
         value={value}
         onChangeText={onValueChange}
         style={{flex: 1}}
-        placeholder="Search movie in the top"
+        placeholder={t('SearchBarPlaceholder')}
       />
       <PressableIcon
         onPress={onFiltersPress}

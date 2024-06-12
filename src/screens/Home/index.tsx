@@ -1,3 +1,5 @@
+import {useTranslation} from 'react-i18next';
+
 import {AvaibleGenreList} from '@/components/AvaibleGenreList';
 import {MovieCarousel} from '@/components/MovieCarousel';
 import {Typography, TypographyVariant} from '@/components/UI';
@@ -8,19 +10,20 @@ import {FullscreenContainer} from '@/styled/FlexContainer';
 import {ComingSoonContainer, MovieCarouselContainer} from './styles';
 
 export const HomeScreen = () => {
+  const {t} = useTranslation('home');
   return (
     <FullscreenContainer padding={`${spacing.m} 0`}>
       <ComingSoonContainer>
         <Typography
           alightSelf="flex-start"
           variant={TypographyVariant.SUBTITLE_LARGE}>
-          Coming Soon
+          {t('Coming soon')}
         </Typography>
         <VideoPlayer />
       </ComingSoonContainer>
       <AvaibleGenreList />
       <MovieCarouselContainer>
-        <MovieCarousel title="Now Showing" />
+        <MovieCarousel title={t('Now showing')} />
       </MovieCarouselContainer>
     </FullscreenContainer>
   );

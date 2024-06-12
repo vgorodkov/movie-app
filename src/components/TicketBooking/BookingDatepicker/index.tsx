@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {useTheme} from 'styled-components';
 
 import CalendarIcon from '@/assets/icons/calendar.svg';
@@ -12,6 +13,7 @@ import {FlexContainer} from '@/styled/FlexContainer';
 export const BookingDatepicker = () => {
   const theme = useTheme();
   const navigation = useNavigation();
+  const {t} = useTranslation('home');
   const selectedDate = useAppSelector(bookingDateSelector);
 
   const onDatepickerIconPress = () => {
@@ -27,13 +29,13 @@ export const BookingDatepicker = () => {
         <Typography
           alightSelf="flex-start"
           variant={TypographyVariant.LABEL_LARGE}>
-          Schedule
+          {t('Schedule')}
         </Typography>
         <Typography
           color={selectedDate ? theme.colors.primaryText : theme.colors.error}
           alightSelf="flex-start"
           variant={TypographyVariant.BODY_MEDIUM}>
-          Date: {selectedDate ?? 'No date selected'}
+          {t('Date')}: {selectedDate ?? t('No Date')}
         </Typography>
       </FlexContainer>
       <CalendarIcon

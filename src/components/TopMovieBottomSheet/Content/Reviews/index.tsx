@@ -1,4 +1,5 @@
 import React, {useRef, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {FlatList, NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
 import {FadeIn, FadeOut, LinearTransition} from 'react-native-reanimated';
 import {useTheme} from 'styled-components';
@@ -17,6 +18,7 @@ import {renderReviews} from './utils';
 
 export const Reviews = ({reviews}: {reviews: string[]}) => {
   const theme = useTheme();
+  const {t} = useTranslation('top');
   const reviewListRef = useRef<FlatList | null>(null);
 
   const [currentListIndex, setCurrentListIndex] = useState(0);
@@ -56,7 +58,9 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
       entering={FadeIn.delay(ANIMATION_DURATION * 3)}
       exiting={FadeOut}
       layout={LinearTransition}>
-      <Headline variant={TypographyVariant.SUBTITLE_LARGE}>Reviews</Headline>
+      <Headline variant={TypographyVariant.SUBTITLE_LARGE}>
+        {t('Reviews')}
+      </Headline>
       <FlexContainer flexFlow="row nowrap" gap={spacing.s} alignItems="center">
         <ArrowBackward
           style={{
