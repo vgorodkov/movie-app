@@ -11,4 +11,5 @@ module.exports = {
     sourceType: 'module',
     ecmaVersion: 'latest',
   },
+  ignorePatterns: ['src/i18n/*'],
 };

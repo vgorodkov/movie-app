@@ -1,3 +1,4 @@
+import {useTranslation} from 'react-i18next';
 import {useTheme} from 'styled-components';
 
 import SeatIcon from '@/assets/icons/seat.svg';
@@ -21,6 +22,7 @@ export const AvaibleSession = ({
   cinemaType,
 }: AvaibleSessionProps) => {
   const theme = useTheme();
+  const {t} = useTranslation('home');
   const dispatch = useAppDispatch();
   const isSessionSelected = useAppSelector(isBookingSessionSelected(time));
   const AVAIBLE_SEATS_AMOUNT = TOTAL_SEATS - reservedSeats.length;
@@ -51,7 +53,7 @@ export const AvaibleSession = ({
           height={16}
         />
         <Typography variant={TypographyVariant.BODY_SMALL}>
-          {AVAIBLE_SEATS_AMOUNT} seats available
+          {AVAIBLE_SEATS_AMOUNT} {t('seats avaible')}
         </Typography>
       </FlexContainer>
     </MovieSessionContainer>

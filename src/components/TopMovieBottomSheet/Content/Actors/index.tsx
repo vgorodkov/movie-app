@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import Animated, {
   FadeIn,
   FadeOut,
@@ -11,12 +12,15 @@ import {ANIMATION_DURATION} from '../../constants';
 import {Headline} from '../styles';
 
 export const Actors = () => {
+  const {t} = useTranslation('top');
   return (
     <Animated.View
       exiting={FadeOut}
       entering={FadeIn.delay(ANIMATION_DURATION * 2)}
       layout={LinearTransition}>
-      <Headline variant={TypographyVariant.SUBTITLE_LARGE}>Actors</Headline>
+      <Headline variant={TypographyVariant.SUBTITLE_LARGE}>
+        {t('Actors')}
+      </Headline>
       <Typography variant={TypographyVariant.BODY_MEDIUM}>
         Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang, Kate
         Winslet

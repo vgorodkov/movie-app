@@ -1,8 +1,9 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {Typography, TypographyVariant} from '@/components/UI';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {BookingTicket} from '@/types/movies';
+import {BookingTicket} from '@/types/booking';
 
 import {CancelBookingButton} from './styles';
 
@@ -17,6 +18,7 @@ export const BookedTicketCancel = ({
   ticketId,
   cancelTicket,
 }: BookedTicketCancelProps) => {
+  const {t} = useTranslation('tickets');
   const handleTicketCancel = () => {
     cancelTicket(ticketId);
   };
@@ -27,7 +29,7 @@ export const BookedTicketCancel = ({
         <Typography
           variant={TypographyVariant.LABEL_SMALL}
           alightSelf="flex-start">
-          {seatsAmount} seats
+          {seatsAmount} {t('seats')}
         </Typography>
         <Typography
           variant={TypographyVariant.LABEL_LARGE}
@@ -36,7 +38,7 @@ export const BookedTicketCancel = ({
         </Typography>
       </FlexContainer>
       <CancelBookingButton onPress={handleTicketCancel}>
-        Cancel
+        {t('Cancel')}
       </CancelBookingButton>
     </FlexContainer>
   );

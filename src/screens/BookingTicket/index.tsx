@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {
   BookingDatepicker,
@@ -16,6 +17,7 @@ import {FullscreenContainer} from '@/styled/FlexContainer';
 import {BookingTicketScreenProps} from './types';
 
 export const BookingTicketScreen = ({route}: BookingTicketScreenProps) => {
+  const {t} = useTranslation('home');
   const dispatch = useAppDispatch();
   const isDateSelected = useAppSelector(isDateSelectedSelector);
 
@@ -40,7 +42,7 @@ export const BookingTicketScreen = ({route}: BookingTicketScreenProps) => {
         <Typography
           alightSelf="center"
           variant={TypographyVariant.SUBTITLE_LARGE}>
-          Select date first
+          {t('Select date first')}
         </Typography>
       )}
       <BookingSubmit imageUrl={imageurl} title={title} />

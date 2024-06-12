@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {memo} from 'react';
+import {useTranslation} from 'react-i18next';
 import {Image} from 'react-native';
 import {useTheme} from 'styled-components';
 
@@ -14,6 +15,7 @@ import {TopMovieProps} from './types';
 
 export const TopMovie = memo(
   ({title, rank, rating, image, year, genre, id, imdbid}: TopMovieProps) => {
+    const {t} = useTranslation('top');
     const navigation = useNavigation();
     const theme = useTheme();
     const onMoreBtnPress = () => {
@@ -53,7 +55,7 @@ export const TopMovie = memo(
             <Typography
               color={theme.colors.onPrimary}
               variant={TypographyVariant.LABEL_MEDIUM}>
-              More
+              {t('More')}
             </Typography>
           </TopFilmMoreButton>
         </FlexContainer>

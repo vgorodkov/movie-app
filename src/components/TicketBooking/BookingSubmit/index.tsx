@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {nanoid} from '@reduxjs/toolkit';
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {Typography, TypographyVariant} from '@/components/UI';
 import {SEAT_PRICE} from '@/constants/cinema';
@@ -20,6 +21,7 @@ export const BookingSubmit = ({
   imageUrl: string;
   title: string;
 }) => {
+  const {t} = useTranslation('home');
   const navigation = useNavigation();
   const ticketBookingInfo = useAppSelector(ticketBookingSelector);
   const [error, setError] = useState<string | null>(null);
@@ -67,7 +69,7 @@ export const BookingSubmit = ({
       <FlexContainer flexFlow="row nowrap" justifyContent="space-between">
         <FlexContainer>
           <Typography variant={TypographyVariant.LABEL_MEDIUM}>
-            {selectedSeatsAmount} Seats
+            {selectedSeatsAmount} {t('Seats')}
           </Typography>
           <Typography variant={TypographyVariant.SUBTITLE_LARGE}>
             {SEAT_PRICE * selectedSeatsAmount} $
@@ -76,7 +78,7 @@ export const BookingSubmit = ({
         <BookingSubmitButton
           onPress={onBookingSubmitBtnPress}
           disabled={!isButtonActive}>
-          Book Now
+          {t('Book now')}
         </BookingSubmitButton>
       </FlexContainer>
     </>

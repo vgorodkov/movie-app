@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useTheme} from 'styled-components';
 
 import {Typography, TypographyVariant} from '@/components/UI';
@@ -16,6 +17,7 @@ import {LeftSeats, RightSeats} from './styles';
 
 export const BookingSeatPicker = () => {
   const theme = useTheme();
+  const {t} = useTranslation('home');
   const reservedSeats = useAppSelector(reservedSeatsSelector);
   const seats = useMemo(() => {
     return generateCinemaSeats(TOTAL_SEATS, reservedSeats);
@@ -23,16 +25,16 @@ export const BookingSeatPicker = () => {
 
   const seatLegend = [
     {
-      label: 'Avaible',
+      label: t('Avaible'),
       borderColor: theme.colors.primaryText,
     },
     {
-      label: 'Reserved',
+      label: t('Reserved'),
       backgroundColor: theme.colors.border,
       borderColor: theme.colors.primaryText,
     },
     {
-      label: 'Selected',
+      label: t('Selected'),
       backgroundColor: theme.colors.primary,
       borderColor: theme.colors.primaryText,
     },
@@ -43,7 +45,9 @@ export const BookingSeatPicker = () => {
 
   return (
     <FlexContainer flex={1} gap={spacing.sm}>
-      <Typography variant={TypographyVariant.SUBTITLE_SMALL}>Screen</Typography>
+      <Typography variant={TypographyVariant.SUBTITLE_SMALL}>
+        {t('Screen')}
+      </Typography>
       <FlexContainer flexFlow="row nowrap" justifyContent="space-between">
         <LeftSeats>
           {leftSideSeats.map((seat, index) => {
