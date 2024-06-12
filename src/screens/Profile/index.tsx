@@ -4,28 +4,30 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {ToggleThemeBtn} from '@/components/ToggleThemeBtn';
-import {Button} from '@/components/UI';
+import {Button, SelectDropdown} from '@/components/UI';
+import {languages} from '@/constants/languages';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer, FullscreenContainer} from '@/styled/FlexContainer';
 
 export const ProfileScreen = () => {
   const {t} = useTranslation('profile');
+
   const onLogOutBtnPress = () => {
     auth().signOut();
   };
 
-  const onEditBtnPress = () => {
-    i18next.changeLanguage('ru');
-  };
+  const onEditBtnPress = () => {};
 
-  const onSettingsBtnPress = () => {
-    i18next.changeLanguage('en');
-  };
+  const onSettingsBtnPress = () => {};
 
   const onPrivatePolicyBtnPress = () => {};
 
+  const onDropdownSelect = (optionCode: string) => {
+    i18next.changeLanguage(optionCode);
+  };
+
   return (
-    <FullscreenContainer gap={spacing.l} alignItems="center">
+    <FullscreenContainer gap={spacing.l}>
       <FlexContainer gap={spacing.m}>
         <Button onPress={onEditBtnPress}>{t('EditBtn')}</Button>
         <Button onPress={onSettingsBtnPress}>{t('SettingsBtn')}</Button>
@@ -35,6 +37,12 @@ export const ProfileScreen = () => {
         <Button onPress={onLogOutBtnPress}>{t('LogOutBtn')}</Button>
       </FlexContainer>
       <ToggleThemeBtn />
+      <SelectDropdown
+        initialOption={languages[0]}
+        label={t('Select language')}
+        data={languages}
+        onSelect={onDropdownSelect}
+      />
     </FullscreenContainer>
   );
 };
