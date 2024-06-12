@@ -6,6 +6,7 @@ export {InputRange} from './InputRange';
 export {LoadingBackdrop} from './LoadingBackdrop';
 export {Modal} from './Modal';
 export {PressableIcon} from './PressableIcon';
+export {SelectDropdown} from './SelectDropdown';
 export {Separator} from './Separator';
 export {StarIcon} from './StarIcon';
 export {ToggleButton} from './ToggleButton';
