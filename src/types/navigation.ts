@@ -1,4 +1,9 @@
-import {AuthRoutes, BottomTabRoutes, RootRoutes} from '@/constants/routes';
+import {
+  AuthRoutes,
+  BottomTabRoutes,
+  ProfileRoutes,
+  RootRoutes,
+} from '@/constants/routes';
 
 export type RootStackParamList = {
   [AuthRoutes.WELCOME]: undefined;
@@ -28,5 +33,11 @@ export type BottomTabParamList = {
   [BottomTabRoutes.HOME]: undefined;
   [BottomTabRoutes.TOP_MOVIES]: undefined;
   [BottomTabRoutes.TICKETS]: undefined;
-  [BottomTabRoutes.PROFILE]: undefined;
+  [BottomTabRoutes.PROFILE_NAV]: undefined;
+};
+
+export type ProfileStackParamList = {
+  [ProfileRoutes.PROFILE]: undefined;
+  [ProfileRoutes.SETTINGS]: undefined;
+  [ProfileRoutes.EDIT]: undefined;
 };
