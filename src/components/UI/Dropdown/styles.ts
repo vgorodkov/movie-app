@@ -1,3 +1,4 @@
+import {StyleProp, ViewStyle} from 'react-native';
 import styled from 'styled-components/native';
 
 import {spacing} from '@/constants/spacing';
@@ -17,3 +18,10 @@ export const DropdownSelectLabel = styled(Typography)`
   text-align: center;
   color: black;
 `;
+
+export const dropdownContentStyle: StyleProp<ViewStyle> = {
+  position: 'absolute',
+  width: '100%',
+  top: 50,
+  zIndex: 1000,
+};

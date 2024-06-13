@@ -3,7 +3,9 @@
   "SettingsBtn": "Настройки",
   "PrivatePolicyBtn": "Политика конфиденциальности",
   "LogOutBtn": "Выйти",
-  "LightTheme": "Светая",
+  "LightTheme": "Светлая",
   "DarkTheme": "Темная",
-  "SelectLanguage": "Выберите язык"
+  "SelectLanguage": "Выберите язык",
+  "Language": "Язык",
+  "Notifications": "Уведомления"
 }

@@ -7,9 +7,11 @@ import movieGenreReducer from './slices/movieGenre';
 import themeReducer from './slices/themeSlice';
 import ticketBookingReducer from './slices/ticketBooking';
 import topMovieFiltersReducer from './slices/topMovieFilters';
+import userReducer from './slices/user';
 
 export const store = configureStore({
   reducer: {
+    user: userReducer,
     movieGenre: movieGenreReducer,
     ticketBooking: ticketBookingReducer,
     topMovieFilters: topMovieFiltersReducer,

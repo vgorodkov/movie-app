@@ -14,11 +14,17 @@ export enum RootRoutes {
   TOP_MOVIES_FILTERS = 'TopMoviesFilters',
 }
 
+export enum ProfileRoutes {
+  PROFILE = 'Profile',
+  SETTINGS = 'Settings',
+  EDIT = 'Edit',
+}
+
 export enum BottomTabRoutes {
   HOME = 'Home',
   TOP_MOVIES = 'TopMovies',
   TICKETS = 'Tickets',
-  PROFILE = 'Profile',
+  PROFILE_NAV = 'ProfileNavigation',
 }
 
 export enum TopTabRoutes {

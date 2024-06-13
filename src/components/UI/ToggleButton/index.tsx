@@ -5,8 +5,6 @@ import {ToggleButtonContainer, ToggleButtonLabel} from './styles';
 
 interface ToggleButtonSide {
   label: string;
-  color: string;
-  backgroundColor: string;
   onPress: () => void;
 }
 
@@ -34,10 +32,6 @@ export const ToggleButton = ({left, right}: ToggleButtonProps) => {
         onPress={onLeftSidePress}
         isActive={activeSide === 'left'}
         side="left"
-        style={{
-          backgroundColor: left.backgroundColor,
-          color: left.color,
-        }}
         variant={TypographyVariant.LABEL_LARGE}>
         {left.label}
       </ToggleButtonLabel>
@@ -45,7 +39,6 @@ export const ToggleButton = ({left, right}: ToggleButtonProps) => {
         onPress={onRightSidePress}
         isActive={activeSide === 'right'}
         side="right"
-        style={{backgroundColor: right.backgroundColor, color: right.color}}
         variant={TypographyVariant.LABEL_LARGE}>
         {right.label}
       </ToggleButtonLabel>

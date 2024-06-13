@@ -6,15 +6,15 @@ import {AuthRoutes, RootRoutes} from '@/constants/routes';
 import {useAuth} from '@/hooks/useAuth';
 import {BottomTabNavigation} from '@/navigation/BottomTab';
 import {
+  BookingDatepickerModal,
   BookingTicketScreen,
   MovieDetailsScreen,
   SignIn,
   SignUpScreen,
   TopMovieRatingScreen,
+  TopMoviesFiltersModal,
   WelcomeScreen,
 } from '@/screens';
-import {BookingDatepickerModal} from '@/screens/BookingDatepicker';
-import {TopMoviesFiltersModal} from '@/screens/TopMoviesFilters';
 import {RootStackParamList} from '@/types/navigation';
 
 import {
@@ -27,8 +27,8 @@ import {
 const StackNavigator = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigation = () => {
-  const {initializing, user} = useAuth();
   const theme = useTheme();
+  const {user, initializing} = useAuth();
   const {t} = useTranslation('home');
 
   if (initializing) {

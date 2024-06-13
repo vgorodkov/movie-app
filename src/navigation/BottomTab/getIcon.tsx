@@ -42,7 +42,7 @@ export const getRouteIcon = (
           }}
         />
       );
-    case BottomTabRoutes.PROFILE:
+    case BottomTabRoutes.PROFILE_NAV:
       return (
         <Profile
           style={{

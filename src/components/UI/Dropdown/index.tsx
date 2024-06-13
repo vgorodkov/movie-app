@@ -3,19 +3,24 @@ import {FlatList} from 'react-native';
 import Animated, {useDerivedValue, withTiming} from 'react-native-reanimated';
 
 import ArrowDown from '@/assets/icons/arrow-down.svg';
+import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {TypographyVariant} from '../Typography/types';
 import {renderDropdownOption} from './renderDropdownOption';
-import {DropdownSelect, DropdownSelectLabel} from './styles';
-import {DropdownOption, SelectDropdownProps} from './types';
+import {
+  dropdownContentStyle,
+  DropdownSelect,
+  DropdownSelectLabel,
+} from './styles';
+import {DropdownOption, DropdownProps} from './types';
 
-export const SelectDropdown = ({
+export const Dropdown = ({
   label,
   data,
   onSelect,
   initialOption,
-}: SelectDropdownProps) => {
+}: DropdownProps) => {
   const [isVisible, setVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState<
     DropdownOption | undefined
@@ -40,7 +45,7 @@ export const SelectDropdown = ({
   };
 
   return (
-    <FlexContainer gap="8px">
+    <FlexContainer gap={spacing.s}>
       <DropdownSelect onPress={toggleDropdown}>
         <DropdownSelectLabel variant={TypographyVariant.LABEL_LARGE}>
           {selectedOption?.label ?? label}
@@ -51,6 +56,7 @@ export const SelectDropdown = ({
       </DropdownSelect>
       {isVisible && (
         <FlatList
+          style={dropdownContentStyle}
           data={data}
           renderItem={renderDropdownOption(onOptionPress, selectedOption)}
         />

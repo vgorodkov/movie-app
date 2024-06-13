@@ -1,35 +1,32 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 
 import {ToggleButton} from '@/components/UI';
+import {ThemeVariant} from '@/constants/theme';
 import {useAppDispatch} from '@/store/hooks';
 import {selectTheme} from '@/store/slices/themeSlice';
-import {darkTheme} from '@/theme/darkTheme';
-import {lightTheme} from '@/theme/lightTheme';
 
 export const ToggleThemeBtn = () => {
+  const {t} = useTranslation('profile');
   const dispatch = useAppDispatch();
 
   const onLeftSidePress = () => {
-    dispatch(selectTheme(lightTheme));
+    dispatch(selectTheme(ThemeVariant.LIGHT));
   };
 
   const onRightSidePress = () => {
-    dispatch(selectTheme(darkTheme));
+    dispatch(selectTheme(ThemeVariant.DARK));
   };
 
   return (
     <ToggleButton
       left={{
-        label: 'white',
+        label: t('LightTheme'),
         onPress: onLeftSidePress,
-        backgroundColor: '#DEDEDE',
-        color: 'black',
       }}
       right={{
-        label: 'black',
+        label: t('DarkTheme'),
         onPress: onRightSidePress,
-        backgroundColor: 'black',
-        color: 'white',
       }}
     />
   );

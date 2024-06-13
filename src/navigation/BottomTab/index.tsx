@@ -2,9 +2,10 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useTheme} from 'styled-components';
 
 import {BottomTabRoutes} from '@/constants/routes';
-import {HomeScreen, ProfileScreen, TopMoviesScreen} from '@/screens';
+import {HomeScreen, TopMoviesScreen} from '@/screens';
 import {BottomTabParamList} from '@/types/navigation';
 
+import {ProfileStackNavigation} from '../ProfileStack';
 import {TopTabNavigation} from '../TopTab';
 import {bottomTabBarOptions} from './options';
 
@@ -25,8 +26,8 @@ export const BottomTabNavigation = () => {
         component={TopTabNavigation}
       />
       <TabNavigator.Screen
-        name={BottomTabRoutes.PROFILE}
-        component={ProfileScreen}
+        name={BottomTabRoutes.PROFILE_NAV}
+        component={ProfileStackNavigation}
       />
     </TabNavigator.Navigator>
   );
