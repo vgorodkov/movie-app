@@ -5,6 +5,7 @@ import {AvatarContainer} from './styles';
 
 export const Avatar = ({user}: {user: string}) => {
   const shortedName = user
+    .slice(0, 2)
     .split(' ')
     .map(item => item[0].toUpperCase())
     .join('');
