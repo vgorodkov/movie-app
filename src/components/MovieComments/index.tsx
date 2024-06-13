@@ -1,12 +1,12 @@
-import auth from '@react-native-firebase/auth';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {FlatList, KeyboardAvoidingView} from 'react-native';
 
 import {Input, Typography, TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
-import {useGetUser} from '@/hooks/useGetUser';
 import {useMovieComments} from '@/hooks/useMovieComments';
+import {useAppSelector} from '@/store/hooks';
+import {userSelector} from '@/store/slices/user/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {EmptyCommentsList} from './EmptyCommentsList';
@@ -16,7 +16,7 @@ import {Comment} from './types';
 
 export const MovieComments = ({imdbid}: {imdbid: string}) => {
   const {t} = useTranslation('home');
-  const user = useGetUser(auth().currentUser?.uid!);
+  const user = useAppSelector(userSelector);
   const [commentText, setCommentText] = useState('');
   const {comments, addComment} = useMovieComments(imdbid);
 
