@@ -5,5 +5,7 @@
   "LogOutBtn": "Log Out",
   "LightTheme": "Light",
   "DarkTheme": "Dark",
-  "SelectLanguage": "Select Language"
+  "SelectLanguage": "Select Language",
+  "Language": "Language",
+  "Notifications": "Notifications"
 }
