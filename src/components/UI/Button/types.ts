@@ -6,4 +6,5 @@ export interface ButtonProps extends TouchableOpacityProps {
   backgroundColor?: string;
   color?: string;
   iconVariant?: 'absolute' | 'relative';
+  textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify';
 }

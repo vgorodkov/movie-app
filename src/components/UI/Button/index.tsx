@@ -14,6 +14,7 @@ export const Button = ({
   iconVariant = 'absolute',
   color,
   backgroundColor,
+  textAlign,
   ...props
 }: ButtonProps) => {
   const isIconAbsolute = iconVariant === 'absolute';
@@ -22,6 +23,7 @@ export const Button = ({
       {icon && isIconAbsolute && <AbsoluteButtonIcon source={icon} />}
       {icon && !isIconAbsolute && <RelativeButtonIcon source={icon} />}
       <Typography
+        style={{textAlign: textAlign}}
         alightSelf="center"
         color={color}
         variant={TypographyVariant.LABEL_LARGE}>
