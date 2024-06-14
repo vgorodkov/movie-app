@@ -21,7 +21,7 @@ export const BookingTicketScreen = ({route}: BookingTicketScreenProps) => {
   const dispatch = useAppDispatch();
   const isDateSelected = useAppSelector(isDateSelectedSelector);
 
-  const {imageurl, title} = route.params;
+  const {movieId} = route.params;
 
   useEffect(() => {
     dispatch(resetBookingInfo());
@@ -45,7 +45,7 @@ export const BookingTicketScreen = ({route}: BookingTicketScreenProps) => {
           {t('Select date first')}
         </Typography>
       )}
-      <BookingSubmit imageUrl={imageurl} title={title} />
+      <BookingSubmit movieId={movieId} />
     </FullscreenContainer>
   );
 };

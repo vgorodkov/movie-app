@@ -6,8 +6,7 @@ export interface MovieSession {
 
 export interface BookingTicket {
   ticketId: string;
-  movieName: string;
-  movieImgUrl: string;
+  movieId: string;
   date: string;
   seatsAmount: number;
   price: number;
