@@ -18,7 +18,7 @@ export const SelectDropdownOption = ({
     <OptionTouchable onPress={onOptionSelect} isActive={isActive}>
       <Typography
         variant={TypographyVariant.LABEL_MEDIUM}
-        padding={spacing.s}
+        padding={`${spacing.s}px`}
         color="black">
         {option.label}
       </Typography>

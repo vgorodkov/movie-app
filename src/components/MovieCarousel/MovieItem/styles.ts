@@ -20,7 +20,7 @@ export const MovieItemContainer = styled(AnimatedFlexBox)<{
   margin-left: ${props => `${props.marginLeft}px`};
   margin-right: ${props => `${props.marginRight}px`};
   width: ${props => `${props.width}px`};
-  gap: ${spacing.s};
+  gap: ${spacing.s}px;
 `;
 
 export const MovieImage = styled.Image`

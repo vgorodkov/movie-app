@@ -6,11 +6,11 @@ export const ButtonContainer = styled.TouchableOpacity<{
   backgroundColor?: string;
 }>`
   flex-direction: row;
-  gap: ${spacing.s};
+  gap: ${spacing.s}px;
   justify-content: center;
   align-items: center;
   height: 48px;
-  padding: 0 ${spacing.m};
+  padding: 0 ${spacing.m}px;
   border-radius: 12px;
   background-color: ${props =>
     props.disabled
@@ -20,7 +20,7 @@ export const ButtonContainer = styled.TouchableOpacity<{
 
 export const AbsoluteButtonIcon = styled.Image`
   position: absolute;
-  left: ${spacing.m};
+  left: ${spacing.m}px;
 `;
 
 export const RelativeButtonIcon = styled.Image`

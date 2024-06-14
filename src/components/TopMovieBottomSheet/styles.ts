@@ -9,7 +9,7 @@ export const BottomSheetContainer = styled(Animated.View)<{height: number}>`
   width: 100%;
   background-color: ${props => props.theme.colors.modalBackground};
   align-items: center;
-  gap: ${spacing.sm};
-  padding: ${spacing.sm};
+  gap: ${spacing.sm}px;
+  padding: ${spacing.sm}px;
   height: ${props => props.height}px;
 `;

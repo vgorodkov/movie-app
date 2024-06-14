@@ -5,8 +5,8 @@ import {spacing} from '@/constants/spacing';
 
 export const VideoTitle = styled(Typography)`
   position: absolute;
-  top: ${spacing.sm};
-  left: ${spacing.sm};
+  top: ${spacing.sm}px;
+  left: ${spacing.sm}px;
   z-index: 10;
   color: white;
 `;

@@ -4,11 +4,11 @@ import {spacing} from '@/constants/spacing';
 
 export const TicketVoucherContainer = styled.View`
   position: absolute;
-  bottom: ${spacing.s};
-  right: ${spacing.s};
+  bottom: ${spacing.s}px;
+  right: ${spacing.s}px;
   flex-direction: row;
   align-items: center;
-  gap: ${spacing.xs};
+  gap: ${spacing.xs}px;
   z-index: 10;
 `;
 

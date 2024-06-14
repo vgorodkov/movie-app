@@ -9,7 +9,7 @@ export const DropdownSelect = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   background-color: ${props => props.theme.colors.onPrimary};
-  padding: ${spacing.s} ${spacing.sm};
+  padding: ${spacing.s}px ${spacing.sm}px;
   border-radius: 4px;
 `;
 
