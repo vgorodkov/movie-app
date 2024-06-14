@@ -1,21 +1,17 @@
-import {BookingTicket} from '@/types/movies';
+import {BookingTicket} from '@/types/booking';
 
 import {BookedTicket} from './BookedTicket';
 
-export const renderTickets =
-  (cancelTicket: (ticketId: string) => void) =>
-  ({item}: {item: BookingTicket}) => {
-    const {movieName, date, movieImgUrl, ticketId, seatsAmount, price} = item;
+export const renderTickets = ({item}: {item: BookingTicket}) => {
+  const {date, ticketId, seatsAmount, price, movieId} = item;
 
-    return (
-      <BookedTicket
-        cancelTicket={cancelTicket}
-        ticketId={ticketId}
-        seatsAmount={seatsAmount}
-        price={price}
-        movieImgUrl={movieImgUrl}
-        movieName={movieName}
-        date={date}
-      />
-    );
-  };
+  return (
+    <BookedTicket
+      ticketId={ticketId}
+      seatsAmount={seatsAmount}
+      price={price}
+      movieId={movieId}
+      date={date}
+    />
+  );
+};
