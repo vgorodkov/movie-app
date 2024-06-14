@@ -18,8 +18,7 @@ export type RootStackParamList = {
     imdbid: string;
   };
   [RootRoutes.BOOKING_TICKET]: {
-    title: string;
-    imageurl: string;
+    movieId: string;
   };
   [RootRoutes.BOOKING_DATEPICKER]: undefined;
   [RootRoutes.TOP_MOVIE_RATING]: {

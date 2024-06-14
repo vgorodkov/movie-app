@@ -1,16 +1,23 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React, {ReactNode} from 'react';
+import React, {ReactNode, useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import {ThemeProvider} from 'styled-components';
 
-import {useAppSelector} from '@/store/hooks';
+import {useAppDispatch, useAppSelector} from '@/store/hooks';
+import {initBookedTickets} from '@/store/slices/bookedTickets/thunk';
 import {selectedThemeSelector} from '@/store/slices/themeSlice/selectors';
 import {darkTheme} from '@/theme/darkTheme';
 import {lightTheme} from '@/theme/lightTheme';
 
 export const GlobalThemeProvider = ({children}: {children: ReactNode}) => {
   const theme = useAppSelector(selectedThemeSelector);
+  const dispatch = useAppDispatch();
   const selectedTheme = theme === 'dark' ? darkTheme : lightTheme;
+
+  useEffect(() => {
+    dispatch(initBookedTickets());
+  }, [dispatch]);
+
   return (
     <NavigationContainer theme={selectedTheme}>
       <ThemeProvider theme={selectedTheme}>

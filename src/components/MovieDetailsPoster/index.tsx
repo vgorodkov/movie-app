@@ -12,22 +12,17 @@ import {BackdropGradient} from './BackdropGradient';
 import {MovieImageBackground} from './styles';
 
 interface MovieDetailsPosterProps {
-  imageurl: string;
-  title: string;
+  movieId: string;
 }
 
-export const MovieDetailsPoster = ({
-  imageurl,
-  title,
-}: MovieDetailsPosterProps) => {
+export const MovieDetailsPoster = ({movieId}: MovieDetailsPosterProps) => {
   const {t} = useTranslation('home');
   const theme = useTheme();
   const navigation = useNavigation();
 
   const onBookTicketIconPress = () => {
     navigation.navigate(RootRoutes.BOOKING_TICKET, {
-      title,
-      imageurl,
+      movieId,
     });
   };
 

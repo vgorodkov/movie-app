@@ -6,23 +6,18 @@ import {useTranslation} from 'react-i18next';
 import {Typography, TypographyVariant} from '@/components/UI';
 import {SEAT_PRICE} from '@/constants/cinema';
 import {RootRoutes} from '@/constants/routes';
-import {useAppSelector} from '@/store/hooks';
+import {useAppDispatch, useAppSelector} from '@/store/hooks';
+import {addBookedTickets} from '@/store/slices/bookedTickets/thunk';
 import {ticketBookingSelector} from '@/store/slices/ticketBooking/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 import {BookingTicket} from '@/types/booking';
-import {getEncryptedData, saveEncryptedData} from '@/utils/encryptedStorage';
 
 import {BookingSubmitButton} from './styles';
 
-export const BookingSubmit = ({
-  imageUrl,
-  title,
-}: {
-  imageUrl: string;
-  title: string;
-}) => {
+export const BookingSubmit = ({movieId}: {movieId: string}) => {
   const {t} = useTranslation('home');
   const navigation = useNavigation();
+  const dispatch = useAppDispatch();
   const ticketBookingInfo = useAppSelector(ticketBookingSelector);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,23 +26,16 @@ export const BookingSubmit = ({
   const isButtonActive = selectedDate && selectedSeatsAmount > 0;
 
   const onBookingSubmitBtnPress = async () => {
-    const newBooking = {
+    const newBooking: BookingTicket = {
       ticketId: nanoid(),
-      movieName: title,
-      movieImgUrl: imageUrl,
+      movieId,
       date: ticketBookingInfo.selectedDate!,
       price: ticketBookingInfo.selectedSeats.length * SEAT_PRICE,
       seatsAmount: ticketBookingInfo.selectedSeats.length,
     };
 
     try {
-      const existingData = await getEncryptedData<BookingTicket[]>('booking');
-      if (existingData) {
-        const updatedData = [...existingData, newBooking];
-        await saveEncryptedData('booking', updatedData);
-      } else {
-        await saveEncryptedData('booking', [newBooking]);
-      }
+      dispatch(addBookedTickets(newBooking));
       navigation.navigate(RootRoutes.BOTTOM_TAB);
     } catch (err) {
       if (err instanceof Error) {

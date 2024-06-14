@@ -2,25 +2,22 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {Typography, TypographyVariant} from '@/components/UI';
+import {useAppDispatch} from '@/store/hooks';
+import {cancelBookedTickets} from '@/store/slices/bookedTickets/thunk';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {BookingTicket} from '@/types/booking';
 
 import {CancelBookingButton} from './styles';
-
-interface BookedTicketCancelProps
-  extends Pick<BookingTicket, 'seatsAmount' | 'price' | 'ticketId'> {
-  cancelTicket: (ticketId: string) => void;
-}
+import {BookedTicketCancelProps} from './types';
 
 export const BookedTicketCancel = ({
   seatsAmount,
   price,
   ticketId,
-  cancelTicket,
 }: BookedTicketCancelProps) => {
   const {t} = useTranslation('tickets');
+  const dispatch = useAppDispatch();
   const handleTicketCancel = () => {
-    cancelTicket(ticketId);
+    dispatch(cancelBookedTickets(ticketId));
   };
 
   return (
