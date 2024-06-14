@@ -1,14 +1,11 @@
 import type {PayloadAction} from '@reduxjs/toolkit';
 import {createSlice} from '@reduxjs/toolkit';
 
-interface NumberRange {
-  max: number;
-  min: number;
-}
+import {Range} from '@/types/common';
 
 export interface TopMovieFiltersState {
-  year?: NumberRange;
-  rating?: NumberRange;
+  year?: Range<number>;
+  rating?: Range<number>;
 }
 
 const initialState: TopMovieFiltersState = {};
@@ -17,10 +14,10 @@ export const topMovieFiltersSlice = createSlice({
   name: 'topMovieFilters',
   initialState,
   reducers: {
-    setYearFilter: (state, action: PayloadAction<NumberRange>) => {
+    setYearFilter: (state, action: PayloadAction<Range<number>>) => {
       state.year = action.payload;
     },
-    setRatingFilter: (state, action: PayloadAction<NumberRange>) => {
+    setRatingFilter: (state, action: PayloadAction<Range<number>>) => {
       state.rating = action.payload;
     },
   },

@@ -8,16 +8,14 @@ import {ReviewTypography} from './styles';
 
 export const Review = ({review}: {review: string}) => {
   return (
-    <>
-      <View
-        style={{
-          width: REVIEW_WIDTH,
-        }}>
-        <BackdropGradient />
-        <ReviewTypography variant={TypographyVariant.BODY_SMALL}>
-          {review}
-        </ReviewTypography>
-      </View>
-    </>
+    <View
+      style={{
+        width: REVIEW_WIDTH,
+      }}>
+      <BackdropGradient />
+      <ReviewTypography variant={TypographyVariant.BODY_SMALL}>
+        {review}
+      </ReviewTypography>
+    </View>
   );
 };

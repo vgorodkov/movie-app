@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {Dimensions, PanResponder} from 'react-native';
+import {PanResponder} from 'react-native';
 import {
   clamp,
   useAnimatedStyle,
@@ -8,53 +8,56 @@ import {
   withSpring,
 } from 'react-native-reanimated';
 
+import {Typography, TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
-import {Typography} from '../Typography';
-import {TypographyVariant} from '../Typography/types';
+import {
+  MIN_CONTROLLER_SEPARATION,
+  NORMALIZED_RANGE_WIDTH,
+  RANGE_WIDTH,
+  SCALE_ACTIVE,
+  SCALE_INACTIVE,
+} from './constants';
 import {Controller} from './Controller';
 import {RangeBar, RangeContainer} from './styles';
+import {InputRangeProps} from './types';
 
-interface InputRangeProps {
-  min: number;
-  max: number;
-  title: string;
-  onValueChange?: ({min, max}: {min: string; max: string}) => void;
-}
-const {width} = Dimensions.get('window');
-//modal = 80% + modalPadding = 24
-const inputRangeWidth = width * 0.8 - 48;
-const minControllerSeparation = 12;
 export const InputRange = ({
   max,
   min,
   title,
   onValueChange,
+  initialMax = max,
+  initialMin = min,
 }: InputRangeProps) => {
-  const leftControllerScale = useSharedValue(1);
-  const leftControllerStartX = useSharedValue(0);
-  const leftControllerTranslateX = useSharedValue(0);
-  const rightControllerScale = useSharedValue(1);
-  const rightControllerStartX = useSharedValue(inputRangeWidth);
-  const rightControllerTranslateX = useSharedValue(inputRangeWidth);
+  const RANGE = max - min;
+  const INITIAL_MIN_NORMALIZED =
+    ((initialMin - min) / RANGE) * NORMALIZED_RANGE_WIDTH;
+  const INITIAL_MAX_NORMALIZED =
+    MIN_CONTROLLER_SEPARATION +
+    ((initialMax - min) / RANGE) * NORMALIZED_RANGE_WIDTH;
+
+  const leftControllerScale = useSharedValue(SCALE_INACTIVE);
+  const leftControllerStartX = useSharedValue(INITIAL_MIN_NORMALIZED);
+  const leftControllerTranslateX = useSharedValue(INITIAL_MIN_NORMALIZED);
+
+  const rightControllerScale = useSharedValue(SCALE_INACTIVE);
+  const rightControllerStartX = useSharedValue(INITIAL_MAX_NORMALIZED);
+  const rightControllerTranslateX = useSharedValue(INITIAL_MAX_NORMALIZED);
 
   const firstControllerValue = useDerivedValue(() => {
-    const range = max - min;
-    const normalizedRange = inputRangeWidth - minControllerSeparation;
     const leftControllerValue =
-      min + (leftControllerTranslateX.value / normalizedRange) * range;
+      min + (leftControllerTranslateX.value / NORMALIZED_RANGE_WIDTH) * RANGE;
     return Math.round(leftControllerValue).toString();
   });
 
   const secondControllerValue = useDerivedValue(() => {
-    const range = max - min;
-    const normalizedRange = inputRangeWidth - minControllerSeparation;
     const rightControllerValue =
       min +
-      ((rightControllerTranslateX.value - minControllerSeparation) /
-        normalizedRange) *
-        range; // Adjusted right controller position
+      ((rightControllerTranslateX.value - MIN_CONTROLLER_SEPARATION) /
+        NORMALIZED_RANGE_WIDTH) *
+        RANGE;
     return Math.round(rightControllerValue).toString();
   });
 
@@ -66,7 +69,7 @@ export const InputRange = ({
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: () => {
-        leftControllerScale.value = withSpring(1.4);
+        leftControllerScale.value = withSpring(SCALE_ACTIVE);
       },
       onPanResponderMove: (_, gestureState) => {
         const {dx} = gestureState;
@@ -74,13 +77,13 @@ export const InputRange = ({
         leftControllerTranslateX.value = clamp(
           leftControllerStartX.value + dx,
           0,
-          rightControllerTranslateX.value - minControllerSeparation,
+          rightControllerTranslateX.value - MIN_CONTROLLER_SEPARATION,
         );
       },
       onPanResponderRelease: (_, gestureState) => {
         const {dx} = gestureState;
         leftControllerStartX.value = leftControllerStartX.value + dx;
-        leftControllerScale.value = withSpring(1);
+        leftControllerScale.value = withSpring(SCALE_INACTIVE);
         if (onValueChange) {
           onValueChange({
             min: firstControllerValue.value,
@@ -95,20 +98,20 @@ export const InputRange = ({
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant() {
-        rightControllerScale.value = withSpring(1.4);
+        rightControllerScale.value = withSpring(SCALE_ACTIVE);
       },
       onPanResponderMove: (_, gestureState) => {
         const {dx} = gestureState;
         rightControllerTranslateX.value = clamp(
           rightControllerStartX.value + dx,
-          leftControllerTranslateX.value + minControllerSeparation,
-          inputRangeWidth,
+          leftControllerTranslateX.value + MIN_CONTROLLER_SEPARATION,
+          RANGE_WIDTH,
         );
       },
       onPanResponderRelease: (_, gestureState) => {
         const {dx} = gestureState;
         rightControllerStartX.value = rightControllerStartX.value + dx;
-        rightControllerScale.value = withSpring(1);
+        rightControllerScale.value = withSpring(SCALE_INACTIVE);
         if (onValueChange) {
           onValueChange({
             min: firstControllerValue.value,

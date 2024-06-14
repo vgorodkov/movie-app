@@ -2,45 +2,51 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {InputRange, Modal} from '@/components/UI';
-import {useAppDispatch} from '@/store/hooks';
+import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {setRatingFilter, setYearFilter} from '@/store/slices/topMovieFilters';
+import {
+  topMovieRatingFilterSelector,
+  topMovieYearFilterSelector,
+} from '@/store/slices/topMovieFilters/selectors';
+import {Range} from '@/types/common';
 
 import {TopMoviesFiltersModalProps} from './types';
-
-interface Range {
-  min: string;
-  max: string;
-}
 
 export const TopMoviesFiltersModal = ({
   navigation,
 }: TopMoviesFiltersModalProps) => {
   const dispatch = useAppDispatch();
+  const yearFilterRange = useAppSelector(topMovieYearFilterSelector);
+  const ratingFilterRange = useAppSelector(topMovieRatingFilterSelector);
   const {t} = useTranslation('top');
   const onBackdropPress = () => {
     navigation.goBack();
   };
 
-  const onYearRangeInputValueChange = (range: Range) => {
+  const onYearRangeInputValueChange = (range: Range<string>) => {
     const {max, min} = range;
     dispatch(setYearFilter({max: +max, min: +min}));
   };
 
-  const onRatingRangeInputValueChange = (range: Range) => {
+  const onRatingRangeInputValueChange = (range: Range<string>) => {
     const {max, min} = range;
     dispatch(setRatingFilter({max: +max, min: +min}));
   };
 
   return (
-    <Modal onBackdropPress={onBackdropPress}>
+    <Modal title="Filters" onBackdropPress={onBackdropPress}>
       <InputRange
         min={1900}
         max={2024}
+        initialMin={yearFilterRange?.min}
+        initialMax={yearFilterRange?.max}
         title={t('Year')}
         onValueChange={onYearRangeInputValueChange}
       />
       <InputRange
         onValueChange={onRatingRangeInputValueChange}
+        initialMin={ratingFilterRange?.min}
+        initialMax={ratingFilterRange?.max}
         min={0}
         max={10}
         title={t('Rating')}

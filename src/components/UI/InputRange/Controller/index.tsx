@@ -1,11 +1,5 @@
-import {ViewProps} from 'react-native';
-import {SharedValue} from 'react-native-reanimated';
-
 import {AnimatedControllerContainer, AnimatedControllerText} from './styles';
-
-interface ControllerProps extends ViewProps {
-  value: SharedValue<string>;
-}
+import {ControllerProps} from './types';
 
 export const Controller = ({value, ...props}: ControllerProps) => {
   return (
