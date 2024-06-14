@@ -2,10 +2,8 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {Typography, TypographyVariant} from '@/components/UI';
-import {BookingTicket} from '@/types/booking';
 
-interface BookedTicketInformationProps
-  extends Pick<BookingTicket, 'date' | 'ticketId' | 'movieName'> {}
+import {BookedTicketInformationProps} from './types';
 
 export const BookedTicketInformation = ({
   movieName,
