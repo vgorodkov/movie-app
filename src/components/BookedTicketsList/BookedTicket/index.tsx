@@ -1,32 +1,37 @@
 import React from 'react';
 
 import {spacing} from '@/constants/spacing';
+import {MOCK_DATA} from '@/data/mockMovies';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {BookingTicket} from '@/types/movies';
+import {BookingTicket} from '@/types/booking';
 
 import {BookedTicketCancel} from './BookedTicketCancel';
 import {BookedTicketInformation} from './BookedTicketInformation';
 import {BookedTicketContainer, BookedTicketImage} from './styles';
 
-interface BookedTicketProps extends BookingTicket {
-  cancelTicket: (ticketId: string) => void;
-}
+interface BookedTicketProps extends BookingTicket {}
 
 export const BookedTicket = ({
-  movieName,
+  movieId,
   date,
-  movieImgUrl,
   ticketId,
   seatsAmount,
   price,
-  cancelTicket,
 }: BookedTicketProps) => {
+  const movie = MOCK_DATA.results.find(
+    mockMovie => mockMovie.imdbid === movieId,
+  );
+
+  if (!movie) {
+    return null;
+  }
+
   return (
     <BookedTicketContainer>
-      <BookedTicketImage source={{uri: movieImgUrl}} />
-      <FlexContainer padding="8px" flex={1} gap={spacing.xs}>
+      <BookedTicketImage source={{uri: movie.imageurl[0]}} />
+      <FlexContainer padding={spacing.s} flex={1} gap={spacing.xs}>
         <BookedTicketInformation
-          movieName={movieName}
+          movieName={movie.title}
           ticketId={ticketId}
           date={date}
         />
@@ -34,7 +39,6 @@ export const BookedTicket = ({
           ticketId={ticketId}
           price={price}
           seatsAmount={seatsAmount}
-          cancelTicket={cancelTicket}
         />
       </FlexContainer>
     </BookedTicketContainer>
