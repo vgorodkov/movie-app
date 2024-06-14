@@ -12,7 +12,7 @@ export interface MovieDetailsProps
 
 export const MovieDetails = ({genre, title, synopsis}: MovieDetailsProps) => {
   return (
-    <FlexContainer padding={spacing.m} gap={spacing.m}>
+    <FlexContainer padding={`${spacing.m}px`} gap={spacing.m}>
       <BasicDetails genre={genre} />
       <Description title={title} synopsis={synopsis} />
     </FlexContainer>

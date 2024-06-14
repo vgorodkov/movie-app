@@ -7,8 +7,8 @@ export const SearchBarContainer = styled(FlexContainer)`
   flex-direction: row;
   background-color: #d9d9d9;
   align-items: center;
-  margin: ${spacing.sm};
-  padding: 0 ${spacing.sm};
-  border-radius: ${spacing.sm};
-  gap: ${spacing.s};
+  margin: ${spacing.sm}px;
+  padding: 0 ${spacing.sm}px;
+  border-radius: ${spacing.sm}px;
+  gap: ${spacing.s}px;
 `;

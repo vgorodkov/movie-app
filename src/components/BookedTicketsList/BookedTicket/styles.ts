@@ -4,7 +4,7 @@ import {spacing} from '@/constants/spacing';
 
 export const BookedTicketContainer = styled.View`
   flex-flow: row nowrap;
-  gap: ${spacing.s};
+  gap: ${spacing.s}px;
   background-color: #76767860;
   border-radius: 8px;
 `;

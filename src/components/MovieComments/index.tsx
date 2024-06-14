@@ -34,7 +34,7 @@ export const MovieComments = ({imdbid}: {imdbid: string}) => {
   };
 
   return (
-    <FlexContainer flex={1} gap={spacing.m} padding={`0 ${spacing.m} 0`}>
+    <FlexContainer flex={1} gap={spacing.m} padding={`0 ${spacing.m}px 0`}>
       <Typography
         alightSelf="flex-start"
         variant={TypographyVariant.LABEL_LARGE}>

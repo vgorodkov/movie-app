@@ -31,7 +31,7 @@ export const MovieCarousel = ({title}: MovieCarouselProps) => {
   return (
     <FlexContainer gap={spacing.sm}>
       <Typography
-        padding={`0 0 0 ${spacing.l}`}
+        padding={`0 0 0 ${spacing.l}px`}
         variant={TypographyVariant.SUBTITLE_LARGE}
         alightSelf="flex-start">
         {title}

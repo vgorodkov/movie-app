@@ -29,7 +29,7 @@ export const BookedTicket = ({
   return (
     <BookedTicketContainer>
       <BookedTicketImage source={{uri: movie.imageurl[0]}} />
-      <FlexContainer padding={spacing.s} flex={1} gap={spacing.xs}>
+      <FlexContainer padding={`${spacing.s}px`} flex={1} gap={spacing.xs}>
         <BookedTicketInformation
           movieName={movie.title}
           ticketId={ticketId}

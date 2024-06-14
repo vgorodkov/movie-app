@@ -31,7 +31,7 @@ export const BookingTicketScreen = ({route}: BookingTicketScreenProps) => {
     <FullscreenContainer
       gap={spacing.sm}
       justifyContent="space-between"
-      padding={spacing.m}>
+      padding={`${spacing.m}px`}>
       <BookingDatepicker />
       {isDateSelected ? (
         <>

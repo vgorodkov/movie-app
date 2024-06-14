@@ -4,5 +4,5 @@ import {spacing} from '@/constants/spacing';
 
 export const HeaderContainer = styled.View`
   align-items: center;
-  gap: ${spacing.sm};
+  gap: ${spacing.sm}px;
 `;

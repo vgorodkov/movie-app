@@ -5,10 +5,10 @@ import {spacing} from '@/constants/spacing';
 
 export const Headline = styled(Typography)`
   color: ${props => props.theme.colors.primary};
-  margin-bottom: ${spacing.s};
+  margin-bottom: ${spacing.s}px;
 `;
 
 export const contentListContentContainerStyle = {
-  gap: 32,
-  paddingHorizontal: 16,
+  gap: spacing.l,
+  paddingHorizontal: spacing.sm,
 };

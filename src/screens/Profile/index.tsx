@@ -13,7 +13,7 @@ export const ProfileScreen = () => {
       gap={spacing.l}
       justifyContent="space-between"
       alignItems="center"
-      padding={spacing.l}>
+      padding={`${spacing.l}px`}>
       <FlexContainer alignItems="center" gap={spacing.s}>
         <ProfileImage />
         <ProfileInformation />
