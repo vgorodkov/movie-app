@@ -5,7 +5,7 @@ import {useTranslation} from 'react-i18next';
 
 import {Typography, TypographyVariant} from '@/components/UI';
 import {SEAT_PRICE} from '@/constants/cinema';
-import {RootRoutes} from '@/constants/routes';
+import {BottomTabRoutes, RootRoutes} from '@/constants/routes';
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {addBookedTickets} from '@/store/slices/bookedTickets/thunk';
 import {ticketBookingSelector} from '@/store/slices/ticketBooking/selectors';
@@ -36,7 +36,9 @@ export const BookingSubmit = ({movieId}: {movieId: string}) => {
 
     try {
       dispatch(addBookedTickets(newBooking));
-      navigation.navigate(RootRoutes.BOTTOM_TAB);
+      navigation.navigate(RootRoutes.BOTTOM_TAB, {
+        screen: BottomTabRoutes.TICKETS,
+      });
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
