@@ -10,6 +10,8 @@ export const initBookedTickets = createAppAsyncThunk(
       const bookedTickets = await getData('booking');
       if (bookedTickets) {
         return bookedTickets;
+      } else {
+        return [];
       }
     } catch (err) {
       if (err instanceof Error) {
