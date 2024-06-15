@@ -11,10 +11,15 @@ interface ToggleButtonSide {
 interface ToggleButtonProps {
   left: ToggleButtonSide;
   right: ToggleButtonSide;
+  initialSide?: 'right' | 'left';
 }
 
-export const ToggleButton = ({left, right}: ToggleButtonProps) => {
-  const [activeSide, setActiveSide] = useState('right');
+export const ToggleButton = ({
+  left,
+  right,
+  initialSide = 'right',
+}: ToggleButtonProps) => {
+  const [activeSide, setActiveSide] = useState(initialSide);
 
   const onLeftSidePress = () => {
     setActiveSide('left');
