@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18next from 'i18next';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
@@ -12,8 +13,9 @@ import {SettingsModalProps} from './types';
 
 export const SettingsModal = ({navigation}: SettingsModalProps) => {
   const {t} = useTranslation('profile');
-  const onDropdownSelect = (optionCode: string) => {
+  const onDropdownSelect = async (optionCode: string) => {
     i18next.changeLanguage(optionCode);
+    await AsyncStorage.setItem('language', optionCode);
   };
 
   const initialOption = languages.find(

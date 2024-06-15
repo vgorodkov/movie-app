@@ -11,6 +11,7 @@ import ruHome from '@/i18n/ru/home.json';
 import ruProfile from '@/i18n/ru/profile.json';
 import ruTickets from '@/i18n/ru/tickets.json';
 import ruTop from '@/i18n/ru/top.json';
+import {languageDetector} from '@/utils/languageDetector';
 
 const resources = {
   en: {
@@ -29,14 +30,16 @@ const resources = {
   },
 };
 
-i18n.use(initReactI18next).init({
-  compatibilityJSON: 'v3',
-  resources,
-  lng: 'en',
-  fallbackLng: 'en',
-  interpolation: {
-    escapeValue: false,
-  },
-});
+i18n
+  .use(languageDetector)
+  .use(initReactI18next)
+  .init({
+    compatibilityJSON: 'v3',
+    resources,
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false,
+    },
+  });
 
 export default i18n;
