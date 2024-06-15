@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Typography, TypographyVariant} from '@/components/UI';
+import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {SeatLegendIcon} from './styles';
@@ -12,7 +13,10 @@ export const SeatLegend = ({
   label,
 }: SeatsLegendProps) => {
   return (
-    <FlexContainer flexFlow="row nowrap" gap="6px" alignItems="center">
+    <FlexContainer
+      flexFlow="row nowrap"
+      gap={spacing.s - 2}
+      alignItems="center">
       <SeatLegendIcon
         backgroundColor={backgroundColor}
         borderColor={borderColor}
