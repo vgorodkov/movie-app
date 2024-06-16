@@ -15,41 +15,25 @@ export const getRouteIcon = (
     case BottomTabRoutes.HOME:
       return (
         <Home
-          style={{
-            color: focused
-              ? theme.colors.primaryText
-              : theme.colors.disabledText,
-          }}
+          color={focused ? theme.colors.primaryText : theme.colors.disabledText}
         />
       );
     case BottomTabRoutes.TOP_MOVIES:
       return (
         <Top
-          style={{
-            color: focused
-              ? theme.colors.primaryText
-              : theme.colors.disabledText,
-          }}
+          color={focused ? theme.colors.primaryText : theme.colors.disabledText}
         />
       );
     case BottomTabRoutes.TICKETS:
       return (
         <Ticket
-          style={{
-            color: focused
-              ? theme.colors.primaryText
-              : theme.colors.disabledText,
-          }}
+          color={focused ? theme.colors.primaryText : theme.colors.disabledText}
         />
       );
     case BottomTabRoutes.PROFILE_NAV:
       return (
         <Profile
-          style={{
-            color: focused
-              ? theme.colors.primaryText
-              : theme.colors.disabledText,
-          }}
+          color={focused ? theme.colors.primaryText : theme.colors.disabledText}
         />
       );
   }

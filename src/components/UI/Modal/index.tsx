@@ -23,7 +23,7 @@ export const Modal = ({children, onBackdropPress, title}: ModalProps) => {
             <Typography variant={TypographyVariant.SUBTITLE_MEDIUM}>
               {title}
             </Typography>
-            <ExitIcon onPress={onBackdropPress} style={{color: 'white'}} />
+            <ExitIcon color="white" onPress={onBackdropPress} />
           </FlexContainer>
         )}
         {children}

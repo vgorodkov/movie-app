@@ -39,7 +39,7 @@ export const BookingDatepicker = () => {
         </Typography>
       </FlexContainer>
       <CalendarIcon
-        style={{color: theme.colors.primaryText}}
+        color={theme.colors.primaryText}
         onPress={onDatepickerIconPress}
         width={24}
         height={24}

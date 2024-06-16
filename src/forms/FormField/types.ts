@@ -1,9 +1,10 @@
-import {ReactNode} from 'react';
+import {FC} from 'react';
+import {SvgProps} from 'react-native-svg';
 
 export interface FormFieldProps {
   name: string;
   placeholder: string;
-  IconComponent: ReactNode;
+  IconComponent: FC<SvgProps>;
   hideInputValue?: boolean;
   showInputDifficulty?: boolean;
 }

@@ -47,11 +47,7 @@ export const AvaibleSession = ({
         Cinema: {cinemaType}
       </Typography>
       <FlexContainer flexFlow="row nowrap" gap={spacing.xs}>
-        <SeatIcon
-          style={{color: theme.colors.primaryText}}
-          width={16}
-          height={16}
-        />
+        <SeatIcon color={theme.colors.primaryText} width={16} height={16} />
         <Typography variant={TypographyVariant.BODY_SMALL}>
           {AVAIBLE_SEATS_AMOUNT} {t('seats avaible')}
         </Typography>

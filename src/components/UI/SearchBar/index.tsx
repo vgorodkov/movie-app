@@ -2,15 +2,11 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {TextInput} from 'react-native';
 
-import {Icon} from '../Icon';
-import {PressableIcon} from '../PressableIcon';
-import {SearchBarContainer} from './styles';
+import FilterIcon from '@/assets/icons/filter.svg';
+import SearchIcon from '@/assets/icons/search.svg';
 
-export interface SearchBarProps {
-  value: string;
-  onValueChange: (value: string) => void;
-  onFiltersPress: () => void;
-}
+import {SearchBarContainer} from './styles';
+import {SearchBarProps} from './types';
 
 export const SearchBar = ({
   value,
@@ -20,23 +16,14 @@ export const SearchBar = ({
   const {t} = useTranslation('top');
   return (
     <SearchBarContainer>
-      <Icon
-        source={require('@/assets/icons/search.png')}
-        width={16}
-        height={16}
-      />
+      <SearchIcon width={16} height={16} />
       <TextInput
         value={value}
         onChangeText={onValueChange}
         style={{flex: 1}}
         placeholder={t('SearchBarPlaceholder')}
       />
-      <PressableIcon
-        onPress={onFiltersPress}
-        icon={require('@/assets/icons/filter.png')}
-        width={16}
-        height={16}
-      />
+      <FilterIcon onPress={onFiltersPress} width={16} height={16} />
     </SearchBarContainer>
   );
 };

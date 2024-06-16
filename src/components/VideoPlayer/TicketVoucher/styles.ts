@@ -11,8 +11,3 @@ export const TicketVoucherContainer = styled.View`
   gap: ${spacing.xs}px;
   z-index: 10;
 `;
-
-export const TicketVoucherIcon = styled.Image`
-  width: 24px;
-  height: 24px;
-`;

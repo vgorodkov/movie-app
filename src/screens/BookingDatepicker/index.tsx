@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 import {Calendar, DateData} from 'react-native-calendars';
 import {useTheme} from 'styled-components';
 
-import CancelIcon from '@/assets/icons/cancel';
+import CancelIcon from '@/assets/icons/cancel.svg';
 import {Modal, Typography, TypographyVariant} from '@/components/UI';
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {selectDate} from '@/store/slices/ticketBooking';
@@ -42,7 +42,7 @@ export const BookingDatepickerModal = ({
           {t('Choose visiting day')}
         </Typography>
         <CancelIcon
-          style={{color: theme.colors.primaryText}}
+          color={theme.colors.primaryText}
           onPress={closeModal}
           width={24}
           height={24}
