@@ -1,9 +1,11 @@
 import {useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
 
-import {showToast} from '@/utils/showToast';
+import {useAppDispatch} from '@/store/hooks';
+import {showToast, ToastStatus} from '@/store/slices/toast';
 
 export const useImagePick = () => {
+  const dispatch = useAppDispatch();
   const [imagePath, setImagePath] = useState<null | string>(null);
 
   const handleImagePick = async () => {
@@ -17,7 +19,12 @@ export const useImagePick = () => {
       setImagePath(image.path);
     } catch (err) {
       if (err instanceof Error) {
-        showToast(err.message);
+        dispatch(
+          showToast({
+            status: ToastStatus.ERROR,
+            content: err.message,
+          }),
+        );
       }
     }
   };

@@ -10,6 +10,7 @@ import {MOCK_DATA} from '@/data/mockMovies';
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {addBookedTickets} from '@/store/slices/bookedTickets/thunk';
 import {ticketBookingSelector} from '@/store/slices/ticketBooking/selectors';
+import {showToast, ToastStatus} from '@/store/slices/toast';
 import {FlexContainer} from '@/styled/FlexContainer';
 import {BookingTicket} from '@/types/booking';
 import {scheduleNotification} from '@/utils/scheduleNotification';
@@ -54,6 +55,12 @@ export const BookingSubmit = ({movieId}: {movieId: string}) => {
       navigation.navigate(RootRoutes.BOTTOM_TAB, {
         screen: BottomTabRoutes.TICKETS,
       });
+      dispatch(
+        showToast({
+          status: ToastStatus.SUCCESS,
+          content: 'Ticket was successfully booked!',
+        }),
+      );
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);

@@ -6,10 +6,10 @@ import {useDispatch} from 'react-redux';
 import {useTheme} from 'styled-components';
 
 import {LoadingBackdrop} from '@/components/UI/LoadingBackdrop';
+import {useHandleError} from '@/hooks/useHandleError';
 import {setUser} from '@/store/slices/user';
 import {addUserToFirestore} from '@/utils/addUserToFirestore';
 import {getUserData} from '@/utils/firebase/getUserData';
-import {handleAuthError} from '@/utils/handleAuthError';
 
 import {AuthButton} from './styles';
 import {AuthSubmitButtonProps} from './types';
@@ -19,11 +19,11 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
   const dispatch = useDispatch();
   const {t} = useTranslation('auth');
   const {handleSubmit} = useFormContext<FieldValues>();
+  const showErrorToast = useHandleError();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleAuth = async (data: FieldValues) => {
     const {email, name, surname, password} = data;
-
     setIsLoading(true);
     try {
       if (isSignUp) {
@@ -41,7 +41,7 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
         }
       }
     } catch (error) {
-      handleAuthError(error as {code: string; message: string});
+      showErrorToast(error.code);
     } finally {
       setIsLoading(false);
     }
