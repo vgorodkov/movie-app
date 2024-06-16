@@ -1,15 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
-import {useTheme} from 'styled-components';
+import {useTranslation} from 'react-i18next';
 
-import Cancel from '@/assets/icons/cancel.svg';
-import {Modal, Typography, TypographyVariant} from '@/components/UI';
+import {Modal} from '@/components/UI';
 import {AuthForm} from '@/forms/AuthForm';
-import {FlexContainer} from '@/styled/FlexContainer';
 
 import {AuthModalProps} from './types';
 
 export const AuthModal = ({title, isSignUp = false}: AuthModalProps) => {
-  const theme = useTheme();
+  const {t} = useTranslation('auth');
   const navigation = useNavigation();
 
   const closeModal = () => {
@@ -17,21 +15,7 @@ export const AuthModal = ({title, isSignUp = false}: AuthModalProps) => {
   };
 
   return (
-    <Modal onBackdropPress={closeModal}>
-      <FlexContainer
-        flexFlow="row nowrap"
-        justifyContent="space-between"
-        alignItems="center">
-        <Typography variant={TypographyVariant.SUBTITLE_LARGE}>
-          {title}
-        </Typography>
-        <Cancel
-          style={{color: theme.colors.primaryText}}
-          onPress={closeModal}
-          width={24}
-          height={24}
-        />
-      </FlexContainer>
+    <Modal title={t(title)} onBackdropPress={closeModal}>
       <AuthForm isSignUp={isSignUp} />
     </Modal>
   );

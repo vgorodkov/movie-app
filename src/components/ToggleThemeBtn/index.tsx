@@ -14,12 +14,12 @@ export const ToggleThemeBtn = () => {
   const isDarkTheme =
     useAppSelector(selectedThemeSelector) === ThemeVariant.DARK;
 
-  const onLeftSidePress = async () => {
+  const onLeftSidePress = () => {
     AsyncStorage.setItem('theme', ThemeVariant.LIGHT);
     dispatch(selectTheme(ThemeVariant.LIGHT));
   };
 
-  const onRightSidePress = async () => {
+  const onRightSidePress = () => {
     AsyncStorage.setItem('theme', ThemeVariant.DARK);
     dispatch(selectTheme(ThemeVariant.DARK));
   };

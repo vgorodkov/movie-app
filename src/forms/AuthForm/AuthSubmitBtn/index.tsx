@@ -1,6 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import React, {useState} from 'react';
 import {FieldValues, useFormContext} from 'react-hook-form';
+import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {useTheme} from 'styled-components';
 
@@ -16,6 +17,7 @@ import {AuthSubmitButtonProps} from './types';
 export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const {t} = useTranslation('auth');
   const {handleSubmit} = useFormContext<FieldValues>();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -56,7 +58,7 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
         color={theme.colors.onPrimary}
         disabled={isLoading}
         onPress={handleSubmit(onSubmit)}>
-        {isSignUp ? 'Sign Up' : 'Sign In'}
+        {isSignUp ? t('SignUp') : t('SignIn')}
       </AuthButton>
     </>
   );
