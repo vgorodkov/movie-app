@@ -18,10 +18,12 @@ import bookedTicketsReducer from './slices/bookedTickets';
 import movieGenreReducer from './slices/movieGenre';
 import themeReducer from './slices/themeSlice';
 import ticketBookingReducer from './slices/ticketBooking';
+import toastReducer from './slices/toast';
 import topMovieFiltersReducer from './slices/topMovieFilters';
 import userReducer from './slices/user';
 
 const rootReducer = combineReducers({
+  toast: toastReducer,
   bookedTickets: bookedTicketsReducer,
   user: userReducer,
   movieGenre: movieGenreReducer,
