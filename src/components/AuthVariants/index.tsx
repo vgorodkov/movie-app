@@ -4,10 +4,10 @@ import {useTranslation} from 'react-i18next';
 import {Button} from '@/components/UI';
 import {AuthRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
+import {useHandleError} from '@/hooks/useHandleError';
 import {FlexContainer} from '@/styled/FlexContainer';
 import {facebookSignIn} from '@/utils/facebookSignIn';
 import {googleSignIn} from '@/utils/googleSignIn';
-import {handleAuthError} from '@/utils/handleAuthError';
 
 import {AUTH_VARIANTS} from './constants';
 import {LogInLink} from './LogInLink';
@@ -15,6 +15,7 @@ import {AuthVariantName} from './types';
 
 export const AuthVariants = () => {
   const navigation = useNavigation();
+  const showErrorToast = useHandleError();
   const {t} = useTranslation('auth');
 
   const onAccountCreateBtnPress = () => {
@@ -34,7 +35,7 @@ export const AuthVariants = () => {
     try {
       await authFunctions[name]();
     } catch (error) {
-      handleAuthError(error as {code: string; message: string});
+      showErrorToast(error.code);
     }
   };
 

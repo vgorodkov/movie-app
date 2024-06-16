@@ -3,10 +3,10 @@ import {FieldValues, useFormContext} from 'react-hook-form';
 
 import {Button} from '@/components/UI';
 import {useAppDispatch} from '@/store/hooks';
+import {showToast, ToastStatus} from '@/store/slices/toast';
 import {updateUser} from '@/store/slices/user';
 import {reauth} from '@/utils/firebase/reauth';
 import {updateFirestoreUser} from '@/utils/firebase/updateFirestoreUser';
-import {showToast} from '@/utils/showToast';
 
 export const EditFormSubmitBtn = () => {
   const {handleSubmit} = useFormContext();
@@ -18,7 +18,12 @@ export const EditFormSubmitBtn = () => {
     const user = firebase.auth().currentUser;
 
     if (!user) {
-      showToast('User not authenticated');
+      dispatch(
+        showToast({
+          status: ToastStatus.ERROR,
+          content: 'User not authenticated',
+        }),
+      );
       return;
     }
 
@@ -27,10 +32,20 @@ export const EditFormSubmitBtn = () => {
       await updateFirestoreUser(user, {name, surname, newPassword});
       await user.updatePassword(newPassword);
       dispatch(updateUser({name, surname}));
-      showToast('User information was succesfully updated');
+      dispatch(
+        showToast({
+          status: ToastStatus.SUCCESS,
+          content: 'User information was succesfully updated',
+        }),
+      );
     } catch (err) {
       if (err instanceof Error) {
-        showToast(err.message);
+        dispatch(
+          showToast({
+            status: ToastStatus.ERROR,
+            content: err.message,
+          }),
+        );
       }
     }
   };
