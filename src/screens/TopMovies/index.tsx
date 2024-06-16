@@ -16,7 +16,7 @@ export const TopMoviesScreen = ({navigation}: TopMoviesScreenProps) => {
   const yearFilter = useAppSelector(state => state.topMovieFilters.year);
   const ratingFilter = useAppSelector(state => state.topMovieFilters.rating);
   const filteredData = filterMovies(data, {
-    title: movieTitleQuery,
+    title: movieTitleQuery.trim(),
     year: yearFilter,
     rating: ratingFilter,
   });
