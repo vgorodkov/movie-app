@@ -10,6 +10,7 @@ export {Modal} from './Modal';
 export {PressableIcon} from './PressableIcon';
 export {Separator} from './Separator';
 export {StarIcon} from './StarIcon';
+export {Toast} from './Toast';
 export {ToggleButton} from './ToggleButton';
 export {Typography} from './Typography';
 export {TypographyVariant} from './Typography/types';
