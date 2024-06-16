@@ -5,25 +5,25 @@ export const SIGN_IN_FORM = [
   },
   {
     name: 'password',
-    placeholder: '************************* ',
+    placeholder: '**********************',
   },
 ];
 
 export const SIGN_UP_FORM = [
   {
     name: 'name',
-    placeholder: 'Enter your name',
+    placeholder: 'NamePlaceholder',
   },
   {
     name: 'surname',
-    placeholder: 'Enter your surname',
+    placeholder: 'SurnamePlaceholder',
   },
   {
     name: 'email',
-    placeholder: 'Enter your email',
+    placeholder: 'EmailPlaceholder',
   },
   {
     name: 'password',
-    placeholder: 'Enter strong password',
+    placeholder: 'PasswordPlaceholder',
   },
 ];
