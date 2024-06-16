@@ -4,11 +4,14 @@ import Video, {VideoRef} from 'react-native-video';
 import {TypographyVariant} from '../UI/Typography/types';
 import {MOCK_VIDEO_URI} from './constants';
 import {PlayBtn} from './PlayBtn';
-import {ShareBtn} from './ShareBtn';
-import {styles, VideoContainer} from './styles';
+import {
+  ShareBtn,
+  styles,
+  VideoContainer,
+  VideoThumbnail,
+  VideoTitle,
+} from './styles';
 import {TicketVoucher} from './TicketVoucher';
-import {VideoThumbnail} from './VideoThumbnail';
-import {VideoTitle} from './VideoTitle';
 
 export const VideoPlayer = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -40,7 +43,7 @@ export const VideoPlayer = () => {
           <VideoTitle variant={TypographyVariant.LABEL_LARGE}>
             The Trailer
           </VideoTitle>
-          <ShareBtn source={require('@/assets/icons/share.png')} />
+          <ShareBtn />
           <TicketVoucher />
           <PlayBtn handlePlayBtn={handlePlayBtn} />
           <VideoThumbnail source={require('@/assets/imgs/movie_4.png')} />
