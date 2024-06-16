@@ -1,3 +1,5 @@
+import {NavigatorScreenParams} from '@react-navigation/native';
+
 import {
   AuthRoutes,
   BottomTabRoutes,
@@ -9,7 +11,7 @@ export type RootStackParamList = {
   [AuthRoutes.WELCOME]: undefined;
   [AuthRoutes.SIGN_UP]: undefined;
   [AuthRoutes.SIGN_IN]: undefined;
-  [RootRoutes.BOTTOM_TAB]: undefined;
+  [RootRoutes.BOTTOM_TAB]: NavigatorScreenParams<BottomTabParamList>;
   [RootRoutes.MOVIE_DETAILS]: {
     title: string;
     imageurl: string;
@@ -32,7 +34,7 @@ export type BottomTabParamList = {
   [BottomTabRoutes.HOME]: undefined;
   [BottomTabRoutes.TOP_MOVIES]: undefined;
   [BottomTabRoutes.TICKETS]: undefined;
-  [BottomTabRoutes.PROFILE_NAV]: undefined;
+  [BottomTabRoutes.PROFILE_NAV]: NavigatorScreenParams<ProfileStackParamList>;
 };
 
 export type ProfileStackParamList = {
