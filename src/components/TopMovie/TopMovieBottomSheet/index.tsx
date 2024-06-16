@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useWindowDimensions} from 'react-native';
-import {useAnimatedStyle, useSharedValue} from 'react-native-reanimated';
+import {useDerivedValue, withTiming} from 'react-native-reanimated';
 
 import {INITIAL_HEIGHT} from './constants';
 import {Content} from './Content';
@@ -10,13 +10,14 @@ import {BottomSheetContainer} from './styles';
 export const TopMovieBottomSheet = ({imdbid}: {imdbid: string}) => {
   const [isOpen, setIsOpen] = useState(false);
   const {height} = useWindowDimensions();
-  const bottomSheetTranslateY = useSharedValue(INITIAL_HEIGHT);
 
-  const bottomSheetAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{translateY: bottomSheetTranslateY.value}],
-    };
-  });
+  const bottomSheetTranslateY = useDerivedValue(() => {
+    if (isOpen) {
+      return withTiming(0);
+    }
+
+    return withTiming(INITIAL_HEIGHT);
+  }, [isOpen]);
 
   const openBottomSheet = () => {
     setIsOpen(true);
@@ -27,10 +28,11 @@ export const TopMovieBottomSheet = ({imdbid}: {imdbid: string}) => {
   };
 
   return (
-    <BottomSheetContainer height={height} style={bottomSheetAnimatedStyle}>
+    <BottomSheetContainer
+      height={height}
+      style={{transform: [{translateY: bottomSheetTranslateY}]}}>
       <Header
         imdbid={imdbid}
-        bottomSheetTranslateY={bottomSheetTranslateY}
         isOpen={isOpen}
         openBottomSheet={openBottomSheet}
         closeBottomSheet={closeBottomSheet}

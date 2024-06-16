@@ -1,7 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {memo} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Image} from 'react-native';
 import {useTheme} from 'styled-components';
 
 import {Typography, TypographyVariant} from '@/components/UI';
@@ -10,7 +9,7 @@ import {RootRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
-import {TopFilmMoreButton} from './styles';
+import {TopFilmImage, TopFilmMoreButton} from './styles';
 import {TopMovieProps} from './types';
 
 export const TopMovie = memo(
@@ -27,27 +26,19 @@ export const TopMovie = memo(
 
     return (
       <FlexContainer flexFlow="row nowrap" gap={spacing.sm}>
-        <Image style={{flex: 0.25}} source={{uri: image}} />
+        <TopFilmImage source={{uri: image}} />
         <FlexContainer flex={0.75} justifyContent="space-between">
           <FlexContainer gap={spacing.xs}>
-            <Typography
-              variant={TypographyVariant.LABEL_LARGE}
-              alightSelf="flex-start">
+            <Typography variant={TypographyVariant.LABEL_LARGE}>
               {rank}. {title} ({year})
             </Typography>
-            <Typography
-              variant={TypographyVariant.BODY_MEDIUM}
-              alightSelf="flex-start">
+            <Typography variant={TypographyVariant.BODY_MEDIUM}>
               Genre: {genre.join(', ')}
             </Typography>
-            <Typography
-              variant={TypographyVariant.BODY_MEDIUM}
-              alightSelf="flex-start">
+            <Typography variant={TypographyVariant.BODY_MEDIUM}>
               Authors: Ilya, Stanislav, Marina
             </Typography>
-            <Typography
-              alightSelf="flex-start"
-              variant={TypographyVariant.LABEL_LARGE}>
+            <Typography variant={TypographyVariant.LABEL_LARGE}>
               {rating} <StarIcon />
             </Typography>
           </FlexContainer>

@@ -8,3 +8,7 @@ export const TopFilmMoreButton = styled.Pressable`
   padding: ${spacing.s}px ${spacing.sm}px;
   border-radius: 8px;
 `;
+
+export const TopFilmImage = styled.Image`
+  flex: 0.25;
+`;

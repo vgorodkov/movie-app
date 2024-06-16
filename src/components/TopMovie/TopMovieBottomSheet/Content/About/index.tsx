@@ -7,7 +7,7 @@ import Animated, {
   useDerivedValue,
 } from 'react-native-reanimated';
 
-import {ANIMATION_DURATION} from '@/components/TopMovieBottomSheet/constants';
+import {ANIMATION_DURATION} from '@/components/TopMovie/TopMovieBottomSheet/constants';
 import {Typography, TypographyVariant} from '@/components/UI';
 import {BackdropGradient} from '@/components/UI/BackdropGradient';
 
@@ -23,7 +23,6 @@ export const About = ({plotSummary}: {plotSummary: string}) => {
     if (!isDescriptionShown) {
       return DESCIPTION_HEIGHT_LIMIT;
     }
-    return 100000000;
   }, [isDescriptionShown]);
 
   const toggleDescription = () => {

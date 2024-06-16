@@ -63,11 +63,7 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
       </Headline>
       <FlexContainer flexFlow="row nowrap" gap={spacing.s} alignItems="center">
         <ArrowBackward
-          style={{
-            color: isFirst
-              ? theme.colors.disabledText
-              : theme.colors.primaryText,
-          }}
+          color={isFirst ? theme.colors.disabledText : theme.colors.primaryText}
           width={20}
           height={15}
           onPress={scrollBackward}
@@ -85,11 +81,7 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
         </FlexContainer>
 
         <ArrowForward
-          style={{
-            color: isLast
-              ? theme.colors.disabledText
-              : theme.colors.primaryText,
-          }}
+          color={isLast ? theme.colors.disabledText : theme.colors.primaryText}
           width={20}
           height={15}
           onPress={scrollForward}

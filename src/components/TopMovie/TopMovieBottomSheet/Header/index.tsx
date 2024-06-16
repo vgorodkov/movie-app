@@ -1,9 +1,9 @@
 import React, {useRef} from 'react';
 import {PanResponder} from 'react-native';
-import Animated, {FadeIn, FadeOut, withTiming} from 'react-native-reanimated';
+import Animated, {FadeIn, FadeOut} from 'react-native-reanimated';
 
+import SwipeTop from '@/assets/icons/swipe_top.svg';
 import {
-  Icon,
   Separator,
   StarIcon,
   Typography,
@@ -11,16 +11,11 @@ import {
 } from '@/components/UI';
 import {mockTop100Movies} from '@/data/top100Mock';
 
-import {
-  ANIMATION_DURATION,
-  INITIAL_HEIGHT,
-  SWIPE_THRESHOLD,
-} from '../constants';
+import {ANIMATION_DURATION, SWIPE_THRESHOLD} from '../constants';
 import {HeaderContainer} from './styles';
 import {HeaderProps} from './types';
 
 export const Header = ({
-  bottomSheetTranslateY,
   isOpen,
   openBottomSheet,
   closeBottomSheet,
@@ -37,10 +32,8 @@ export const Header = ({
       onPanResponderRelease: (_, gestureState) => {
         if (gestureState.dy < -SWIPE_THRESHOLD) {
           openBottomSheet();
-          bottomSheetTranslateY.value = withTiming(0);
         } else {
           closeBottomSheet();
-          bottomSheetTranslateY.value = withTiming(INITIAL_HEIGHT);
         }
       },
     }),
@@ -71,11 +64,7 @@ export const Header = ({
         <Animated.View
           entering={FadeIn.delay(ANIMATION_DURATION)}
           exiting={FadeOut}>
-          <Icon
-            width={64}
-            height={64}
-            source={require('@/assets/icons/swipe_top.png')}
-          />
+          <SwipeTop width={64} height={64} />
         </Animated.View>
       )}
     </HeaderContainer>
