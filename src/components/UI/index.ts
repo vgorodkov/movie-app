@@ -5,6 +5,7 @@ export {Icon} from './Icon';
 export {Input} from './Input';
 export {InputRange} from './InputRange';
 export {LoadingBackdrop} from './LoadingBackdrop';
+export {LoadingFallback} from './LoadingFallback';
 export {Modal} from './Modal';
 export {PressableIcon} from './PressableIcon';
 export {Separator} from './Separator';
