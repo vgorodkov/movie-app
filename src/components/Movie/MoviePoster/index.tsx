@@ -10,12 +10,9 @@ import {RootRoutes} from '@/constants/routes';
 
 import {BackdropGradient} from './BackdropGradient';
 import {MovieImageBackground} from './styles';
+import {MoviePosterProps} from './types';
 
-interface MovieDetailsPosterProps {
-  movieId: string;
-}
-
-export const MovieDetailsPoster = ({movieId}: MovieDetailsPosterProps) => {
+export const MoviePoster = ({movieId}: MoviePosterProps) => {
   const {t} = useTranslation('home');
   const theme = useTheme();
   const navigation = useNavigation();

@@ -5,8 +5,6 @@ import {FlatList, KeyboardAvoidingView} from 'react-native';
 import {Input, Typography, TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
 import {useMovieComments} from '@/hooks/useMovieComments';
-import {useAppSelector} from '@/store/hooks';
-import {userSelector} from '@/store/slices/user/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {EmptyCommentsList} from './EmptyCommentsList';
@@ -16,11 +14,8 @@ import {Comment} from './types';
 
 export const MovieComments = ({imdbid}: {imdbid: string}) => {
   const {t} = useTranslation('home');
-  const user = useAppSelector(userSelector);
   const [commentText, setCommentText] = useState('');
-  const {comments, addComment} = useMovieComments(imdbid);
-
-  const author = `${user?.name} ${user?.surname}`;
+  const {author, comments, addComment} = useMovieComments(imdbid);
 
   const onInputSubmit = () => {
     const newComment: Comment = {
@@ -46,7 +41,7 @@ export const MovieComments = ({imdbid}: {imdbid: string}) => {
           onChangeText={setCommentText}
           onSubmitEditing={onInputSubmit}
           author={author}
-          placeholder="Add a comment.."
+          placeholder={t('CommentsInputPlaceholder')}
         />
         <FlatList
           contentContainerStyle={styles.commentsListContentContainer}

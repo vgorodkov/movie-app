@@ -17,13 +17,13 @@ export const MovieCarousel = ({title}: MovieCarouselProps) => {
   //const {data, isError, error, isLoading} = useGetMoviesQuery(selectedGenre);
   const scrollOffset = useSharedValue(0);
 
-  /* if (isLoading) {
-    return null;
+  /*  if (isLoading) {
+    return <LoadingFallback />;
   }
   if (isError) {
     console.error(error);
-  } */
-
+  }
+ */
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     scrollOffset.value = e.nativeEvent.contentOffset.x;
   };
