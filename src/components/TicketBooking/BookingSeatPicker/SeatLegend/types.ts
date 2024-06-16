@@ -1,5 +1,5 @@
+import {SeatLegendVariant} from '../constants';
+
 export interface SeatsLegendProps {
-  borderColor?: string;
-  backgroundColor?: string;
-  label: string;
+  type: SeatLegendVariant;
 }

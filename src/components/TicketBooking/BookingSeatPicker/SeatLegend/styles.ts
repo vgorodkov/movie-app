@@ -1,12 +1,19 @@
 import styled from 'styled-components/native';
 
+import {SeatLegendVariant} from '../constants';
+
 export const SeatLegendIcon = styled.View<{
-  borderColor: string;
-  backgroundColor: string;
+  type: SeatLegendVariant;
 }>`
   width: 16px;
   height: 16px;
-  border: ${props => `1px solid ${props.borderColor}`};
-  background-color: ${props => props.backgroundColor};
+  border: 1px solid;
+  border-color: ${props => props.theme.colors.primaryText};
+  background-color: ${props =>
+    props.type === SeatLegendVariant.RESERVED
+      ? props.theme.colors.border
+      : props.type === SeatLegendVariant.SELECTED
+      ? props.theme.colors.primary
+      : 'transparent'};
   border-radius: 4px;
 `;

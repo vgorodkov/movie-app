@@ -1,6 +1,5 @@
 import React, {useMemo} from 'react';
 import {useTranslation} from 'react-i18next';
-import {useTheme} from 'styled-components';
 
 import {Typography, TypographyVariant} from '@/components/UI';
 import {TOTAL_SEATS} from '@/constants/cinema';
@@ -10,38 +9,23 @@ import {reservedSeatsSelector} from '@/store/slices/ticketBooking/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 import {generateCinemaSeats} from '@/utils/generateCinemaSeats';
 
-import {EMPTY_SEAT_INDEX} from './constants';
-import {Seat} from './Seat';
+import {seatLegend} from './constants';
 import {SeatLegend} from './SeatLegend';
+import {SeatsSide} from './SeatsSide';
 import {LeftSeats, RightSeats} from './styles';
 
 export const BookingSeatPicker = () => {
-  const theme = useTheme();
   const {t} = useTranslation('home');
   const reservedSeats = useAppSelector(reservedSeatsSelector);
   const seats = useMemo(() => {
     return generateCinemaSeats(TOTAL_SEATS, reservedSeats);
   }, [reservedSeats]);
 
-  const seatLegend = [
-    {
-      label: t('Avaible'),
-      borderColor: theme.colors.primaryText,
-    },
-    {
-      label: t('Reserved'),
-      backgroundColor: theme.colors.border,
-      borderColor: theme.colors.primaryText,
-    },
-    {
-      label: t('Selected'),
-      backgroundColor: theme.colors.primary,
-      borderColor: theme.colors.primaryText,
-    },
-  ];
-
-  const leftSideSeats = seats.slice(0, TOTAL_SEATS / 2);
-  const rightSideSeats = seats.slice(TOTAL_SEATS / 2, TOTAL_SEATS);
+  const leftSideSeats = useMemo(() => seats.slice(0, TOTAL_SEATS / 2), [seats]);
+  const rightSideSeats = useMemo(
+    () => seats.slice(TOTAL_SEATS / 2, TOTAL_SEATS),
+    [seats],
+  );
 
   return (
     <FlexContainer flex={1} gap={spacing.sm}>
@@ -50,43 +34,17 @@ export const BookingSeatPicker = () => {
       </Typography>
       <FlexContainer flexFlow="row nowrap" justifyContent="space-between">
         <LeftSeats>
-          {leftSideSeats.map((seat, index) => {
-            const {id, isReserved} = seat;
-            return (
-              <Seat
-                key={id}
-                id={id}
-                isReserved={isReserved}
-                isFirst={index === 0}
-                isFirstInLastRow={index === EMPTY_SEAT_INDEX}
-              />
-            );
-          })}
+          <SeatsSide seats={leftSideSeats} />
         </LeftSeats>
         <RightSeats>
-          {rightSideSeats.map((seat, index) => {
-            const {id, isReserved} = seat;
-            return (
-              <Seat
-                key={id}
-                id={id}
-                isReserved={isReserved}
-                isFirst={index === 0}
-                isFirstInLastRow={index === EMPTY_SEAT_INDEX}
-              />
-            );
-          })}
+          <SeatsSide seats={rightSideSeats} />
         </RightSeats>
       </FlexContainer>
       <FlexContainer flexFlow="row nowrap" justifyContent="space-around">
-        {seatLegend.map(legend => (
-          <SeatLegend
-            key={legend.label}
-            label={legend.label}
-            borderColor={legend.borderColor}
-            backgroundColor={legend.backgroundColor}
-          />
-        ))}
+        {seatLegend.map(legend => {
+          const {type} = legend;
+          return <SeatLegend key={type} type={type} />;
+        })}
       </FlexContainer>
     </FlexContainer>
   );

@@ -4,7 +4,7 @@ import {spacing} from '@/constants/spacing';
 
 export const MovieSessionContainer = styled.Pressable<{isActive: boolean}>`
   display: flex;
-  gap: 2px;
+  gap: ${spacing.xs / 2}px;
   padding: ${spacing.s}px ${spacing.sm}px;
   border-radius: 6px;
   background-color: ${props => props.theme.colors.border};
