@@ -1,28 +1,19 @@
 import React from 'react';
-import type {TextInputProps, TextProps as RNTextProps} from 'react-native';
-import {StyleSheet, TextInput} from 'react-native';
+import {TextInput} from 'react-native';
 import Animated, {useAnimatedProps} from 'react-native-reanimated';
 
-const styles = StyleSheet.create({
-  baseStyle: {
-    color: 'black',
-  },
-});
-Animated.addWhitelistedNativeProps({text: true});
+import {styles} from './styles';
+import {AnimatedTextProps} from './types';
 
-interface TextProps extends Omit<TextInputProps, 'value' | 'style'> {
-  text: Animated.SharedValue<string>;
-  style?: Animated.AnimateProps<RNTextProps>['style'];
-}
+Animated.addWhitelistedNativeProps({text: true});
 
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
-export const AnimatedText = (props: TextProps) => {
+export const AnimatedText = (props: AnimatedTextProps) => {
   const {style, text, ...rest} = props;
   const animatedProps = useAnimatedProps(() => {
     return {
       text: text.value,
-      // Here we use any because the text prop is not available in the type
     } as any;
   });
   return (
