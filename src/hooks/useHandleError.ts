@@ -13,7 +13,6 @@ export const useHandleError = () => {
   const dispatch = useAppDispatch();
 
   const showErrorToast = (errCode: string) => {
-    console.log(errCode);
     dispatch(
       showToast({
         status: ToastStatus.ERROR,
