@@ -7,7 +7,10 @@ const colors = {
   primaryText: '#000000',
   disabledText: '#00000080',
   onPrimary: '#FFFFFF',
-  error: '#D32F2F',
+  error: '#FE4443',
+  success: '#01C851',
+  warning: '#FFBB33',
+  info: '#33B5E7',
   modalBackground: '#F0F0F0',
 };
 
