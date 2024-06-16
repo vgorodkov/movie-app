@@ -4,7 +4,7 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {Linking} from 'react-native';
 
-import {ProfileRoutes} from '@/constants/routes';
+import {BottomTabRoutes, ProfileRoutes, RootRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 
 import {PRIVATE_POLICY_URL} from './constants';
@@ -19,11 +19,21 @@ export const ProfileActions = () => {
   };
 
   const onEditBtnPress = () => {
-    navigation.navigate(ProfileRoutes.EDIT);
+    navigation.navigate(RootRoutes.BOTTOM_TAB, {
+      screen: BottomTabRoutes.PROFILE_NAV,
+      params: {
+        screen: ProfileRoutes.EDIT,
+      },
+    });
   };
 
   const onSettingsBtnPress = () => {
-    navigation.navigate(ProfileRoutes.SETTINGS);
+    navigation.navigate(RootRoutes.BOTTOM_TAB, {
+      screen: BottomTabRoutes.PROFILE_NAV,
+      params: {
+        screen: ProfileRoutes.SETTINGS,
+      },
+    });
   };
 
   const onPrivatePolicyBtnPress = () => {
