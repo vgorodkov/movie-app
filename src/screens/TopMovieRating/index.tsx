@@ -1,7 +1,9 @@
 import React from 'react';
 
-import {GradientMoviePoster} from '@/components/GradientMoviePoster';
-import {TopMovieBottomSheet} from '@/components/TopMovieBottomSheet';
+import {
+  TopMovieBottomSheet,
+  TopMovieGradientPoster,
+} from '@/components/TopMovie';
 import {FullscreenContainer} from '@/styled/FlexContainer';
 
 import {TopMovieScreenProps} from './types';
@@ -11,7 +13,7 @@ export const TopMovieRatingScreen = ({route}: TopMovieScreenProps) => {
 
   return (
     <FullscreenContainer>
-      <GradientMoviePoster movieId={movieId} />
+      <TopMovieGradientPoster movieId={movieId} />
       <TopMovieBottomSheet imdbid={imdbid} />
     </FullscreenContainer>
   );

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {TopMoviesList} from '@/components/TopMoviesList';
+import {TopMoviesList} from '@/components/TopMovie';
 import {SearchBar} from '@/components/UI/SearchBar';
 import {RootRoutes} from '@/constants/routes';
 import {mockTop100Movies} from '@/data/top100Mock';
