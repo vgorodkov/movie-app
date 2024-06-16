@@ -1,8 +1,10 @@
 import React from 'react';
 
-import {ProfileActions} from '@/components/ProfileActions';
-import {ProfileImage} from '@/components/ProfileImage';
-import {ProfileInformation} from '@/components/ProfileInformation';
+import {
+  ProfileActions,
+  ProfileImage,
+  ProfileInformation,
+} from '@/components/Profile';
 import {ToggleThemeBtn} from '@/components/ToggleThemeBtn';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer, FullscreenContainer} from '@/styled/FlexContainer';

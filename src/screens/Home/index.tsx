@@ -1,7 +1,7 @@
 import {useTranslation} from 'react-i18next';
 
 import {AvaibleGenreList} from '@/components/AvaibleGenreList';
-import {MovieCarousel} from '@/components/MovieCarousel';
+import {MovieCarousel} from '@/components/Movie/MovieCarousel';
 import {Typography, TypographyVariant} from '@/components/UI';
 import {VideoPlayer} from '@/components/VideoPlayer';
 import {spacing} from '@/constants/spacing';
