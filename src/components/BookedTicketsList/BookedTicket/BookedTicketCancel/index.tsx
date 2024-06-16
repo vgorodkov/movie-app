@@ -1,3 +1,4 @@
+import notifee from '@notifee/react-native';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 
@@ -16,8 +17,13 @@ export const BookedTicketCancel = ({
 }: BookedTicketCancelProps) => {
   const {t} = useTranslation('tickets');
   const dispatch = useAppDispatch();
-  const handleTicketCancel = () => {
-    dispatch(cancelBookedTickets(ticketId));
+  const handleTicketCancel = async () => {
+    try {
+      await notifee.cancelTriggerNotification(ticketId);
+      dispatch(cancelBookedTickets(ticketId));
+    } catch {
+      console.error('error with canceling');
+    }
   };
 
   return (
