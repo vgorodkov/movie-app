@@ -13,17 +13,22 @@ import {SettingsModalProps} from './types';
 
 export const SettingsModal = ({navigation}: SettingsModalProps) => {
   const {t} = useTranslation('profile');
-  const onDropdownSelect = async (optionCode: string) => {
-    i18next.changeLanguage(optionCode);
-    await AsyncStorage.setItem('language', optionCode);
-  };
 
   const initialOption = languages.find(
     language => language.code === i18next.language,
   );
 
+  const onDropdownSelect = async (optionCode: string) => {
+    i18next.changeLanguage(optionCode);
+    await AsyncStorage.setItem('language', optionCode);
+  };
+
   const onBackdropPress = () => {
     navigation.goBack();
+  };
+
+  const onSwitchValueChange = async () => {
+    //TODO: notifications on/off
   };
 
   return (
@@ -41,7 +46,7 @@ export const SettingsModal = ({navigation}: SettingsModalProps) => {
         <Typography variant={TypographyVariant.LABEL_LARGE}>
           {t('Notifications')}
         </Typography>
-        <Switch />
+        <Switch onValueChange={onSwitchValueChange} />
       </FlexContainer>
     </Modal>
   );
