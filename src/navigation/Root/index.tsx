@@ -2,6 +2,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from 'styled-components';
 
+import {LoadingFallback} from '@/components/UI';
 import {AuthRoutes, RootRoutes} from '@/constants/routes';
 import {useAuth} from '@/hooks/useAuth';
 import {BottomTabNavigation} from '@/navigation/BottomTab';
@@ -32,7 +33,7 @@ export const RootNavigation = () => {
   const {t} = useTranslation('home');
 
   if (initializing) {
-    return null;
+    return <LoadingFallback />;
   }
 
   return (
