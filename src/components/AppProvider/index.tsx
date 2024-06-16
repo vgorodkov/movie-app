@@ -10,10 +10,13 @@ import {selectedThemeSelector} from '@/store/slices/themeSlice/selectors';
 import {darkTheme} from '@/theme/darkTheme';
 import {lightTheme} from '@/theme/lightTheme';
 
+import {Toast} from '../UI/Toast';
+
 export const AppProvider = ({children}: {children: ReactNode}) => {
   useBookedTicketsInit();
   const isDark = useAppSelector(selectedThemeSelector) === ThemeVariant.DARK;
   const theme = isDark ? darkTheme : lightTheme;
+
   return (
     <NavigationContainer theme={theme}>
       <ThemeProvider theme={theme}>
@@ -22,6 +25,7 @@ export const AppProvider = ({children}: {children: ReactNode}) => {
           backgroundColor={theme.colors.background}
         />
         {children}
+        <Toast autoclose delay={1500} />
       </ThemeProvider>
     </NavigationContainer>
   );
