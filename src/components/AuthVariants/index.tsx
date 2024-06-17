@@ -7,9 +7,7 @@ import {AuthRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {useHandleError} from '@/hooks/useHandleError';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {facebookSignIn} from '@/utils/facebookSignIn';
-import {githubSignIn} from '@/utils/githubSignIn';
-import {googleSignIn} from '@/utils/googleSignIn';
+import {facebookSignIn, githubSignIn, googleSignIn} from '@/utils/auth';
 
 import {AUTH_VARIANTS} from './constants';
 import {LogInLink} from './LogInLink';
