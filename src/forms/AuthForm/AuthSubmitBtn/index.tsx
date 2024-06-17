@@ -10,6 +10,7 @@ import {useHandleError} from '@/hooks/useHandleError';
 import {setUser} from '@/store/slices/user';
 import {addUserToFirestore} from '@/utils/addUserToFirestore';
 import {getUserData} from '@/utils/firebase/getUserData';
+import {isErrorWithCode} from '@/utils/isErrorWithCode';
 
 import {AuthButton} from './styles';
 import {AuthSubmitButtonProps} from './types';
@@ -41,7 +42,11 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
         }
       }
     } catch (error) {
-      showErrorToast(error.code);
+      if (isErrorWithCode(error)) {
+        showErrorToast(error.code);
+      } else {
+        showErrorToast('An Error occured during auth');
+      }
     } finally {
       setIsLoading(false);
     }

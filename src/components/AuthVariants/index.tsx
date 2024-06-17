@@ -1,3 +1,4 @@
+import {isErrorWithCode} from '@react-native-google-signin/google-signin';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 
@@ -35,7 +36,11 @@ export const AuthVariants = () => {
     try {
       await authFunctions[name]();
     } catch (error) {
-      showErrorToast(error.code);
+      if (isErrorWithCode(error)) {
+        showErrorToast(error.code);
+      } else {
+        showErrorToast('An Error occured during auth');
+      }
     }
   };
 
