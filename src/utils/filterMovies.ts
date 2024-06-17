@@ -1,14 +1,10 @@
+import {Range} from '@/types/common';
 import {Top100Movie} from '@/types/movies';
-
-interface NumberRange {
-  max: number;
-  min: number;
-}
 
 interface Top100MovieFilter {
   title?: string;
-  year?: NumberRange;
-  rating?: NumberRange;
+  year?: Range<number>;
+  rating?: Range<number>;
 }
 
 export const filterMovies = (
