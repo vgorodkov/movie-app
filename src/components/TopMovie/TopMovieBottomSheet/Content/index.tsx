@@ -1,5 +1,6 @@
 import {ScrollView} from 'react-native';
 
+import {VideoPlayer} from '@/components/VideoPlayer';
 import {mockMovieDetails} from '@/data/mockMovieDetails';
 
 import {About} from './About';
@@ -25,6 +26,7 @@ export const Content = ({isOpen}: ContentProps) => {
 
   return (
     <ScrollView contentContainerStyle={contentListContentContainerStyle}>
+      <VideoPlayer />
       <About plotSummary={data.plotSummary} />
       <Actors />
       <Reviews reviews={data.reviews} />
