@@ -1,12 +1,12 @@
 import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
 
+import {DAY_BEFORE_SECS} from '@/constants/date';
+
 interface MovieNotification {
   price: number;
   seatsAmount: number;
   movieName: string;
 }
-
-const DAY_BEFORE_SECS = 86400000;
 
 export const scheduleNotification = async (
   date: string,
