@@ -8,6 +8,7 @@ import {spacing} from '@/constants/spacing';
 import {useHandleError} from '@/hooks/useHandleError';
 import {FlexContainer} from '@/styled/FlexContainer';
 import {facebookSignIn} from '@/utils/facebookSignIn';
+import {githubSignIn} from '@/utils/githubSignIn';
 import {googleSignIn} from '@/utils/googleSignIn';
 
 import {AUTH_VARIANTS} from './constants';
@@ -23,13 +24,11 @@ export const AuthVariants = () => {
     navigation.navigate(AuthRoutes.SIGN_UP);
   };
 
-  const onGithubAuthBtnPress = () => {};
-
   const authFunctions = {
     account: onAccountCreateBtnPress,
     google: googleSignIn,
     facebook: facebookSignIn,
-    github: onGithubAuthBtnPress,
+    github: githubSignIn,
   };
 
   const onAuthVariantPress = (name: AuthVariantName) => async () => {
