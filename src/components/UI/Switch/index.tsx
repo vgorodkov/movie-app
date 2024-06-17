@@ -23,7 +23,7 @@ export const Switch = ({
 
   const onSwitchPress = () => {
     if (onValueChange) {
-      onValueChange();
+      onValueChange(!isOn);
     }
     setIsOn(p => !p);
   };

@@ -1,3 +1,4 @@
+import notifee from '@notifee/react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18next from 'i18next';
 import React from 'react';
@@ -7,13 +8,19 @@ import {Dropdown, Modal, Typography, TypographyVariant} from '@/components/UI';
 import {Switch} from '@/components/UI/Switch';
 import {languages} from '@/constants/languages';
 import {spacing} from '@/constants/spacing';
+import {useAppDispatch, useAppSelector} from '@/store/hooks';
+import {turnOff, turnOn} from '@/store/slices/notifications';
+import {isNotificationsTurnedOnSelector} from '@/store/slices/notifications/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {SettingsModalProps} from './types';
 
 export const SettingsModal = ({navigation}: SettingsModalProps) => {
   const {t} = useTranslation('profile');
-
+  const dispatch = useAppDispatch();
+  const isNotificationsTurnedOn = useAppSelector(
+    isNotificationsTurnedOnSelector,
+  );
   const initialOption = languages.find(
     language => language.code === i18next.language,
   );
@@ -27,8 +34,13 @@ export const SettingsModal = ({navigation}: SettingsModalProps) => {
     navigation.goBack();
   };
 
-  const onSwitchValueChange = async () => {
-    //TODO: notifications on/off
+  const onSwitchValueChange = async (value: boolean) => {
+    if (!value) {
+      dispatch(turnOff());
+      await notifee.cancelTriggerNotifications();
+    } else {
+      dispatch(turnOn());
+    }
   };
 
   return (
@@ -46,7 +58,10 @@ export const SettingsModal = ({navigation}: SettingsModalProps) => {
         <Typography variant={TypographyVariant.LABEL_LARGE}>
           {t('Notifications')}
         </Typography>
-        <Switch onValueChange={onSwitchValueChange} />
+        <Switch
+          onValueChange={onSwitchValueChange}
+          initialSwitchState={isNotificationsTurnedOn}
+        />
       </FlexContainer>
     </Modal>
   );

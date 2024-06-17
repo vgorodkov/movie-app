@@ -1,4 +1,4 @@
 export interface SwitchProps {
   initialSwitchState?: boolean;
-  onValueChange?: () => void;
+  onValueChange?: (value: boolean) => void;
 }
