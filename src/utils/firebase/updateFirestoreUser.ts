@@ -1,9 +1,9 @@
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-interface UpdatedInfo {
-  name: string;
-  surname: string;
+import {User} from '@/types/user';
+
+interface UpdatedInfo extends Omit<User, 'uid'> {
   newPassword: string;
 }
 
