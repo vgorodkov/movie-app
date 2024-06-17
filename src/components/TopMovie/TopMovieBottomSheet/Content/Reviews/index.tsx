@@ -12,7 +12,7 @@ import {FlexContainer} from '@/styled/FlexContainer';
 
 import {ANIMATION_DURATION} from '../../constants';
 import {Headline} from '../styles';
-import {REVIEW_WIDTH} from './constants';
+import {ARROW_HEIGHT, ARROW_WIDTH, REVIEW_WIDTH} from './constants';
 import {ReviewsContainer} from './styles';
 import {renderReviews} from './utils';
 
@@ -64,8 +64,8 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
       <FlexContainer flexFlow="row nowrap" gap={spacing.s} alignItems="center">
         <ArrowBackward
           color={isFirst ? theme.colors.disabledText : theme.colors.primaryText}
-          width={20}
-          height={15}
+          width={ARROW_WIDTH}
+          height={ARROW_HEIGHT}
           onPress={scrollBackward}
         />
         <FlexContainer flex={1}>
@@ -82,8 +82,8 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
 
         <ArrowForward
           color={isLast ? theme.colors.disabledText : theme.colors.primaryText}
-          width={20}
-          height={15}
+          width={ARROW_WIDTH}
+          height={ARROW_HEIGHT}
           onPress={scrollForward}
         />
       </FlexContainer>
