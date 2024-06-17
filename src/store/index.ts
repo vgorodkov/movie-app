@@ -16,6 +16,7 @@ import {imbdApi} from './apiSlices/imbdApi';
 import {movieApi} from './apiSlices/movieApi';
 import bookedTicketsReducer from './slices/bookedTickets';
 import movieGenreReducer from './slices/movieGenre';
+import notificationsReducer from './slices/notifications';
 import themeReducer from './slices/themeSlice';
 import ticketBookingReducer from './slices/ticketBooking';
 import toastReducer from './slices/toast';
@@ -23,6 +24,7 @@ import topMovieFiltersReducer from './slices/topMovieFilters';
 import userReducer from './slices/user';
 
 const rootReducer = combineReducers({
+  notifications: notificationsReducer,
   toast: toastReducer,
   bookedTickets: bookedTicketsReducer,
   user: userReducer,
@@ -37,7 +39,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['user', 'theme'],
+  whitelist: ['user', 'theme', 'notifications'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
