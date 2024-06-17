@@ -1,7 +1,6 @@
 import React from 'react';
 
-import {Typography, TypographyVariant} from '@/components/UI';
-import {Avatar} from '@/components/UI/Avatar';
+import {Avatar, Typography, TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 import {getDaysDiffByTimestamp} from '@/utils/getDaysDiffByTimestamp';

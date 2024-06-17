@@ -1,8 +1,7 @@
 import React from 'react';
 import {useTheme} from 'styled-components';
 
-import {Typography} from '@/components/UI/Typography';
-import {TypographyVariant} from '@/components/UI/Typography/types';
+import {Typography, TypographyVariant} from '@/components/UI';
 import {useAppDispatch} from '@/store/hooks';
 import {selectGenre} from '@/store/slices/movieGenre';
 

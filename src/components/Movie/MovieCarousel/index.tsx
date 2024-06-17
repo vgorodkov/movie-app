@@ -2,8 +2,7 @@ import React from 'react';
 import {NativeScrollEvent, NativeSyntheticEvent} from 'react-native';
 import Animated, {useSharedValue} from 'react-native-reanimated';
 
-import {Typography} from '@/components/UI/Typography';
-import {TypographyVariant} from '@/components/UI/Typography/types';
+import {Typography, TypographyVariant} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
 import {MOCK_DATA} from '@/data/mockMovies';
 import {FlexContainer} from '@/styled/FlexContainer';

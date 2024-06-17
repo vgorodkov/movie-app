@@ -1,4 +1,5 @@
 export {AnimatedText} from './AnimatedText';
+export {Avatar} from './Avatar';
 export {Button} from './Button';
 export {Dropdown} from './Dropdown';
 export {Input} from './Input';
