@@ -11,7 +11,7 @@ export const useMovieComments = (movieId: string) => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [error, setError] = useState<null | string>(null);
 
-  const author = `${user?.name} ${user?.surname}`;
+  const author = `${user?.name || 'John'} ${user?.surname || 'Doe'}`;
 
   const addComment = (newComment: Comment) => {
     firestore().collection(COMMENTS_COLLECTION).add(newComment);
