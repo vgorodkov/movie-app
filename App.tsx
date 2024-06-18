@@ -18,13 +18,13 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <PersistGate loading={<LoadingFallback />} persistor={persistor}>
-        <I18nextProvider i18n={i18next}>
-          <AppProvider>
+      <I18nextProvider i18n={i18next}>
+        <AppProvider>
+          <PersistGate loading={<LoadingFallback />} persistor={persistor}>
             <RootNavigation />
-          </AppProvider>
-        </I18nextProvider>
-      </PersistGate>
+          </PersistGate>
+        </AppProvider>
+      </I18nextProvider>
     </Provider>
   );
 };
