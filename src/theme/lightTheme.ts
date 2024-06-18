@@ -1,7 +1,4 @@
-import {DefaultTheme} from '@react-navigation/native';
-
 const colors = {
-  ...DefaultTheme.colors,
   background: '#FFFFFF',
   primary: '#FFBD80',
   primaryText: '#000000',
@@ -12,6 +9,10 @@ const colors = {
   warning: '#FFBB33',
   info: '#33B5E7',
   modalBackground: '#F0F0F0',
+  card: '#FFFFFF',
+  text: '#000000',
+  border: '#DBDBDB',
+  notification: '#646464',
 };
 
 const calendar = {
