@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {spacing} from '@/constants/spacing';
-import {movieSessions} from '@/data/mockMovieSessions';
+import {movieSessions} from '@/mocks/mockMovieSessions';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {AvaibleSession} from './AvaibleSession';

@@ -1,7 +1,7 @@
 import type {PayloadAction} from '@reduxjs/toolkit';
 import {createSlice} from '@reduxjs/toolkit';
 
-import {movieSessions} from '@/data/mockMovieSessions';
+import {movieSessions} from '@/mocks/mockMovieSessions';
 import {MovieSession} from '@/types/booking';
 
 export interface TicketBookingState {
