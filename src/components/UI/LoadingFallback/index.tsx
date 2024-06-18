@@ -1,17 +1,20 @@
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
 
-import {FlexContainer} from '@/styled/FlexContainer';
-import {darkTheme} from '@/theme/darkTheme';
+import {LoadingFallbackContainer} from './styles';
 
-export const LoadingFallback = () => {
+export const LoadingFallback = ({
+  transparent = false,
+}: {
+  transparent?: boolean;
+}) => {
   return (
-    <FlexContainer
-      style={{backgroundColor: darkTheme.colors.background}}
-      justifyContent="center"
+    <LoadingFallbackContainer
+      transparent={transparent}
+      flex={1}
       alignItems="center"
-      flex={1}>
+      justifyContent="center">
       <ActivityIndicator size="large" />
-    </FlexContainer>
+    </LoadingFallbackContainer>
   );
 };
