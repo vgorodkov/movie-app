@@ -4,12 +4,14 @@ import Animated, {FadeIn, FadeOut} from 'react-native-reanimated';
 
 import SwipeTop from '@/assets/icons/swipe_top.svg';
 import {
+  ErrorFallback,
+  LoadingFallback,
   Separator,
   StarIcon,
   Typography,
   TypographyVariant,
 } from '@/components/UI';
-import {mockTop100Movies} from '@/data/top100Mock';
+import {useGetMovieInfoQuery} from '@/store/apiSlices/movieApi';
 
 import {ANIMATION_DURATION, SWIPE_THRESHOLD} from '../constants';
 import {HeaderContainer} from './styles';
@@ -21,11 +23,7 @@ export const Header = ({
   closeBottomSheet,
   imdbid,
 }: HeaderProps) => {
-  //const {data, isLoading} = useGetMovieInfoQuery(imdbid);
-  const mockMovieInfo = mockTop100Movies.find(
-    mockMovie => mockMovie.imdbid === imdbid,
-  );
-
+  const {data, isLoading, isError} = useGetMovieInfoQuery(imdbid);
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
@@ -39,26 +37,22 @@ export const Header = ({
     }),
   ).current;
 
-  if (!mockMovieInfo) {
-    return null;
+  if (isLoading) {
+    return <LoadingFallback />;
   }
 
-  /* if (isLoading || !data) {
-    return (
-      <Typography variant={TypographyVariant.LABEL_LARGE}>
-        Loading...
-      </Typography>
-    );
-  } */
+  if (isError || !data) {
+    return <ErrorFallback error="Error while loading movie data" />;
+  }
 
   return (
     <HeaderContainer {...panResponder.panHandlers}>
       <Separator />
       <Typography variant={TypographyVariant.SUBTITLE_LARGE}>
-        {mockMovieInfo.title}
+        {data?.title}
       </Typography>
       <Typography variant={TypographyVariant.SUBTITLE_LARGE}>
-        {mockMovieInfo.rating} <StarIcon />
+        {data?.imdbrating} <StarIcon />
       </Typography>
       {!isOpen && (
         <Animated.View

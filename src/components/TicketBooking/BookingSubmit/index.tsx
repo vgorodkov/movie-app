@@ -3,10 +3,10 @@ import {nanoid} from '@reduxjs/toolkit';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 
-import {Typography, TypographyVariant} from '@/components/UI';
+import {LoadingFallback, Typography, TypographyVariant} from '@/components/UI';
 import {SEAT_PRICE} from '@/constants/cinema';
 import {BottomTabRoutes, RootRoutes} from '@/constants/routes';
-import {MOCK_DATA} from '@/data/mockMovies';
+import {useGetMovieInfoQuery} from '@/store/apiSlices/movieApi';
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {addBookedTickets} from '@/store/slices/bookedTickets/thunk';
 import {ticketBookingSelector} from '@/store/slices/ticketBooking/selectors';
@@ -19,12 +19,12 @@ import {BookingSubmitButton} from './styles';
 
 export const BookingSubmit = ({movieId}: {movieId: string}) => {
   const {t} = useTranslation('home');
+  const {data, isLoading} = useGetMovieInfoQuery(movieId);
   const navigation = useNavigation();
   const dispatch = useAppDispatch();
   const ticketBookingInfo = useAppSelector(ticketBookingSelector);
   const [error, setError] = useState<string | null>(null);
 
-  const movie = MOCK_DATA.results.find(movie => movie.imdbid === movieId);
   const {selectedSeats, selectedDate, selectedMovieSession} = ticketBookingInfo;
   const selectedSeatsAmount = selectedSeats.length;
   const price = selectedSeatsAmount * SEAT_PRICE;
@@ -49,7 +49,7 @@ export const BookingSubmit = ({movieId}: {movieId: string}) => {
         {
           seatsAmount: selectedSeatsAmount,
           price,
-          movieName: movie?.title || 'Movie',
+          movieName: data?.title || 'Movie',
         },
       );
       navigation.navigate(RootRoutes.BOTTOM_TAB, {
@@ -67,6 +67,10 @@ export const BookingSubmit = ({movieId}: {movieId: string}) => {
       }
     }
   };
+
+  if (isLoading) {
+    return <LoadingFallback />;
+  }
 
   return (
     <>

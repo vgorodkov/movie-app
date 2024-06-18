@@ -1,7 +1,8 @@
 import React from 'react';
 
+import {ErrorFallback, LoadingFallback} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
-import {MOCK_DATA} from '@/data/mockMovies';
+import {useGetMovieInfoQuery} from '@/store/apiSlices/movieApi';
 import {FlexContainer} from '@/styled/FlexContainer';
 import {BookingTicket} from '@/types/booking';
 
@@ -18,20 +19,22 @@ export const BookedTicket = ({
   seatsAmount,
   price,
 }: BookedTicketProps) => {
-  const movie = MOCK_DATA.results.find(
-    mockMovie => mockMovie.imdbid === movieId,
-  );
+  const {data, isLoading, isError} = useGetMovieInfoQuery(movieId);
 
-  if (!movie) {
-    return null;
+  if (isError) {
+    return <ErrorFallback error="Error while loading booked tickets" />;
+  }
+
+  if (isLoading) {
+    return <LoadingFallback />;
   }
 
   return (
     <BookedTicketContainer>
-      <BookedTicketImage source={{uri: movie.imageurl[0]}} />
+      <BookedTicketImage source={{uri: data?.imageurl[0]}} />
       <FlexContainer padding={`${spacing.s}px`} flex={1} gap={spacing.xs}>
         <BookedTicketInformation
-          movieName={movie.title}
+          movieName={data?.title || 'movie'}
           ticketId={ticketId}
           date={date}
         />
