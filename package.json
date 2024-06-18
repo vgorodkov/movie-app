@@ -57,6 +57,7 @@
     "@react-native/eslint-config": "0.74.83",
     "@react-native/metro-config": "0.74.83",
     "@react-native/typescript-config": "0.74.83",
+    "@types/jest": "^29.5.12",
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
@@ -70,6 +71,7 @@
     "react-native-dotenv": "^3.4.11",
     "react-native-svg-transformer": "^1.4.0",
     "react-test-renderer": "18.2.0",
+    "ts-jest": "^29.1.5",
     "typescript": "5.0.4"
   },
   "engines": {
