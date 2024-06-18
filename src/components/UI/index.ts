@@ -2,6 +2,7 @@ export {AnimatedText} from './AnimatedText';
 export {Avatar} from './Avatar';
 export {Button} from './Button';
 export {Dropdown} from './Dropdown';
+export {ErrorFallback} from './ErrorFallback';
 export {Input} from './Input';
 export {InputRange} from './InputRange';
 export {LoadingBackdrop} from './LoadingBackdrop';
