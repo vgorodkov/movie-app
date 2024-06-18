@@ -2,6 +2,7 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {InputRange, Modal} from '@/components/UI';
+import {spacing} from '@/constants/spacing';
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {setRatingFilter, setYearFilter} from '@/store/slices/topMovieFilters';
 import {
@@ -34,7 +35,7 @@ export const TopMoviesFiltersModal = ({
   };
 
   return (
-    <Modal title="Filters" onBackdropPress={onBackdropPress}>
+    <Modal gap={spacing.m} title="Filters" onBackdropPress={onBackdropPress}>
       <InputRange
         min={1900}
         max={2024}
