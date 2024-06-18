@@ -1,3 +1,6 @@
 module.exports = {
-  preset: 'react-native',
+  preset: 'ts-jest',
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
 };
