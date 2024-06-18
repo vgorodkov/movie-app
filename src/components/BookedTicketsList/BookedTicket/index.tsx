@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {ErrorFallback, LoadingFallback} from '@/components/UI';
+import {DUMMY_URI} from '@/components/Movie/MovieCarousel/MovieItem/constants';
+import {LoadingFallback} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
 import {useGetMovieInfoQuery} from '@/store/apiSlices/movieApi';
 import {FlexContainer} from '@/styled/FlexContainer';
@@ -19,11 +20,7 @@ export const BookedTicket = ({
   seatsAmount,
   price,
 }: BookedTicketProps) => {
-  const {data, isLoading, isError} = useGetMovieInfoQuery(movieId);
-
-  if (isError) {
-    return <ErrorFallback error="Error while loading booked tickets" />;
-  }
+  const {data, isLoading} = useGetMovieInfoQuery(movieId);
 
   if (isLoading) {
     return <LoadingFallback />;
@@ -31,10 +28,10 @@ export const BookedTicket = ({
 
   return (
     <BookedTicketContainer>
-      <BookedTicketImage source={{uri: data?.imageurl[0]}} />
+      <BookedTicketImage source={{uri: data?.imageurl[0] || DUMMY_URI}} />
       <FlexContainer padding={`${spacing.s}px`} flex={1} gap={spacing.xs}>
         <BookedTicketInformation
-          movieName={data?.title || 'movie'}
+          movieName={data?.title || 'Movie'}
           ticketId={ticketId}
           date={date}
         />
