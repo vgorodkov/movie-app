@@ -3,6 +3,7 @@ import React, {ReactNode} from 'react';
 import {StatusBar} from 'react-native';
 import {ThemeProvider} from 'styled-components';
 
+import {ErrorBoundary} from '@/components/ErrorBoundary';
 import {Toast} from '@/components/UI/Toast';
 import {linking} from '@/constants/deeplinking';
 import {ThemeVariant} from '@/constants/theme';
@@ -18,15 +19,17 @@ export const AppProvider = ({children}: {children: ReactNode}) => {
   const theme = isDark ? darkTheme : lightTheme;
 
   return (
-    <NavigationContainer theme={theme} linking={linking}>
-      <ThemeProvider theme={theme}>
-        <StatusBar
-          barStyle={theme.dark ? 'light-content' : 'dark-content'}
-          backgroundColor={theme.colors.background}
-        />
-        {children}
-        <Toast autoclose delay={1500} />
-      </ThemeProvider>
-    </NavigationContainer>
+    <ErrorBoundary>
+      <NavigationContainer theme={theme} linking={linking}>
+        <ThemeProvider theme={theme}>
+          <StatusBar
+            barStyle={theme.dark ? 'light-content' : 'dark-content'}
+            backgroundColor={theme.colors.background}
+          />
+          {children}
+          <Toast autoclose delay={1500} />
+        </ThemeProvider>
+      </NavigationContainer>
+    </ErrorBoundary>
   );
 };
