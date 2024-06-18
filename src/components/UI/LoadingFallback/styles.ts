@@ -9,5 +9,5 @@ export const LoadingFallbackContainer = styled(FlexContainer)<{
   background-color: ${props =>
     props.transparent
       ? 'transparent'
-      : props.theme.colors.background ?? darkTheme.colors.background};
+      : props.theme?.colors?.background ?? darkTheme.colors.background};
 `;
