@@ -1,19 +1,15 @@
 import {useNavigation} from '@react-navigation/native';
-import {nanoid} from '@reduxjs/toolkit';
-import React, {useState} from 'react';
+import React from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {LoadingFallback, Typography, TypographyVariant} from '@/components/UI';
 import {SEAT_PRICE} from '@/constants/cinema';
 import {BottomTabRoutes, RootRoutes} from '@/constants/routes';
+import {useBookingSubmit} from '@/hooks/useBookingSubmit';
 import {useGetMovieInfoQuery} from '@/store/apiSlices/movieApi';
-import {useAppDispatch, useAppSelector} from '@/store/hooks';
-import {addBookedTickets} from '@/store/slices/bookedTickets/thunk';
+import {useAppSelector} from '@/store/hooks';
 import {ticketBookingSelector} from '@/store/slices/ticketBooking/selectors';
-import {showToast, ToastStatus} from '@/store/slices/toast';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {BookingTicket} from '@/types/booking';
-import {scheduleNotification} from '@/utils/scheduleNotification';
 
 import {BookingSubmitButton} from './styles';
 
@@ -21,51 +17,18 @@ export const BookingSubmit = ({movieId}: {movieId: string}) => {
   const {t} = useTranslation('home');
   const {data, isLoading} = useGetMovieInfoQuery(movieId);
   const navigation = useNavigation();
-  const dispatch = useAppDispatch();
   const ticketBookingInfo = useAppSelector(ticketBookingSelector);
-  const [error, setError] = useState<string | null>(null);
+  const {handleBookingSubmit, error} = useBookingSubmit();
 
-  const {selectedSeats, selectedDate, selectedMovieSession} = ticketBookingInfo;
+  const {selectedSeats, selectedDate} = ticketBookingInfo;
   const selectedSeatsAmount = selectedSeats.length;
-  const price = selectedSeatsAmount * SEAT_PRICE;
   const isButtonActive = selectedDate && selectedSeatsAmount > 0;
 
   const onBookingSubmitBtnPress = async () => {
-    const ticketId = nanoid();
-    const newBooking: BookingTicket = {
-      ticketId,
-      movieId,
-      date: selectedDate!,
-      price,
-      seatsAmount: selectedSeatsAmount,
-    };
-
-    try {
-      dispatch(addBookedTickets(newBooking));
-      await scheduleNotification(
-        selectedDate!,
-        selectedMovieSession.time,
-        ticketId,
-        {
-          seatsAmount: selectedSeatsAmount,
-          price,
-          movieName: data?.title || 'Movie',
-        },
-      );
-      navigation.navigate(RootRoutes.BOTTOM_TAB, {
-        screen: BottomTabRoutes.TICKETS,
-      });
-      dispatch(
-        showToast({
-          status: ToastStatus.SUCCESS,
-          content: 'Ticket was successfully booked!',
-        }),
-      );
-    } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      }
-    }
+    handleBookingSubmit(movieId, data?.title || 'Movie');
+    navigation.navigate(RootRoutes.BOTTOM_TAB, {
+      screen: BottomTabRoutes.TICKETS,
+    });
   };
 
   if (isLoading) {
