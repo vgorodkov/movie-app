@@ -8,9 +8,8 @@ import {
   toastStatusSelector,
 } from '@/store/slices/toast/selectors';
 
-import {Typography} from '../Typography';
 import {TypographyVariant} from '../Typography/types';
-import {CloseToastIcon, ToastContainer} from './styles';
+import {CloseToastIcon, ToastContainer, ToastTypography} from './styles';
 import {ToastProps} from './types';
 
 export const Toast = ({autoclose, delay}: ToastProps) => {
@@ -38,11 +37,9 @@ export const Toast = ({autoclose, delay}: ToastProps) => {
   return (
     <ToastContainer status={status}>
       <CloseToastIcon onPress={onCloseToastIconPress} />
-      <Typography
-        style={{textAlign: 'center'}}
-        variant={TypographyVariant.LABEL_LARGE}>
+      <ToastTypography variant={TypographyVariant.LABEL_LARGE}>
         {content}
-      </Typography>
+      </ToastTypography>
     </ToastContainer>
   );
 };
