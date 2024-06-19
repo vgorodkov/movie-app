@@ -41,8 +41,8 @@ export const BookingSeatPicker = () => {
         </RightSeats>
       </FlexContainer>
       <FlexContainer flexFlow="row nowrap" justifyContent="space-around">
-        {seatLegend.map(legend => {
-          const {type} = legend;
+        {seatLegend.map(seatLegendItem => {
+          const {type} = seatLegendItem;
           return <SeatLegend key={type} type={type} />;
         })}
       </FlexContainer>

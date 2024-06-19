@@ -5,13 +5,11 @@ import {LoadingFallback} from '@/components/UI';
 import {spacing} from '@/constants/spacing';
 import {useGetMovieInfoQuery} from '@/store/apiSlices/movieApi';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {BookingTicket} from '@/types/booking';
 
 import {BookedTicketCancel} from './BookedTicketCancel';
 import {BookedTicketInformation} from './BookedTicketInformation';
 import {BookedTicketContainer, BookedTicketImage} from './styles';
-
-interface BookedTicketProps extends BookingTicket {}
+import {BookedTicketProps} from './types';
 
 export const BookedTicket = ({
   movieId,

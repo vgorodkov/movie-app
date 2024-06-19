@@ -12,7 +12,7 @@ export const TicketVoucher = () => {
     <TicketVoucherContainer>
       <TicketVoucherIcon width={24} height={24} />
       <Typography color="white" variant={TypographyVariant.LABEL_LARGE}>
-        {t('Tickets avaible')}
+        {t('TicketsAvaibleLabel')}
       </Typography>
     </TicketVoucherContainer>
   );

@@ -1,3 +1,5 @@
+import {ListRenderItem} from 'react-native';
+
 import {SelectDropdownOption} from './SelectDropdownOption';
 import {DropdownOption} from './types';
 
@@ -5,8 +7,8 @@ export const renderDropdownOption =
   (
     onOptionPress: (optionCode: DropdownOption) => void,
     selectedOption?: DropdownOption,
-  ) =>
-  ({item}: {item: DropdownOption}) => {
+  ): ListRenderItem<DropdownOption> =>
+  ({item}) => {
     return (
       <SelectDropdownOption
         isActive={selectedOption?.code === item.code}

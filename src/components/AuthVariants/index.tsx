@@ -2,12 +2,13 @@ import {isErrorWithCode} from '@react-native-google-signin/google-signin';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 
+import {facebookSignIn, githubSignIn, googleSignIn} from '@/api/auth';
 import {Button} from '@/components/UI';
+import {errorMessages} from '@/constants/errors';
 import {AuthRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
-import {useHandleError} from '@/hooks/useHandleError';
+import {useToast} from '@/hooks/useToast';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {facebookSignIn, githubSignIn, googleSignIn} from '@/utils/auth';
 
 import {AUTH_VARIANTS} from './constants';
 import {LogInLink} from './LogInLink';
@@ -15,7 +16,7 @@ import {AuthVariantName} from './types';
 
 export const AuthVariants = () => {
   const navigation = useNavigation();
-  const showErrorToast = useHandleError();
+  const {showErrorToast} = useToast();
   const {t} = useTranslation('auth');
 
   const onAccountCreateBtnPress = () => {
@@ -34,7 +35,7 @@ export const AuthVariants = () => {
       await authFunctions[name]();
     } catch (error) {
       if (isErrorWithCode(error)) {
-        showErrorToast(error.code);
+        showErrorToast(errorMessages[error.code]);
       } else {
         showErrorToast('An Error occured during auth');
       }
@@ -43,8 +44,7 @@ export const AuthVariants = () => {
 
   return (
     <FlexContainer gap={spacing.m}>
-      {AUTH_VARIANTS.map(button => {
-        const {icon, backgroundColor, color, label, name} = button;
+      {AUTH_VARIANTS.map(({icon, backgroundColor, color, label, name}) => {
         return (
           <Button
             onPress={onAuthVariantPress(name)}

@@ -1,5 +1,4 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React, {ReactNode} from 'react';
 import {StatusBar} from 'react-native';
 import {ThemeProvider} from 'styled-components';
 
@@ -13,7 +12,9 @@ import {selectedThemeSelector} from '@/store/slices/themeSlice/selectors';
 import {darkTheme} from '@/theme/darkTheme';
 import {lightTheme} from '@/theme/lightTheme';
 
-export const AppProvider = ({children}: {children: ReactNode}) => {
+import {AppProviderProps} from './types';
+
+export const AppProvider = ({children}: AppProviderProps) => {
   useBookedTicketsInit();
   const isDark = useAppSelector(selectedThemeSelector) === ThemeVariant.DARK;
   const theme = isDark ? darkTheme : lightTheme;

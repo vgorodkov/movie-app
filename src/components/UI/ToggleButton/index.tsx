@@ -2,17 +2,7 @@ import React, {useState} from 'react';
 
 import {TypographyVariant} from '../Typography/types';
 import {ToggleButtonContainer, ToggleButtonLabel} from './styles';
-
-interface ToggleButtonSide {
-  label: string;
-  onPress: () => void;
-}
-
-interface ToggleButtonProps {
-  left: ToggleButtonSide;
-  right: ToggleButtonSide;
-  initialSide?: 'right' | 'left';
-}
+import {ToggleButtonProps} from './types';
 
 export const ToggleButton = ({
   left,

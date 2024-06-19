@@ -1,4 +1,5 @@
 import React from 'react';
+import {ListRenderItem} from 'react-native';
 import {SharedValue} from 'react-native-reanimated';
 
 import {Movie} from '@/types/movies';
@@ -7,8 +8,11 @@ import {MOVIE_ITEM_WIDTH} from './constants';
 import {MovieItem} from './MovieItem';
 
 export const renderMovieItem =
-  (scrollOffset: SharedValue<number>, dataLength: number) =>
-  ({item, index}: {item: Movie; index: number}) => {
+  (
+    scrollOffset: SharedValue<number>,
+    dataLength: number,
+  ): ListRenderItem<Movie> =>
+  ({item, index}) => {
     const {genre, imageurl, title, imdbid} = item;
     return (
       <MovieItem

@@ -1,5 +1,4 @@
 import React from 'react';
-import {TextInputProps} from 'react-native';
 import {useTheme} from 'styled-components';
 
 import {Typography} from '@/components/UI/Typography';
@@ -9,13 +8,7 @@ import {FlexContainer} from '@/styled/FlexContainer';
 
 import {Avatar} from '../Avatar';
 import {InputField, InputIcon} from './styles';
-
-export interface InputProps extends TextInputProps {
-  author?: string;
-  icon?: number;
-  Svgr?: any;
-  errorMessage?: string;
-}
+import {InputProps} from './types';
 
 export const Input = ({
   icon,

@@ -2,9 +2,7 @@ import React from 'react';
 
 import {EMPTY_SEAT_INDEX} from '../constants';
 import {Seat} from '../Seat';
-import {SeatProps} from '../Seat/types';
-
-export interface SeatsSideProps extends Pick<SeatProps, 'id' | 'isReserved'> {}
+import {SeatsSideProps} from './types';
 
 export const SeatsSide = ({seats}: {seats: SeatsSideProps[]}) => {
   return (

@@ -17,7 +17,7 @@ export const BasicDetails = ({genre}: BasicDetailsProps) => {
       <FlexContainer alignItems="center" gap={spacing.xs} flexFlow="row nowrap">
         <Clock width={16} height={16} />
         <Typography variant={TypographyVariant.LABEL_MEDIUM}>
-          2{t('h')} 13{t('m')}
+          2{t('HourLabel')} 13{t('MinuteLabel')}
         </Typography>
       </FlexContainer>
     </FlexContainer>

@@ -39,7 +39,7 @@ export const BookingDatepickerModal = ({
     <Modal onBackdropPress={closeModal}>
       <FlexContainer flexFlow="row nowrap" justifyContent="space-between">
         <Typography variant={TypographyVariant.LABEL_LARGE}>
-          {t('Choose visiting day')}
+          {t('VisitingDayPickerLabel')}
         </Typography>
         <CancelIcon
           color={theme.colors.primaryText}

@@ -12,3 +12,7 @@ export const SearchBarContainer = styled(FlexContainer)`
   border-radius: ${spacing.sm}px;
   gap: ${spacing.s}px;
 `;
+
+export const SearchBarInput = styled.TextInput`
+  flex: 1;
+`;
