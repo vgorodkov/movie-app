@@ -42,7 +42,7 @@ export const BookingTicketScreen = ({route}: BookingTicketScreenProps) => {
         <Typography
           alightSelf="center"
           variant={TypographyVariant.SUBTITLE_LARGE}>
-          {t('Select date first')}
+          {t('NoDateMessage')}
         </Typography>
       )}
       <BookingSubmit movieId={movieId} />

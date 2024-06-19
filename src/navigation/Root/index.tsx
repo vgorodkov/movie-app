@@ -53,7 +53,7 @@ export const RootNavigation = () => {
             name={RootRoutes.BOOKING_TICKET}
             options={{
               headerStyle: {backgroundColor: theme.colors.background},
-              headerTitle: t('Choose Cinema & Seats'),
+              headerTitle: t('BookingTitle'),
               ...bookTicketScreenOptions,
             }}
             component={BookingTicketScreen}

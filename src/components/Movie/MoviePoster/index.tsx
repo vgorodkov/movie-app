@@ -33,7 +33,7 @@ export const MoviePoster = ({movieId}: MoviePosterProps) => {
           onPress={onBookTicketIconPress}
           iconVariant="relative"
           icon={require('@/assets/icons/ticket-voucher.png')}>
-          {t('Get tickets')}
+          {t('GetTicketsBtn')}
         </Button>
       </BackdropGradient>
     </MovieImageBackground>

@@ -49,7 +49,7 @@ export const AvaibleSession = ({
       <FlexContainer flexFlow="row nowrap" gap={spacing.xs}>
         <SeatIcon color={theme.colors.primaryText} width={16} height={16} />
         <Typography variant={TypographyVariant.BODY_SMALL}>
-          {AVAIBLE_SEATS_AMOUNT} {t('seats avaible')}
+          {AVAIBLE_SEATS_AMOUNT} {t('SeatsAvaible')}
         </Typography>
       </FlexContainer>
     </MovieSessionContainer>

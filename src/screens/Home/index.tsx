@@ -17,13 +17,13 @@ export const HomeScreen = () => {
         <Typography
           alightSelf="flex-start"
           variant={TypographyVariant.SUBTITLE_LARGE}>
-          {t('Coming soon')}
+          {t('CommingSoonLabel')}
         </Typography>
         <VideoPlayer />
       </ComingSoonContainer>
       <AvaibleGenreList />
       <MovieCarouselContainer>
-        <MovieCarousel title={t('Now showing')} />
+        <MovieCarousel title={t('NowShowingLabel')} />
       </MovieCarouselContainer>
     </FullscreenContainer>
   );
