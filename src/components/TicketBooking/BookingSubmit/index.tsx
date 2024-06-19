@@ -12,8 +12,9 @@ import {ticketBookingSelector} from '@/store/slices/ticketBooking/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {BookingSubmitButton} from './styles';
+import {BookingSubmitProps} from './types';
 
-export const BookingSubmit = ({movieId}: {movieId: string}) => {
+export const BookingSubmit = ({movieId}: BookingSubmitProps) => {
   const {t} = useTranslation('home');
   const {data, isLoading} = useGetMovieInfoQuery(movieId);
   const navigation = useNavigation();

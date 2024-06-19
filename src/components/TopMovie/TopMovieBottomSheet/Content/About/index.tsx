@@ -15,8 +15,9 @@ import {BackdropGradient} from '@/components/UI/BackdropGradient';
 import {Headline} from '../styles';
 import {DESCIPTION_HEIGHT_LIMIT} from './constants';
 import {AnimatedDesciprtion, AnimatedDesciprtionContainer} from './styles';
+import {AboutProps} from './types';
 
-export const About = ({plotSummary}: {plotSummary: string}) => {
+export const About = ({plotSummary}: AboutProps) => {
   const {t} = useTranslation('top');
   const [isDescriptionShown, setIsDescriptionShown] = useState(false);
 

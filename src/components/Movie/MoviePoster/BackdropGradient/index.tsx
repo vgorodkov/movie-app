@@ -1,14 +1,11 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {useTheme} from 'styled-components';
 
 import {styles} from './styles';
+import {BackdropGradientProps} from './types';
 
-export const BackdropGradient = ({
-  children,
-}: {
-  children: ReactNode | ReactNode[];
-}) => {
+export const BackdropGradient = ({children}: BackdropGradientProps) => {
   const theme = useTheme();
   return (
     <LinearGradient
