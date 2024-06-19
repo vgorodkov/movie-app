@@ -15,7 +15,7 @@ import {AuthVariantName} from './types';
 
 export const AuthVariants = () => {
   const navigation = useNavigation();
-  const showErrorToast = useHandleError();
+  const {showErrorToast} = useHandleError();
   const {t} = useTranslation('auth');
 
   const onAccountCreateBtnPress = () => {

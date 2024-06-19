@@ -20,7 +20,7 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
   const dispatch = useDispatch();
   const {t} = useTranslation('auth');
   const {handleSubmit} = useFormContext<FieldValues>();
-  const showErrorToast = useHandleError();
+  const {showErrorToast} = useHandleError();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleAuth = async (data: FieldValues) => {

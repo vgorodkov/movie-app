@@ -21,5 +21,5 @@ export const useHandleError = () => {
     );
   };
 
-  return showErrorToast;
+  return {showErrorToast};
 };
