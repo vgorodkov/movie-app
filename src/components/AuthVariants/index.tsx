@@ -43,8 +43,7 @@ export const AuthVariants = () => {
 
   return (
     <FlexContainer gap={spacing.m}>
-      {AUTH_VARIANTS.map(button => {
-        const {icon, backgroundColor, color, label, name} = button;
+      {AUTH_VARIANTS.map(({icon, backgroundColor, color, label, name}) => {
         return (
           <Button
             onPress={onAuthVariantPress(name)}
