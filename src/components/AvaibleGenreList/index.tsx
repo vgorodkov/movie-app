@@ -6,7 +6,7 @@ import {useAppSelector} from '@/store/hooks';
 import {selectSelectedMovieGenre} from '@/store/slices/movieGenre/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 
-import {renderAvaibleGenre} from './renderMovieGenre';
+import {renderAvaibleGenre} from './renderAvaibleGenre';
 import {styles} from './styles';
 
 export const AvaibleGenreList = () => {
