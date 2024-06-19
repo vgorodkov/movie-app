@@ -33,12 +33,18 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
           password,
         );
         addUserToFirestore(user.uid, {name, surname});
-        dispatch(setUser({name, surname}));
+        dispatch(setUser({name, surname, uid: user.uid}));
       } else {
         const {user} = await auth().signInWithEmailAndPassword(email, password);
         const userData = await getUserData(user.uid);
         if (userData) {
-          dispatch(setUser({name: userData.name, surname: userData.surname}));
+          dispatch(
+            setUser({
+              name: userData.name,
+              surname: userData.surname,
+              uid: user.uid,
+            }),
+          );
         }
       }
     } catch (error) {
