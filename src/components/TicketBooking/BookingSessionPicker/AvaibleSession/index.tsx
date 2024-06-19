@@ -10,7 +10,7 @@ import {
   resetSelectedSeats,
   selectMovieSession,
 } from '@/store/slices/ticketBooking';
-import {isBookingSessionSelected} from '@/store/slices/ticketBooking/selectors';
+import {bookingSessionTimeSelector} from '@/store/slices/ticketBooking/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {MovieSessionContainer} from './styles';
@@ -24,7 +24,9 @@ export const AvaibleSession = ({
   const theme = useTheme();
   const {t} = useTranslation('home');
   const dispatch = useAppDispatch();
-  const isSessionSelected = useAppSelector(isBookingSessionSelected(time));
+  const bookingSessionTime = useAppSelector(bookingSessionTimeSelector);
+
+  const isSessionSelected = bookingSessionTime === time;
   const AVAIBLE_SEATS_AMOUNT = TOTAL_SEATS - reservedSeats.length;
 
   const onAvaibleSessionPress = () => {
