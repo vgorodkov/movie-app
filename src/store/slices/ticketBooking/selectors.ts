@@ -17,3 +17,6 @@ export const ticketBookingSelector = (state: RootState) => state.ticketBooking;
 
 export const isDateSelectedSelector = (state: RootState) =>
   !!state.ticketBooking.selectedDate;
+
+export const isSeatSelectedSelector = (id: number) => (state: RootState) =>
+  state.ticketBooking.selectedSeats.includes(id);

@@ -1,5 +1,6 @@
 import {useAppDispatch, useAppSelector} from '@/store/hooks';
 import {selectSeat, unselectSeat} from '@/store/slices/ticketBooking';
+import {isSeatSelectedSelector} from '@/store/slices/ticketBooking/selectors';
 
 import {Empty, PressableSeat} from './styles';
 import {SeatProps} from './types';
@@ -11,9 +12,7 @@ export const Seat = ({
   isReserved,
 }: SeatProps) => {
   const dispatch = useAppDispatch();
-  const isSeatSelected = useAppSelector(state =>
-    state.ticketBooking.selectedSeats.includes(id),
-  );
+  const isSeatSelected = useAppSelector(isSeatSelectedSelector(id));
   const onSeatPress = () => {
     if (isReserved) {
       return;
