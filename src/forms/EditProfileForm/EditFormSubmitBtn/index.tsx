@@ -1,5 +1,5 @@
 import {firebase} from '@react-native-firebase/auth';
-import {FieldValues, useFormContext} from 'react-hook-form';
+import {useFormContext} from 'react-hook-form';
 
 import {reauth} from '@/api/firebase/reauth';
 import {updateFirestoreUser} from '@/api/firebase/updateFirestoreUser';
@@ -8,12 +8,14 @@ import {useAppDispatch} from '@/store/hooks';
 import {showToast, ToastStatus} from '@/store/slices/toast';
 import {updateUser} from '@/store/slices/user';
 
+import {EditProfileFormValues} from '../types';
+
 export const EditFormSubmitBtn = () => {
-  const {handleSubmit} = useFormContext();
+  const {handleSubmit} = useFormContext<EditProfileFormValues>();
 
   const dispatch = useAppDispatch();
 
-  const onEditButtonPress = async (data: FieldValues) => {
+  const onEditButtonPress = async (data: EditProfileFormValues) => {
     const {name, surname, currentPassword, newPassword} = data;
     const user = firebase.auth().currentUser;
 

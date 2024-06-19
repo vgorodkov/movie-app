@@ -1,6 +1,6 @@
 import auth from '@react-native-firebase/auth';
 import React, {useState} from 'react';
-import {FieldValues, useFormContext} from 'react-hook-form';
+import {useFormContext} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {useTheme} from 'styled-components';
@@ -12,6 +12,7 @@ import {useHandleError} from '@/hooks/useHandleError';
 import {setUser} from '@/store/slices/user';
 import {isErrorWithCode} from '@/utils/isErrorWithCode';
 
+import {SignUpFormInputs} from '../types';
 import {AuthButton} from './styles';
 import {AuthSubmitButtonProps} from './types';
 
@@ -19,11 +20,11 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const {t} = useTranslation('auth');
-  const {handleSubmit} = useFormContext<FieldValues>();
+  const {handleSubmit} = useFormContext<SignUpFormInputs>();
   const {showErrorToast} = useHandleError();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleAuth = async (data: FieldValues) => {
+  const handleAuth = async (data: SignUpFormInputs) => {
     const {email, name, surname, password} = data;
     setIsLoading(true);
     try {
@@ -58,7 +59,7 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
     }
   };
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = (data: SignUpFormInputs) => {
     handleAuth(data);
   };
 
