@@ -4,6 +4,7 @@ import Animated, {
   FadeIn,
   FadeOut,
   LinearTransition,
+  useAnimatedStyle,
   useDerivedValue,
 } from 'react-native-reanimated';
 
@@ -20,10 +21,14 @@ export const About = ({plotSummary}: {plotSummary: string}) => {
   const [isDescriptionShown, setIsDescriptionShown] = useState(false);
 
   const desicrptionMaxHeight = useDerivedValue(() => {
-    if (!isDescriptionShown) {
-      return DESCIPTION_HEIGHT_LIMIT;
-    }
+    return isDescriptionShown ? undefined : DESCIPTION_HEIGHT_LIMIT;
   }, [isDescriptionShown]);
+
+  const animatedDescriptionStyle = useAnimatedStyle(() => {
+    return {
+      maxHeight: desicrptionMaxHeight.value,
+    };
+  });
 
   const toggleDescription = () => {
     setIsDescriptionShown(prev => !prev);
@@ -38,7 +43,7 @@ export const About = ({plotSummary}: {plotSummary: string}) => {
       </Headline>
       <AnimatedDesciprtionContainer
         layout={LinearTransition}
-        style={{maxHeight: desicrptionMaxHeight}}>
+        style={animatedDescriptionStyle}>
         {!isDescriptionShown && <BackdropGradient />}
         <AnimatedDesciprtion layout={LinearTransition}>
           {plotSummary}
