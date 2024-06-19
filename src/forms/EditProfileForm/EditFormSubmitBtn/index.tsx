@@ -1,12 +1,12 @@
 import {firebase} from '@react-native-firebase/auth';
 import {FieldValues, useFormContext} from 'react-hook-form';
 
+import {reauth} from '@/api/firebase/reauth';
+import {updateFirestoreUser} from '@/api/firebase/updateFirestoreUser';
 import {Button} from '@/components/UI';
 import {useAppDispatch} from '@/store/hooks';
 import {showToast, ToastStatus} from '@/store/slices/toast';
 import {updateUser} from '@/store/slices/user';
-import {reauth} from '@/utils/firebase/reauth';
-import {updateFirestoreUser} from '@/utils/firebase/updateFirestoreUser';
 
 export const EditFormSubmitBtn = () => {
   const {handleSubmit} = useFormContext();

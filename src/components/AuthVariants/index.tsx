@@ -2,12 +2,12 @@ import {isErrorWithCode} from '@react-native-google-signin/google-signin';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 
+import {facebookSignIn, githubSignIn, googleSignIn} from '@/api/auth';
 import {Button} from '@/components/UI';
 import {AuthRoutes} from '@/constants/routes';
 import {spacing} from '@/constants/spacing';
 import {useHandleError} from '@/hooks/useHandleError';
 import {FlexContainer} from '@/styled/FlexContainer';
-import {facebookSignIn, githubSignIn, googleSignIn} from '@/utils/auth';
 
 import {AUTH_VARIANTS} from './constants';
 import {LogInLink} from './LogInLink';

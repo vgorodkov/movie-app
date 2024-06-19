@@ -5,11 +5,11 @@ import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {useTheme} from 'styled-components';
 
+import {addUserToFirestore} from '@/api/firebase/addUserToFirestore';
+import {getUserData} from '@/api/firebase/getUserData';
 import {LoadingBackdrop} from '@/components/UI/LoadingBackdrop';
 import {useHandleError} from '@/hooks/useHandleError';
 import {setUser} from '@/store/slices/user';
-import {addUserToFirestore} from '@/utils/firebase/addUserToFirestore';
-import {getUserData} from '@/utils/firebase/getUserData';
 import {isErrorWithCode} from '@/utils/isErrorWithCode';
 
 import {AuthButton} from './styles';
