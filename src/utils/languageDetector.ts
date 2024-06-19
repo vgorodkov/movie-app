@@ -4,14 +4,12 @@ import {LanguageDetectorAsyncModule} from 'i18next';
 export const languageDetector: LanguageDetectorAsyncModule = {
   type: 'languageDetector',
   async: true,
-
-  detect: async (callback: (lng?: string) => void) => {
+  detect: async () => {
     try {
       const language = await AsyncStorage.getItem('language');
-      return callback(language || 'en');
+      return language || 'en';
     } catch (error) {
-      console.error('Error detecting language:', error);
-      return callback('en');
+      return 'en';
     }
   },
   cacheUserLanguage: async (language: string) => {
