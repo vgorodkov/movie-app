@@ -8,6 +8,7 @@
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "start": "react-native start",
     "test": "jest",
+    "test:utils": "jest --testPathPattern=src/utils",
     "prepare": "husky"
   },
   "dependencies": {
