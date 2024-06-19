@@ -6,8 +6,9 @@ import {spacing} from '@/constants/spacing';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {MovieGenre} from './styles';
+import {MovieGenreRowProps} from './types';
 
-export const MovieGenreRow = ({genre}: {genre: string[]}) => {
+export const MovieGenreRow = ({genre}: MovieGenreRowProps) => {
   const theme = useTheme();
   return (
     <FlexContainer
