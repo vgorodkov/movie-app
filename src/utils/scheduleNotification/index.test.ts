@@ -18,13 +18,16 @@ describe('scheduleNotification', () => {
   });
 
   it('should schedule a notification correctly', async () => {
-    const date = '2024-06-20';
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+    const date = tomorrow.toISOString().split('T')[0];
     const sessionTime = '18:00-20:00';
     const ticketId = 'ticket123';
     const movieInformation = {
       price: 15,
       seatsAmount: 2,
-      movieName: 'Movie ',
+      movieName: 'Movie',
     };
 
     const notificationDate = new Date(date);
@@ -34,7 +37,7 @@ describe('scheduleNotification', () => {
 
     (
       notifee.createChannel as jest.MockedFunction<typeof notifee.createChannel>
-    ).mockResolvedValue('default-channel-id');
+    ).mockResolvedValue('default');
 
     await scheduleNotification(date, sessionTime, ticketId, movieInformation);
 
@@ -49,7 +52,7 @@ describe('scheduleNotification', () => {
         title: 'You have upcoming booking!',
         body: `${movieInformation.movieName} at ${date}. ${movieInformation.seatsAmount} seats for ${movieInformation.price}$`,
         android: {
-          channelId: 'default-channel-id',
+          channelId: 'default',
           pressAction: {
             id: 'default',
           },
@@ -63,7 +66,8 @@ describe('scheduleNotification', () => {
   });
 
   it('should not schedule a notification if the current time is past the notification time', async () => {
-    const date = '2024-06-18';
+    const today = new Date();
+    const date = today.toISOString().split('T')[0];
     const sessionTime = '18:00-20:00';
     const ticketId = 'ticket123';
     const movieInformation = {
