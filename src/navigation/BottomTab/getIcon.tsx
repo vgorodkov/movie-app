@@ -18,7 +18,7 @@ export const getRouteIcon = (
           color={focused ? theme.colors.primaryText : theme.colors.disabledText}
         />
       );
-    case BottomTabRoutes.TOP_MOVIES:
+    case BottomTabRoutes.TOP_MOVIES_NAV:
       return (
         <Top
           color={focused ? theme.colors.primaryText : theme.colors.disabledText}

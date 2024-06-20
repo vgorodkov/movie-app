@@ -1,9 +1,9 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {RootRoutes} from '@/constants/routes';
-import {RootStackParamList} from '@/types/navigation';
+import {TopMoviesRoutes} from '@/constants/routes';
+import {TopMoviesStackParamList} from '@/types/navigation';
 
 export type TopMoviesFiltersModalProps = NativeStackScreenProps<
-  RootStackParamList,
-  RootRoutes.TOP_MOVIES_FILTERS
+  TopMoviesStackParamList,
+  TopMoviesRoutes.TOP_MOVIES_FILTERS
 >;
