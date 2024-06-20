@@ -2,7 +2,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {ProfileRoutes} from '@/constants/routes';
 import {transparentModalOptions} from '@/navigation/Root/options';
-import {EditProfileModal, ProfileScreen, SettingsModal} from '@/screens';
+import {
+  EditProfileScreenModal,
+  ProfileScreen,
+  SettingsScreenModal,
+} from '@/screens';
 import {ProfileStackParamList} from '@/types/navigation';
 
 const StackNavigator = createNativeStackNavigator<ProfileStackParamList>();
@@ -16,12 +20,12 @@ export const ProfileStackNavigation = () => {
       />
       <StackNavigator.Screen
         options={transparentModalOptions}
-        component={EditProfileModal}
+        component={EditProfileScreenModal}
         name={ProfileRoutes.EDIT}
       />
       <StackNavigator.Screen
         options={transparentModalOptions}
-        component={SettingsModal}
+        component={SettingsScreenModal}
         name={ProfileRoutes.SETTINGS}
       />
     </StackNavigator.Navigator>

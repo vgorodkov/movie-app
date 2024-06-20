@@ -15,7 +15,7 @@ import {FlexContainer} from '@/styled/FlexContainer';
 
 import {SettingsModalProps} from './types';
 
-export const SettingsModal = ({navigation}: SettingsModalProps) => {
+export const SettingsScreenModal = ({navigation}: SettingsModalProps) => {
   const {t} = useTranslation('profile');
   const dispatch = useAppDispatch();
   const isNotificationsTurnedOn = useAppSelector(

@@ -13,7 +13,7 @@ import {FlexContainer} from '@/styled/FlexContainer';
 
 import {EditProfileModalProps} from './types';
 
-export const EditProfileModal = ({navigation}: EditProfileModalProps) => {
+export const EditProfileScreenModal = ({navigation}: EditProfileModalProps) => {
   const methods = useForm<EditProfileFormValues>({
     resolver: yupResolver(editProfileValidationSchema),
   });
