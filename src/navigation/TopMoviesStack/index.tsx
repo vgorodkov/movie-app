@@ -1,7 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {TopMoviesRoutes} from '@/constants/routes';
-import {TopMoviesFiltersModal, TopMoviesScreen} from '@/screens';
+import {TopMoviesFiltersScreenModal, TopMoviesScreen} from '@/screens';
 import {TopMoviesStackParamList} from '@/types/navigation';
 
 import {transparentModalOptions} from '../Root/options';
@@ -17,7 +17,7 @@ export const TopMoviesStackNavigation = () => {
       />
       <StackNavigator.Screen
         options={transparentModalOptions}
-        component={TopMoviesFiltersModal}
+        component={TopMoviesFiltersScreenModal}
         name={TopMoviesRoutes.TOP_MOVIES_FILTERS}
       />
     </StackNavigator.Navigator>

@@ -11,6 +11,6 @@ export {SignIn} from './SignIn';
 export {SignUpScreen} from './SignUp';
 export {TopMovieRatingScreen} from './TopMovieRating';
 export {TopMoviesScreen} from './TopMovies';
-export {TopMoviesFiltersModal} from './TopMoviesFilters';
+export {TopMoviesFiltersScreenModal} from './TopMoviesFilters';
 export {UpcomingTicketsScreen} from './UpcomingTickets';
 export {WelcomeScreen} from './Welcome';
