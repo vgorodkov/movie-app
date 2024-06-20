@@ -2,12 +2,11 @@ import React from 'react';
 import {ActivityIndicator} from 'react-native';
 
 import {LoadingFallbackContainer} from './styles';
+import {LoadingFallbackProps} from './types';
 
 export const LoadingFallback = ({
   transparent = false,
-}: {
-  transparent?: boolean;
-}) => {
+}: LoadingFallbackProps) => {
   return (
     <LoadingFallbackContainer
       transparent={transparent}

@@ -23,7 +23,7 @@ export const Button = ({
       {icon && isIconAbsolute && <AbsoluteButtonIcon source={icon} />}
       {icon && !isIconAbsolute && <RelativeButtonIcon source={icon} />}
       <Typography
-        style={{textAlign: textAlign}}
+        style={{textAlign}}
         alightSelf="center"
         color={color}
         variant={TypographyVariant.LABEL_LARGE}>

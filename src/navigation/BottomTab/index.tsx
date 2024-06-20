@@ -2,10 +2,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useTheme} from 'styled-components';
 
 import {BottomTabRoutes} from '@/constants/routes';
-import {HomeScreen, TopMoviesScreen} from '@/screens';
+import {HomeScreen} from '@/screens';
 import {BottomTabParamList} from '@/types/navigation';
 
 import {ProfileStackNavigation} from '../ProfileStack';
+import {TopMoviesStackNavigation} from '../TopMoviesStack';
 import {TopTabNavigation} from '../TopTab';
 import {bottomTabBarOptions} from './options';
 
@@ -18,8 +19,8 @@ export const BottomTabNavigation = () => {
     <TabNavigator.Navigator screenOptions={bottomTabBarOptions(theme)}>
       <TabNavigator.Screen name={BottomTabRoutes.HOME} component={HomeScreen} />
       <TabNavigator.Screen
-        name={BottomTabRoutes.TOP_MOVIES}
-        component={TopMoviesScreen}
+        name={BottomTabRoutes.TOP_MOVIES_NAV}
+        component={TopMoviesStackNavigation}
       />
       <TabNavigator.Screen
         name={BottomTabRoutes.TICKETS}

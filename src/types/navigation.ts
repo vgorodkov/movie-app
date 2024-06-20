@@ -5,6 +5,7 @@ import {
   BottomTabRoutes,
   ProfileRoutes,
   RootRoutes,
+  TopMoviesRoutes,
 } from '@/constants/routes';
 
 export type RootStackParamList = {
@@ -27,18 +28,22 @@ export type RootStackParamList = {
     movieId: string;
     imdbid: string;
   };
-  [RootRoutes.TOP_MOVIES_FILTERS]: undefined;
-};
-
-export type BottomTabParamList = {
-  [BottomTabRoutes.HOME]: undefined;
-  [BottomTabRoutes.TOP_MOVIES]: undefined;
-  [BottomTabRoutes.TICKETS]: undefined;
-  [BottomTabRoutes.PROFILE_NAV]: NavigatorScreenParams<ProfileStackParamList>;
 };
 
 export type ProfileStackParamList = {
   [ProfileRoutes.PROFILE]: undefined;
   [ProfileRoutes.SETTINGS]: undefined;
   [ProfileRoutes.EDIT]: undefined;
+};
+
+export type TopMoviesStackParamList = {
+  [TopMoviesRoutes.TOP_MOVIES]: undefined;
+  [TopMoviesRoutes.TOP_MOVIES_FILTERS]: undefined;
+};
+
+export type BottomTabParamList = {
+  [BottomTabRoutes.HOME]: undefined;
+  [BottomTabRoutes.TOP_MOVIES_NAV]: NavigatorScreenParams<TopMoviesStackParamList>;
+  [BottomTabRoutes.TICKETS]: undefined;
+  [BottomTabRoutes.PROFILE_NAV]: NavigatorScreenParams<ProfileStackParamList>;
 };

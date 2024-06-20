@@ -13,7 +13,7 @@ import {Range} from '@/types/common';
 
 import {TopMoviesFiltersModalProps} from './types';
 
-export const TopMoviesFiltersModal = ({
+export const TopMoviesFiltersScreenModal = ({
   navigation,
 }: TopMoviesFiltersModalProps) => {
   const dispatch = useAppDispatch();

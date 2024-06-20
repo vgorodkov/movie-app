@@ -1,12 +1,11 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 
-import {Top100Movie} from '@/types/movies';
-
 import {styles} from './styles';
+import {TopMoviesListProps} from './types';
 import {keyExtractor, renderTopMovie} from './utils';
 
-export const TopMoviesList = ({data}: {data: Top100Movie[]}) => {
+export const TopMoviesList = ({data}: TopMoviesListProps) => {
   return (
     <FlatList
       data={data}

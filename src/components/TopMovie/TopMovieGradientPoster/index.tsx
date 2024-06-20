@@ -7,8 +7,11 @@ import {useGetTop100MovieByIdQuery} from '@/store/apiSlices/imbdApi';
 import {FlexContainer} from '@/styled/FlexContainer';
 
 import {GradientContainer, PosterImage} from './styles';
+import {TopMovieGradientPosterProps} from './types';
 
-export const TopMovieGradientPoster = ({movieId}: {movieId: string}) => {
+export const TopMovieGradientPoster = ({
+  movieId,
+}: TopMovieGradientPosterProps) => {
   const {
     data,
     isLoading: isTop100Loading,

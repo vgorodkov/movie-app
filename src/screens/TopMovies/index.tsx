@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {TopMoviesList} from '@/components/TopMovie';
 import {ErrorFallback, LoadingFallback} from '@/components/UI';
 import {SearchBar} from '@/components/UI/SearchBar';
-import {RootRoutes} from '@/constants/routes';
+import {TopMoviesRoutes} from '@/constants/routes';
 import {useGetTop100MoviesQuery} from '@/store/apiSlices/imbdApi';
 import {useAppSelector} from '@/store/hooks';
 import {FullscreenContainer} from '@/styled/FlexContainer';
@@ -18,14 +18,14 @@ export const TopMoviesScreen = ({navigation}: TopMoviesScreenProps) => {
   const ratingFilter = useAppSelector(state => state.topMovieFilters.rating);
 
   const onFiltersPress = () => {
-    navigation.navigate(RootRoutes.TOP_MOVIES_FILTERS);
+    navigation.navigate(TopMoviesRoutes.TOP_MOVIES_FILTERS);
   };
 
-  if (isLoading || !data) {
+  if (isLoading) {
     return <LoadingFallback />;
   }
 
-  if (isError) {
+  if (isError || !data) {
     return <ErrorFallback error="Error while loading top movies" />;
   }
 

@@ -6,8 +6,9 @@ import {INITIAL_HEIGHT} from './constants';
 import {Content} from './Content';
 import {Header} from './Header';
 import {BottomSheetContainer} from './styles';
+import {TopMovieBottomSheetProps} from './types';
 
-export const TopMovieBottomSheet = ({imdbid}: {imdbid: string}) => {
+export const TopMovieBottomSheet = ({imdbid}: TopMovieBottomSheetProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const {height} = useWindowDimensions();
 

@@ -1,9 +1,9 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-import {BottomTabRoutes} from '@/constants/routes';
-import {BottomTabParamList} from '@/types/navigation';
+import {TopMoviesRoutes} from '@/constants/routes';
+import {TopMoviesStackParamList} from '@/types/navigation';
 
 export type TopMoviesScreenProps = NativeStackScreenProps<
-  BottomTabParamList,
-  BottomTabRoutes.TOP_MOVIES
+  TopMoviesStackParamList,
+  TopMoviesRoutes.TOP_MOVIES
 >;

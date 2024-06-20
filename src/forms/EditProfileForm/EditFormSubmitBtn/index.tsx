@@ -1,54 +1,14 @@
-import {firebase} from '@react-native-firebase/auth';
-import {FieldValues, useFormContext} from 'react-hook-form';
+import {useFormContext} from 'react-hook-form';
 
 import {Button} from '@/components/UI';
-import {useAppDispatch} from '@/store/hooks';
-import {showToast, ToastStatus} from '@/store/slices/toast';
-import {updateUser} from '@/store/slices/user';
-import {reauth} from '@/utils/firebase/reauth';
-import {updateFirestoreUser} from '@/utils/firebase/updateFirestoreUser';
+import {useEditProfile} from '@/hooks/useEditProfile';
+
+import {EditProfileFormValues} from '../types';
 
 export const EditFormSubmitBtn = () => {
-  const {handleSubmit} = useFormContext();
+  const {handleSubmit} = useFormContext<EditProfileFormValues>();
 
-  const dispatch = useAppDispatch();
+  const {handleProfileEdit} = useEditProfile();
 
-  const onEditButtonPress = async (data: FieldValues) => {
-    const {name, surname, currentPassword, newPassword} = data;
-    const user = firebase.auth().currentUser;
-
-    if (!user) {
-      dispatch(
-        showToast({
-          status: ToastStatus.ERROR,
-          content: 'User not authenticated',
-        }),
-      );
-      return;
-    }
-
-    try {
-      await reauth(user, currentPassword);
-      await updateFirestoreUser(user, {name, surname, newPassword});
-      await user.updatePassword(newPassword);
-      dispatch(updateUser({name, surname}));
-      dispatch(
-        showToast({
-          status: ToastStatus.SUCCESS,
-          content: 'User information was succesfully updated',
-        }),
-      );
-    } catch (err) {
-      if (err instanceof Error) {
-        dispatch(
-          showToast({
-            status: ToastStatus.ERROR,
-            content: err.message,
-          }),
-        );
-      }
-    }
-  };
-
-  return <Button onPress={handleSubmit(onEditButtonPress)}>Edit</Button>;
+  return <Button onPress={handleSubmit(handleProfileEdit)}>Edit</Button>;
 };

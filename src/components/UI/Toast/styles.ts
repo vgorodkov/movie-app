@@ -4,6 +4,8 @@ import CancelIcon from '@/assets/icons/cancel.svg';
 import {spacing} from '@/constants/spacing';
 import {ToastStatus} from '@/store/slices/toast';
 
+import {Typography} from '../Typography';
+
 export const ToastContainer = styled.View<{status?: ToastStatus}>`
   position: absolute;
   bottom: ${spacing.sm}px;
@@ -34,4 +36,8 @@ export const CloseToastIcon = styled(CancelIcon)`
   position: absolute;
   right: ${spacing.s}px;
   top: ${spacing.s}px;
+`;
+
+export const ToastTypography = styled(Typography)`
+  text-align: center;
 `;

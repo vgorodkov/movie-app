@@ -35,7 +35,7 @@ export const BookingDatepicker = () => {
           color={selectedDate ? theme.colors.primaryText : theme.colors.error}
           alightSelf="flex-start"
           variant={TypographyVariant.BODY_MEDIUM}>
-          {t('Date')}: {selectedDate ?? t('No Date')}
+          {t('Date')}: {selectedDate ?? t('NoDate')}
         </Typography>
       </FlexContainer>
       <CalendarIcon

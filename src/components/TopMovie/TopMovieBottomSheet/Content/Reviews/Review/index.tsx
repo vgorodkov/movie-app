@@ -5,8 +5,9 @@ import {BackdropGradient} from '@/components/UI/BackdropGradient';
 
 import {REVIEW_WIDTH} from '../constants';
 import {ReviewTypography} from './styles';
+import {ReviewProps} from './types';
 
-export const Review = ({review}: {review: string}) => {
+export const Review = ({review}: ReviewProps) => {
   return (
     <View
       style={{

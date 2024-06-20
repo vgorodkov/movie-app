@@ -2,8 +2,9 @@ import React from 'react';
 import {Text} from 'react-native';
 
 import {AvatarContainer} from './styles';
+import {AvatarProps} from './types';
 
-export const Avatar = ({user}: {user: string}) => {
+export const Avatar = ({user}: AvatarProps) => {
   const shortedName = user
     .slice(0, 2)
     .split(' ')

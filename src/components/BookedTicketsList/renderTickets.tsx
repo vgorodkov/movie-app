@@ -1,8 +1,10 @@
+import {ListRenderItem} from 'react-native';
+
 import {BookingTicket} from '@/types/booking';
 
 import {BookedTicket} from './BookedTicket';
 
-export const renderTickets = ({item}: {item: BookingTicket}) => {
+export const renderTickets: ListRenderItem<BookingTicket> = ({item}) => {
   const {date, ticketId, seatsAmount, price, movieId} = item;
 
   return (

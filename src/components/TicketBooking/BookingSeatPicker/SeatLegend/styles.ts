@@ -9,11 +9,15 @@ export const SeatLegendIcon = styled.View<{
   height: 16px;
   border: 1px solid;
   border-color: ${props => props.theme.colors.primaryText};
-  background-color: ${props =>
-    props.type === SeatLegendVariant.RESERVED
-      ? props.theme.colors.border
-      : props.type === SeatLegendVariant.SELECTED
-      ? props.theme.colors.primary
-      : 'transparent'};
+  background-color: ${({type, theme}) => {
+    switch (type) {
+      case SeatLegendVariant.RESERVED:
+        return theme.colors.border;
+      case SeatLegendVariant.SELECTED:
+        return theme.colors.primary;
+      default:
+        return 'transparent';
+    }
+  }};
   border-radius: 4px;
 `;
