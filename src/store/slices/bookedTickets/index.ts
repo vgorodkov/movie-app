@@ -34,7 +34,9 @@ export const bookedTicketsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(initBookedTickets.rejected, (state, action) => {
-        state.error = action.payload;
+        if (action.payload) {
+          state.error = action.payload;
+        }
         state.isLoading = false;
       })
       .addCase(addBookedTickets.fulfilled, (state, action) => {
@@ -52,7 +54,9 @@ export const bookedTicketsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(cancelBookedTickets.rejected, (state, action) => {
-        state.error = action.payload;
+        if (action.payload) {
+          state.error = action.payload;
+        }
         state.isLoading = false;
       });
   },
