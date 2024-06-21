@@ -16,7 +16,10 @@ export const AvaibleGenre = ({genre, isSelected}: AvaibleGenreProps) => {
   };
 
   return (
-    <PressableAvaibleGenre isSelected={isSelected} onPress={onMovieGenrePress}>
+    <PressableAvaibleGenre
+      testID={`AvaibleGenre.${genre}`}
+      isSelected={isSelected}
+      onPress={onMovieGenrePress}>
       <Typography
         color={isSelected ? theme.colors.onPrimary : theme.colors.primaryText}
         variant={TypographyVariant.LABEL_MEDIUM}>

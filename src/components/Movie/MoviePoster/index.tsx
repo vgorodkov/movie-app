@@ -29,6 +29,7 @@ export const MoviePoster = ({movieId}: MoviePosterProps) => {
         <View />
         <PlayIcon width={40} height={40} color={theme.colors.primary} />
         <Button
+          testID="BookTicketsBtn"
           color={'white'}
           onPress={onBookTicketIconPress}
           iconVariant="relative"

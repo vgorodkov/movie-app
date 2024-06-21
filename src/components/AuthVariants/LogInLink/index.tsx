@@ -20,6 +20,7 @@ export const LogInLink = () => {
         {t('AlreadyHasAccount')}
       </Typography>
       <Typography
+        testID="SignInButton"
         textDecoration="underline"
         onPress={onLoginBtnPress}
         variant={TypographyVariant.LABEL_SMALL}>

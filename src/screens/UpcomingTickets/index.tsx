@@ -9,7 +9,7 @@ export const UpcomingTicketsScreen = () => {
   const upcomingBookedTickets = useAppSelector(upcomingBookedTicketsSelector);
 
   return (
-    <FullscreenContainer>
+    <FullscreenContainer testID="UpcomingTicketsScreen">
       <BookedTicketsList data={upcomingBookedTickets} />
     </FullscreenContainer>
   );

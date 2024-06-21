@@ -12,7 +12,7 @@ import {ComingSoonContainer, MovieCarouselContainer} from './styles';
 export const HomeScreen = () => {
   const {t} = useTranslation('home');
   return (
-    <FullscreenContainer padding={`${spacing.m}px 0`}>
+    <FullscreenContainer testID="HomeScreen" padding={`${spacing.m}px 0`}>
       <ComingSoonContainer>
         <Typography
           alightSelf="flex-start"

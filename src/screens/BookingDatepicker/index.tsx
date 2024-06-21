@@ -49,6 +49,7 @@ export const BookingDatepickerModal = ({
         />
       </FlexContainer>
       <Calendar
+        testID="DatepickerCalendar"
         markedDates={markedDates}
         onDayPress={onDayPress}
         minDate={MIN_DATE}

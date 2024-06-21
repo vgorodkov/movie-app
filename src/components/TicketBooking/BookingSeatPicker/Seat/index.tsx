@@ -31,6 +31,8 @@ export const Seat = ({
     <>
       {(isFirst || isFirstInLastRow) && <Empty />}
       <PressableSeat
+        disabled={isReserved}
+        testID={`Seat.${id}`}
         onPress={onSeatPress}
         isReserved={isReserved}
         isSelected={isSeatSelected}

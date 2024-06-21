@@ -32,6 +32,7 @@ export const BookingDatepicker = () => {
           {t('Schedule')}
         </Typography>
         <Typography
+          testID="SelectedDate"
           color={selectedDate ? theme.colors.primaryText : theme.colors.error}
           alightSelf="flex-start"
           variant={TypographyVariant.BODY_MEDIUM}>
@@ -39,6 +40,7 @@ export const BookingDatepicker = () => {
         </Typography>
       </FlexContainer>
       <CalendarIcon
+        testID="DatePickerIcon"
         color={theme.colors.primaryText}
         onPress={onDatepickerIconPress}
         width={24}

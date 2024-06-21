@@ -35,9 +35,11 @@ export const Toast = ({autoclose, delay}: ToastProps) => {
   }
 
   return (
-    <ToastContainer status={status}>
+    <ToastContainer testID="Toast" status={status}>
       <CloseToastIcon onPress={onCloseToastIconPress} />
-      <ToastTypography variant={TypographyVariant.LABEL_LARGE}>
+      <ToastTypography
+        testID="ToastContent"
+        variant={TypographyVariant.LABEL_LARGE}>
         {content}
       </ToastTypography>
     </ToastContainer>
