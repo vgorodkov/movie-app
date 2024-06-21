@@ -23,7 +23,9 @@ import toastReducer from './slices/toast';
 import topMovieFiltersReducer from './slices/topMovieFilters';
 import userReducer from './slices/user';
 
-const rootReducer = combineReducers({
+const IS_MOCKED = process.env.MY_APP_MODE === 'mocked';
+
+const mockedReducers = {
   notifications: notificationsReducer,
   toast: toastReducer,
   bookedTickets: bookedTicketsReducer,
@@ -32,9 +34,17 @@ const rootReducer = combineReducers({
   ticketBooking: ticketBookingReducer,
   topMovieFilters: topMovieFiltersReducer,
   theme: themeReducer,
-  [movieApi.reducerPath]: movieApi.reducer,
   [imbdApi.reducerPath]: imbdApi.reducer,
-});
+};
+
+const defaultReducers = {
+  ...mockedReducers,
+  [movieApi.reducerPath]: movieApi.reducer,
+};
+
+const rootReducer = combineReducers(
+  IS_MOCKED ? mockedReducers : defaultReducers,
+);
 
 const persistConfig = {
   key: 'root',
@@ -46,14 +56,20 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  middleware: getDefaultMiddleware => {
+    const middlewares = getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    })
-      .concat(movieApi.middleware)
-      .concat(imbdApi.middleware),
+    }).concat(imbdApi.middleware);
+
+    if (!IS_MOCKED) {
+      middlewares.concat(movieApi.middleware);
+    }
+
+    return middlewares;
+  },
 });
+
 setupListeners(store.dispatch);
 export const persistor = persistStore(store);
