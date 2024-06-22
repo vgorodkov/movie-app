@@ -34,16 +34,16 @@ const mockedReducers = {
   ticketBooking: ticketBookingReducer,
   topMovieFilters: topMovieFiltersReducer,
   theme: themeReducer,
-  [imbdApi.reducerPath]: imbdApi.reducer,
-};
-
-const defaultReducers = {
-  ...mockedReducers,
-  [movieApi.reducerPath]: movieApi.reducer,
 };
 
 const rootReducer = combineReducers(
-  IS_MOCKED ? mockedReducers : defaultReducers,
+  IS_MOCKED
+    ? mockedReducers
+    : {
+        ...mockedReducers,
+        [movieApi.reducerPath]: movieApi.reducer,
+        [imbdApi.reducerPath]: imbdApi.reducer,
+      },
 );
 
 const persistConfig = {
@@ -61,10 +61,10 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(imbdApi.middleware);
+    });
 
     if (!IS_MOCKED) {
-      middlewares.concat(movieApi.middleware);
+      middlewares.concat(movieApi.middleware).concat(imbdApi.middleware);
     }
 
     return middlewares;
