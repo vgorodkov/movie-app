@@ -1,5 +1,7 @@
 import {expect} from 'detox';
 
+import {BottomTabRoutes} from '@/constants/routes';
+
 import {byId} from '../utils';
 import {checkIfInputErrorsExist, fillInputs} from './utils';
 
@@ -32,7 +34,7 @@ describe('SignIn', () => {
 
   it('should handle correct inputs', async () => {
     const authSubmitBtn = byId('AuthSubmitBtn');
-    const homeScreen = byId('HomeScreen');
+    const homeScreen = byId(BottomTabRoutes.HOME);
     await fillInputs({email: 'email@gmail.com', password: '12345678!!!'});
     await authSubmitBtn.tap();
     await expect(homeScreen).toBeVisible();
