@@ -17,16 +17,23 @@ export const BottomTabNavigation = () => {
 
   return (
     <TabNavigator.Navigator screenOptions={bottomTabBarOptions(theme)}>
-      <TabNavigator.Screen name={BottomTabRoutes.HOME} component={HomeScreen} />
       <TabNavigator.Screen
+        options={{tabBarTestID: `BottomTab.${BottomTabRoutes.HOME}`}}
+        name={BottomTabRoutes.HOME}
+        component={HomeScreen}
+      />
+      <TabNavigator.Screen
+        options={{tabBarTestID: `BottomTab.${BottomTabRoutes.TOP_MOVIES_NAV}`}}
         name={BottomTabRoutes.TOP_MOVIES_NAV}
         component={TopMoviesStackNavigation}
       />
       <TabNavigator.Screen
+        options={{tabBarTestID: `BottomTab.${BottomTabRoutes.TICKETS}`}}
         name={BottomTabRoutes.TICKETS}
         component={TopTabNavigation}
       />
       <TabNavigator.Screen
+        options={{tabBarTestID: `BottomTab.${BottomTabRoutes.PROFILE_NAV}`}}
         name={BottomTabRoutes.PROFILE_NAV}
         component={ProfileStackNavigation}
       />

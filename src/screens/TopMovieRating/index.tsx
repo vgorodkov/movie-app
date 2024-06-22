@@ -14,7 +14,7 @@ export const TopMovieRatingScreen = ({route}: TopMovieScreenProps) => {
   return (
     <FullscreenContainer>
       <TopMovieGradientPoster movieId={movieId} />
-      <TopMovieBottomSheet imdbid={imdbid} />
+      <TopMovieBottomSheet imdbid={imdbid} movieId={movieId} />
     </FullscreenContainer>
   );
 };

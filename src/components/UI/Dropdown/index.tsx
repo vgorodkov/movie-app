@@ -46,7 +46,7 @@ export const Dropdown = ({
 
   return (
     <FlexContainer gap={spacing.s}>
-      <DropdownSelect onPress={toggleDropdown}>
+      <DropdownSelect testID="DropdownSelect" onPress={toggleDropdown}>
         <DropdownSelectLabel variant={TypographyVariant.LABEL_LARGE}>
           {selectedOption?.label ?? label}
         </DropdownSelectLabel>

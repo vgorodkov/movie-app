@@ -24,6 +24,7 @@ export const ToggleButton = ({
   return (
     <ToggleButtonContainer>
       <ToggleButtonLabel
+        testID="ToggeButtonLeft"
         onPress={onLeftSidePress}
         isActive={activeSide === 'left'}
         side="left"
@@ -31,6 +32,7 @@ export const ToggleButton = ({
         {left.label}
       </ToggleButtonLabel>
       <ToggleButtonLabel
+        testID="ToggeButtonRight"
         onPress={onRightSidePress}
         isActive={activeSide === 'right'}
         side="right"

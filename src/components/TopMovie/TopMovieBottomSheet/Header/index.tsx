@@ -11,7 +11,7 @@ import {
   Typography,
   TypographyVariant,
 } from '@/components/UI';
-import {useGetMovieInfoQuery} from '@/store/apiSlices/movieApi';
+import {useGetTop100MovieByIdQuery} from '@/store/apiSlices/imbdApi';
 
 import {ANIMATION_DURATION, SWIPE_THRESHOLD} from '../constants';
 import {HeaderContainer} from './styles';
@@ -21,9 +21,10 @@ export const Header = ({
   isOpen,
   openBottomSheet,
   closeBottomSheet,
-  imdbid,
+  movieId,
 }: HeaderProps) => {
-  const {data, isLoading, isError} = useGetMovieInfoQuery(imdbid);
+  const {data, isLoading, isError} = useGetTop100MovieByIdQuery(movieId);
+
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
@@ -46,13 +47,15 @@ export const Header = ({
   }
 
   return (
-    <HeaderContainer {...panResponder.panHandlers}>
+    <HeaderContainer
+      testID="TopMovieBottomSheetHeader"
+      {...panResponder.panHandlers}>
       <Separator />
       <Typography variant={TypographyVariant.SUBTITLE_LARGE}>
         {data?.title}
       </Typography>
       <Typography variant={TypographyVariant.SUBTITLE_LARGE}>
-        {data?.imdbrating} <StarIcon />
+        {data?.rating} <StarIcon />
       </Typography>
       {!isOpen && (
         <Animated.View

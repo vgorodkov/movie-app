@@ -36,6 +36,7 @@ export const TopMovieGradientPoster = ({
   return (
     <GradientContainer colors={[colors.muted, colors.lightMuted]}>
       <PosterImage
+        testID="TopMoviePoster"
         source={{
           uri: data?.big_image,
         }}

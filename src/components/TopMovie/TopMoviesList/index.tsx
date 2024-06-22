@@ -8,6 +8,7 @@ import {keyExtractor, renderTopMovie} from './utils';
 export const TopMoviesList = ({data}: TopMoviesListProps) => {
   return (
     <FlatList
+      testID="TopMoviesList"
       data={data}
       renderItem={renderTopMovie}
       keyExtractor={keyExtractor}

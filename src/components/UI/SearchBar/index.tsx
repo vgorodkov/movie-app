@@ -17,11 +17,17 @@ export const SearchBar = ({
     <SearchBarContainer>
       <SearchIcon width={16} height={16} />
       <SearchBarInput
+        testID="TopMoviesSearchBar"
         value={value}
         onChangeText={onValueChange}
         placeholder={t('SearchBarPlaceholder')}
       />
-      <FilterIcon onPress={onFiltersPress} width={16} height={16} />
+      <FilterIcon
+        testID="TopMoviesFiltersIcon"
+        onPress={onFiltersPress}
+        width={16}
+        height={16}
+      />
     </SearchBarContainer>
   );
 };

@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {TopMoviesList} from '@/components/TopMovie';
 import {ErrorFallback, LoadingFallback} from '@/components/UI';
 import {SearchBar} from '@/components/UI/SearchBar';
-import {TopMoviesRoutes} from '@/constants/routes';
+import {BottomTabRoutes, TopMoviesRoutes} from '@/constants/routes';
 import {useGetTop100MoviesQuery} from '@/store/apiSlices/imbdApi';
 import {useAppSelector} from '@/store/hooks';
 import {FullscreenContainer} from '@/styled/FlexContainer';
@@ -36,7 +36,7 @@ export const TopMoviesScreen = ({navigation}: TopMoviesScreenProps) => {
   });
 
   return (
-    <FullscreenContainer>
+    <FullscreenContainer testID={BottomTabRoutes.TOP_MOVIES_NAV}>
       <SearchBar
         value={movieTitleQuery}
         onValueChange={setMovieTitleQuery}
