@@ -1,12 +1,13 @@
 import {expect} from 'detox';
 
 import {SEAT_PRICE} from '@/constants/cinema';
+import {BottomTabRoutes} from '@/constants/routes';
 
 import {signIn} from '../auth/utils';
 import {byId} from '../utils';
 import {checkBookingData, getNearDates} from './utils';
 
-describe('SignIn', () => {
+describe('Booking', () => {
   beforeAll(async () => {
     await device.launchApp();
     await signIn();
@@ -100,10 +101,10 @@ describe('SignIn', () => {
       date: tommorowDate,
     });
 
-    const upcomingTicketsScreen = byId('UpcomingTicketsScreen');
+    const ticketsScreen = byId(`BottomTab.${BottomTabRoutes.TICKETS}`);
     const bookingSubmitBtn = byId('BookingSubmitBtn');
 
     await bookingSubmitBtn.tap();
-    await expect(upcomingTicketsScreen).toBeVisible();
+    await expect(ticketsScreen).toBeVisible();
   });
 });
