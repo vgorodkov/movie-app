@@ -10,5 +10,11 @@ export const EditFormSubmitBtn = () => {
 
   const {handleProfileEdit} = useEditProfile();
 
-  return <Button onPress={handleSubmit(handleProfileEdit)}>Edit</Button>;
+  return (
+    <Button
+      testID="EditProfileSubmitBtn"
+      onPress={handleSubmit(handleProfileEdit)}>
+      Edit
+    </Button>
+  );
 };

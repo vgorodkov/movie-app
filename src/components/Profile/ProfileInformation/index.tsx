@@ -8,10 +8,10 @@ export const ProfileInformation = () => {
   const user = useAppSelector(userSelector);
   return (
     <FlexContainer gap={spacing.xs} alignItems="center">
-      <Typography variant={TypographyVariant.TITLE_SMALL}>
+      <Typography testID="ProfileName" variant={TypographyVariant.TITLE_SMALL}>
         {user?.name ?? 'No name'} {user?.surname ?? 'No surname'}
       </Typography>
-      <Typography variant={TypographyVariant.SUBTITLE_SMALL}>
+      <Typography testID="ProfileId" variant={TypographyVariant.SUBTITLE_SMALL}>
         USER ID: {user?.uid}
       </Typography>
     </FlexContainer>
