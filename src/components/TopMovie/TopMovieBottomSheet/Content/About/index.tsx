@@ -37,6 +37,7 @@ export const About = ({plotSummary}: AboutProps) => {
 
   return (
     <Animated.View
+      testID="TopMovieAbout"
       exiting={FadeOut}
       entering={FadeIn.delay(ANIMATION_DURATION)}>
       <Headline variant={TypographyVariant.SUBTITLE_LARGE}>

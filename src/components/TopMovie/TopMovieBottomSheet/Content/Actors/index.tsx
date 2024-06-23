@@ -15,6 +15,7 @@ export const Actors = () => {
   const {t} = useTranslation('top');
   return (
     <Animated.View
+      testID="TopMovieActors"
       exiting={FadeOut}
       entering={FadeIn.delay(ANIMATION_DURATION * 2)}
       layout={LinearTransition}>

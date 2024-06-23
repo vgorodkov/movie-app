@@ -63,6 +63,7 @@ export const ProfileActions = () => {
     <ProfileActionsContainer gap={spacing.m}>
       {profileActions.map(action => (
         <ProfileActionButton
+          testID={`ProfileAction.${action.name}`}
           key={action.name}
           textAlign="center"
           onPress={action.onPress}>

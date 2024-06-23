@@ -27,8 +27,9 @@ export const VideoPlayer = () => {
   };
 
   return (
-    <VideoContainer>
+    <VideoContainer testID="VideoContainer">
       <Video
+        testID="Video"
         onPlaybackStateChanged={onPlaybackStateChanged}
         paused={true}
         style={styles.videoPlayer}

@@ -25,6 +25,7 @@ export const AuthSubmitButton = ({isSignUp}: AuthSubmitButtonProps) => {
     <>
       {isLoading && <LoadingBackdrop />}
       <AuthButton
+        testID="AuthSubmitBtn"
         color={theme.colors.onPrimary}
         disabled={isLoading}
         onPress={handleSubmit(onSubmit)}>

@@ -25,7 +25,9 @@ export const Content = ({isOpen, imdbid}: ContentProps) => {
   }
 
   return (
-    <ScrollView contentContainerStyle={contentListContentContainerStyle}>
+    <ScrollView
+      testID="TopMovieBottomSheet"
+      contentContainerStyle={contentListContentContainerStyle}>
       <VideoPlayer />
       <About plotSummary={data.plotSummary} />
       <Actors />

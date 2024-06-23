@@ -64,7 +64,7 @@ export const MovieItem = ({
   };
 
   return (
-    <Pressable onPress={onMovieItemPress}>
+    <Pressable onPress={onMovieItemPress} testID={`MovieCarouselItem.${index}`}>
       <MovieItemContainer
         marginLeft={isFirst ? SIDECARD_WIDTH : 0}
         marginRight={isLast ? SIDECARD_WIDTH : 0}

@@ -55,6 +55,7 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
 
   return (
     <ReviewsContainer
+      testID="TopMovieReviews"
       entering={FadeIn.delay(ANIMATION_DURATION * 3)}
       exiting={FadeOut}
       layout={LinearTransition}>
@@ -63,6 +64,7 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
       </Headline>
       <FlexContainer flexFlow="row nowrap" gap={spacing.s} alignItems="center">
         <ArrowBackward
+          testID="TopMovieReviewsListArrowBack"
           color={isFirst ? theme.colors.disabledText : theme.colors.primaryText}
           width={ARROW_WIDTH}
           height={ARROW_HEIGHT}
@@ -70,6 +72,7 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
         />
         <FlexContainer flex={1}>
           <FlatList
+            testID="TopMovieReviewsList"
             showsHorizontalScrollIndicator={false}
             onMomentumScrollEnd={onMomentumScrollEnd}
             data={reviews}
@@ -81,6 +84,7 @@ export const Reviews = ({reviews}: {reviews: string[]}) => {
         </FlexContainer>
 
         <ArrowForward
+          testID="TopMovieReviewsListArrowForward"
           color={isLast ? theme.colors.disabledText : theme.colors.primaryText}
           width={ARROW_WIDTH}
           height={ARROW_HEIGHT}

@@ -36,6 +36,7 @@ export const AvaibleSession = ({
 
   return (
     <MovieSessionContainer
+      testID={`MovieSession.${time}`}
       onPress={onAvaibleSessionPress}
       isActive={isSessionSelected}>
       <Typography

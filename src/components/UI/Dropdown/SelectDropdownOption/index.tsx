@@ -15,7 +15,10 @@ export const SelectDropdownOption = ({
     onSelect(option);
   };
   return (
-    <OptionTouchable onPress={onOptionSelect} isActive={isActive}>
+    <OptionTouchable
+      testID={`DropdownOption.${option.code}`}
+      onPress={onOptionSelect}
+      isActive={isActive}>
       <Typography
         variant={TypographyVariant.LABEL_MEDIUM}
         padding={`${spacing.s}px`}

@@ -8,7 +8,10 @@ import {Header} from './Header';
 import {BottomSheetContainer} from './styles';
 import {TopMovieBottomSheetProps} from './types';
 
-export const TopMovieBottomSheet = ({imdbid}: TopMovieBottomSheetProps) => {
+export const TopMovieBottomSheet = ({
+  imdbid,
+  movieId,
+}: TopMovieBottomSheetProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const {height} = useWindowDimensions();
 
@@ -33,7 +36,7 @@ export const TopMovieBottomSheet = ({imdbid}: TopMovieBottomSheetProps) => {
       height={height}
       style={{transform: [{translateY: bottomSheetTranslateY}]}}>
       <Header
-        imdbid={imdbid}
+        movieId={movieId}
         isOpen={isOpen}
         openBottomSheet={openBottomSheet}
         closeBottomSheet={closeBottomSheet}

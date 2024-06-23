@@ -35,7 +35,11 @@ export const TopMoviesFiltersScreenModal = ({
   };
 
   return (
-    <Modal gap={spacing.m} title="Filters" onBackdropPress={onBackdropPress}>
+    <Modal
+      testID="TopMoviesFiltersModal"
+      gap={spacing.m}
+      title="Filters"
+      onBackdropPress={onBackdropPress}>
       <InputRange
         min={1900}
         max={2024}

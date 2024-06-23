@@ -21,8 +21,8 @@ import {getItemLayout, renderMovieItem} from './utils';
 export const MovieCarousel = ({title}: MovieCarouselProps) => {
   const selectedGenre = useAppSelector(selectSelectedMovieGenre);
   const {data, isError, isLoading} = useGetMoviesQuery(selectedGenre);
-  const scrollOffset = useSharedValue(0);
 
+  const scrollOffset = useSharedValue(0);
   if (isLoading) {
     return <LoadingFallback />;
   }
@@ -33,7 +33,6 @@ export const MovieCarousel = ({title}: MovieCarouselProps) => {
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     scrollOffset.value = e.nativeEvent.contentOffset.x;
   };
-
   return (
     <FlexContainer gap={spacing.sm}>
       <Typography
@@ -43,13 +42,18 @@ export const MovieCarousel = ({title}: MovieCarouselProps) => {
         {title}
       </Typography>
       <Animated.FlatList
+        testID="MovieCarousel"
         overScrollMode="never"
         scrollEventThrottle={16}
         decelerationRate={0.8}
         snapToInterval={MOVIE_ITEM_WIDTH}
         showsHorizontalScrollIndicator={false}
         horizontal
-        data={data?.results.slice(0, DATA_LIMIT)}
+        data={
+          process.env.MY_APP_MODE === 'mocked'
+            ? data?.slice(0, DATA_LIMIT)
+            : data?.results.slice(0, DATA_LIMIT)
+        }
         renderItem={renderMovieItem(scrollOffset, DATA_LIMIT)}
         contentOffset={{x: Math.floor(DATA_LIMIT / 2) * MOVIE_ITEM_WIDTH, y: 0}}
         getItemLayout={getItemLayout}

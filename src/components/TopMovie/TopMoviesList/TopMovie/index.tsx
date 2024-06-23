@@ -23,9 +23,11 @@ export const TopMovie = memo(
         imdbid,
       });
     };
-
     return (
-      <FlexContainer flexFlow="row nowrap" gap={spacing.sm}>
+      <FlexContainer
+        testID={`TopMovie.${id}`}
+        flexFlow="row nowrap"
+        gap={spacing.sm}>
         <TopFilmImage source={{uri: image}} />
         <FlexContainer flex={0.75} justifyContent="space-between">
           <FlexContainer gap={spacing.xs}>
@@ -42,7 +44,9 @@ export const TopMovie = memo(
               {rating} <StarIcon />
             </Typography>
           </FlexContainer>
-          <TopFilmMoreButton onPress={onMoreBtnPress}>
+          <TopFilmMoreButton
+            testID={`TopMovieMoreBtn.${id}`}
+            onPress={onMoreBtnPress}>
             <Typography
               color={theme.colors.onPrimary}
               variant={TypographyVariant.LABEL_MEDIUM}>

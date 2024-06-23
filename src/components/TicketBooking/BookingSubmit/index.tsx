@@ -48,14 +48,19 @@ export const BookingSubmit = ({movieId}: BookingSubmitProps) => {
       )}
       <FlexContainer flexFlow="row nowrap" justifyContent="space-between">
         <FlexContainer>
-          <Typography variant={TypographyVariant.LABEL_MEDIUM}>
+          <Typography
+            testID="BookingSeatAmount"
+            variant={TypographyVariant.LABEL_MEDIUM}>
             {selectedSeatsAmount} {t('Seats')}
           </Typography>
-          <Typography variant={TypographyVariant.SUBTITLE_LARGE}>
+          <Typography
+            testID="BookingPrice"
+            variant={TypographyVariant.SUBTITLE_LARGE}>
             {SEAT_PRICE * selectedSeatsAmount} $
           </Typography>
         </FlexContainer>
         <BookingSubmitButton
+          testID="BookingSubmitBtn"
           onPress={onBookingSubmitBtnPress}
           disabled={!isButtonActive}>
           {t('Book now')}

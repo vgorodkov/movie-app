@@ -153,17 +153,20 @@ export const InputRange = ({
       <Typography variant={TypographyVariant.LABEL_LARGE}>{title}</Typography>
       <RangeContainer>
         <RangeBar
+          testID={`${title}.RangeBar`}
           style={{
             width: rangeWidth,
             transform: [{translateX: leftControllerTranslateX}],
           }}
         />
         <Controller
+          testID={`LeftController.${title}`}
           style={leftControllerAStyle}
           {...leftController.panHandlers}
           value={firstControllerValue}
         />
         <Controller
+          testID={`RightController.${title}`}
           style={rightControllerAStyle}
           {...rightController.panHandlers}
           value={secondControllerValue}

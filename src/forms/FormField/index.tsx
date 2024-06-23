@@ -27,6 +27,7 @@ export const FormField = ({
       render={({field: {value, onChange, onBlur}}) => (
         <FlexContainer gap={spacing.s}>
           <Input
+            testID={`AuthInput.${name}`}
             value={value}
             onChangeText={onChange}
             onBlur={onBlur}

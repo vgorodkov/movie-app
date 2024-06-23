@@ -47,6 +47,7 @@ export const AuthVariants = () => {
       {AUTH_VARIANTS.map(({icon, backgroundColor, color, label, name}) => {
         return (
           <Button
+            testID={`AuthVariant.${name}`}
             onPress={onAuthVariantPress(name)}
             key={label}
             icon={icon}

@@ -9,6 +9,7 @@ import {BookedTicketsListProps} from './types';
 export const BookedTicketsList = ({data}: BookedTicketsListProps) => {
   return (
     <FlatList
+      testID="BookedTicketsList"
       contentContainerStyle={styles.bookedTicketsListContentContainer}
       data={data}
       renderItem={renderTickets}

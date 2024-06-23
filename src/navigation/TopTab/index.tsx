@@ -19,6 +19,7 @@ export const TopTabNavigation = () => {
         component={UpcomingTicketsScreen}
         options={{
           title: t('upcoming'),
+          tabBarTestID: `TopTab.${TopTabRoutes.UPCOMING}`,
         }}
       />
       <TabNavigator.Screen
@@ -26,6 +27,7 @@ export const TopTabNavigation = () => {
         component={PastTicketsScreen}
         options={{
           title: t('past'),
+          tabBarTestID: `TopTab.${TopTabRoutes.PAST}`,
         }}
       />
       <TabNavigator.Screen
@@ -33,6 +35,7 @@ export const TopTabNavigation = () => {
         component={MissedTicketsScreen}
         options={{
           title: t('missed'),
+          tabBarTestID: `TopTab.${TopTabRoutes.MISSED}`,
         }}
       />
     </TabNavigator.Navigator>
