@@ -22,3 +22,5 @@ jobs:
           cmd: install
       - name: Run Eslint
         run: npm run lint
+      - name: Run unit tests
+        run: npm run test:utls
