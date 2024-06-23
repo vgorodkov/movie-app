@@ -3,13 +3,14 @@ import {expect} from 'detox';
 import {BottomTabRoutes} from '@/constants/routes';
 
 import {signIn} from '../auth/utils';
+import {navigateViaBottomTabsWithCheck} from '../navigation/utils';
 import {byId, byText} from '../utils';
 
 describe('TopMovies', () => {
   beforeAll(async () => {
     await device.launchApp();
     await signIn();
-    await byId(`BottomTab.${BottomTabRoutes.TOP_MOVIES_NAV}`).tap();
+    await navigateViaBottomTabsWithCheck(BottomTabRoutes.TOP_MOVIES_NAV);
   });
 
   it('should render top movies list', async () => {
