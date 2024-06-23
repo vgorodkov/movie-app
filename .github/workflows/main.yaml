@@ -23,4 +23,4 @@ jobs:
       - name: Run Eslint
         run: npm run lint
       - name: Run unit tests
-        run: npm run test:utls
+        run: npm run test:utils
