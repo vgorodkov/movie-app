@@ -1,0 +1,16 @@
+export const MILLISECONDS_PER_SECOND = 1000;
+export const SECONDS_PER_MINUTE = 60;
+export const MINUTES_PER_HOUR = 60;
+export const DAY_BEFORE_SECS = 86400000;
+export const HOURS_PER_DAY = 24;
+export const DAYS_PER_WEEK = 7;
+export const DAYS_PER_MONTH = 30;
+export const DAYS_PER_YEAR = 365;
+export const WEEKS_PER_MONTH = 4;
+export const MONTH_PER_YEAR = 12;
+export const MINUTE = 1;
+export const HOUR = MINUTES_PER_HOUR * MINUTE;
+export const DAY = HOURS_PER_DAY * HOUR;
+export const WEEK = DAYS_PER_WEEK * DAY;
+export const MONTH = DAYS_PER_MONTH * DAY;
+export const YEAR = DAYS_PER_YEAR * DAY;
