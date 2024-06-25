@@ -13,10 +13,13 @@ import {useGetMoviesQuery} from '@/store/apiSlices/movieApi';
 import {useAppSelector} from '@/store/hooks';
 import {selectSelectedMovieGenre} from '@/store/slices/movieGenre/selectors';
 import {FlexContainer} from '@/styled/FlexContainer';
+import {Movie} from '@/types/movies';
 
 import {DATA_LIMIT, MOVIE_ITEM_WIDTH} from './constants';
 import {MovieCarouselProps} from './types';
 import {getItemLayout, renderMovieItem} from './utils';
+
+const IS_MOCKED = process.env.MY_APP_MODE === 'mocked';
 
 export const MovieCarousel = ({title}: MovieCarouselProps) => {
   const selectedGenre = useAppSelector(selectSelectedMovieGenre);
@@ -50,8 +53,8 @@ export const MovieCarousel = ({title}: MovieCarouselProps) => {
         showsHorizontalScrollIndicator={false}
         horizontal
         data={
-          process.env.MY_APP_MODE === 'mocked'
-            ? data?.slice(0, DATA_LIMIT)
+          IS_MOCKED
+            ? (data as any as Movie[])?.slice(0, DATA_LIMIT)
             : data?.results.slice(0, DATA_LIMIT)
         }
         renderItem={renderMovieItem(scrollOffset, DATA_LIMIT)}
