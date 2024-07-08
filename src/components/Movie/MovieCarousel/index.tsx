@@ -29,7 +29,7 @@ export const MovieCarousel = ({title}: MovieCarouselProps) => {
   if (isLoading) {
     return <LoadingFallback />;
   }
-  if (isError) {
+  if (isError || !data) {
     return <ErrorFallback error="Error while loading movie data" />;
   }
 
