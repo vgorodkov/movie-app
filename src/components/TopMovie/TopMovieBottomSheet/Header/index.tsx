@@ -1,11 +1,10 @@
 import React, {useRef} from 'react';
-import {PanResponder} from 'react-native';
+import {ActivityIndicator, PanResponder} from 'react-native';
 import Animated, {FadeIn, FadeOut} from 'react-native-reanimated';
 
 import SwipeTop from '@/assets/icons/swipe_top.svg';
 import {
   ErrorFallback,
-  LoadingFallback,
   Separator,
   StarIcon,
   Typography,
@@ -39,7 +38,7 @@ export const Header = ({
   ).current;
 
   if (isLoading) {
-    return <LoadingFallback />;
+    return <ActivityIndicator size="large" />;
   }
 
   if (isError || !data) {
