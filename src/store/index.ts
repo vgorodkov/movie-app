@@ -64,7 +64,7 @@ export const store = configureStore({
     });
 
     if (!IS_MOCKED) {
-      middlewares.concat(movieApi.middleware).concat(imbdApi.middleware);
+      return middlewares.concat(movieApi.middleware, imbdApi.middleware);
     }
 
     return middlewares;
